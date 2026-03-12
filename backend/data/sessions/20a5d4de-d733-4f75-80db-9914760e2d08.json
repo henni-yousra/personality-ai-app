@@ -1,0 +1,181 @@
+{
+  "session_id": "20a5d4de-d733-4f75-80db-9914760e2d08",
+  "email": "knight95360@hotmail.fr",
+  "created_at": "2026-03-12T16:57:08.327793",
+  "updated_at": "2026-03-12T17:05:02.369583",
+  "responses": [
+    {
+      "question_id": "O2",
+      "question_text": "Je suis attiré(e) par l'art, la musique ou la littérature.",
+      "trait": "O",
+      "polarity": 1,
+      "answer": 2,
+      "answered_at": "2026-03-12T16:57:13.766072"
+    },
+    {
+      "question_id": "C1",
+      "question_text": "J'aime planifier mes tâches et suivre un planning précis.",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T16:57:47.463949"
+    },
+    {
+      "question_id": "E3",
+      "question_text": "Les interactions sociales me donnent de l'énergie.",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 1,
+      "answered_at": "2026-03-12T16:58:05.431544"
+    },
+    {
+      "question_id": "A4",
+      "question_text": "Je trouve facilement quelque chose de positif chez chaque personne.",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 5,
+      "answered_at": "2026-03-12T16:58:10.498488"
+    },
+    {
+      "question_id": "N3",
+      "question_text": "Je me sens souvent stressé(e) ou sous pression.",
+      "trait": "N",
+      "polarity": 1,
+      "answer": 1,
+      "answered_at": "2026-03-12T16:58:15.015088"
+    },
+    {
+      "question_id": "O6",
+      "question_text": "Les sujets abstraits ou philosophiques m'ennuient rapidement.",
+      "trait": "O",
+      "polarity": -1,
+      "answer": 4,
+      "answered_at": "2026-03-12T16:58:42.898751"
+    },
+    {
+      "question_id": "C3",
+      "question_text": "Je remets souvent les tâches importantes au lendemain.",
+      "trait": "C",
+      "polarity": -1,
+      "answer": 5,
+      "answered_at": "2026-03-12T16:58:48.814814"
+    },
+    {
+      "question_id": "E6",
+      "question_text": "Je trouve les soirées et les événements sociaux épuisants.",
+      "trait": "E",
+      "polarity": -1,
+      "answer": 2,
+      "answered_at": "2026-03-12T16:58:59.914501"
+    },
+    {
+      "question_id": "A2",
+      "question_text": "J'évite les conflits et préfère trouver des compromis.",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 5,
+      "answered_at": "2026-03-12T16:59:06.347657"
+    },
+    {
+      "question_id": "N2",
+      "question_text": "Mes humeurs sont stables et je change rarement d'état émotionnel.",
+      "trait": "N",
+      "polarity": -1,
+      "answer": 4,
+      "answered_at": "2026-03-12T16:59:21.666750"
+    }
+  ],
+  "used_question_ids": [
+    "O2",
+    "C1",
+    "E3",
+    "A4",
+    "N3",
+    "O6",
+    "C3",
+    "E6",
+    "A2",
+    "N2"
+  ],
+  "completed": true,
+  "report": {
+    "archetype": {
+      "name": "L'Empathique",
+      "emoji": "💛",
+      "tagline": "Chaleureux, à l'écoute et profondément humain",
+      "description": "Vous ressentez profondément les émotions — les vôtres et celles des autres. Votre capacité d'écoute et votre chaleur humaine créent des liens forts et authentiques. Vous êtes souvent la personne vers qui les autres se tournent dans les moments difficiles."
+    },
+    "overall_summary": "Vous présentez un profil équilibré, avec une grande capacité d'empathie et une tendance à trouver des compromis. Vous semblez avoir une bonne maîtrise de vos émotions et une attitude rather positive envers les autres. Cependant, vous pourriez bénéficier de travailler sur votre organisation et votre planification pour atteindre vos objectifs de manière plus efficace.",
+    "traits": {
+      "O": {
+        "score": 40.0,
+        "label": "Ouverture",
+        "emoji": "🌿",
+        "interpretation": "Vous avez une approche plutôt pragmatique de la vie, mais vous n'êtes pas fermé aux nouvelles expériences et idées. Vous pourriez vous épanouir en explorant de nouveaux centres d'intérêt et en approfondissant vos connaissances dans des domaines qui vous passionnent."
+      },
+      "C": {
+        "score": 40.0,
+        "label": "Conscienciosité",
+        "emoji": "🎯",
+        "interpretation": "Vous avez une tendance à combiner organisation et adaptabilité, ce qui peut parfois rendre difficile la planification à long terme. Il pourrait être utile de trouver un équilibre entre la flexibilité et la planification pour atteindre vos objectifs de manière plus efficace."
+      },
+      "E": {
+        "score": 45.0,
+        "label": "Extraversion",
+        "emoji": "☀️",
+        "interpretation": "Vous vous sentez à l'aise à la fois en solo et en groupe, ce qui vous permet de vous adapter à différentes situations sociales. Vous pourriez profiter de développer vos compétences de communication pour renforcer vos relations et atteindre vos objectifs personnels."
+      },
+      "A": {
+        "score": 100.0,
+        "label": "Agréabilité",
+        "emoji": "💛",
+        "interpretation": "Vous êtes une personne très chaleureuse, empathique et attentionnée envers les autres. Cette qualité vous permet de créer des relations solides et positives, et de vous épanouir dans des environnements sociaux harmonieux."
+      },
+      "N": {
+        "score": 35.0,
+        "label": "Névrosisme",
+        "emoji": "🌊",
+        "interpretation": "Vous avez une bonne maîtrise de vos émotions et une tendance à rester rather stable dans les situations difficiles. Cela vous permet de faire face aux défis de la vie avec sérénité et de maintenir des relations positives avec les autres."
+      }
+    },
+    "strengths": [
+      "Votre capacité d'empathie et de compréhension envers les autres",
+      "Votre tendance à trouver des compromis et à éviter les conflits",
+      "Votre attitude positive et votre ouverture d'esprit envers de nouvelles expériences"
+    ],
+    "areas_of_attention": [
+      "Développer vos compétences d'organisation et de planification pour atteindre vos objectifs de manière plus efficace",
+      "Travailler sur votre confiance en vous et votre capacité à prendre des décisions difficiles"
+    ],
+    "recommendations": [
+      "Prenez le temps de réfléchir à vos objectifs personnels et professionnels, et établissez des plans concrets pour les atteindre",
+      "Pratiquez la communication active et l'écoute pour renforcer vos relations et éviter les malentendus",
+      "Explorez de nouvelles activités et centres d'intérêt pour vous épanouir et développer de nouvelles compétences"
+    ],
+    "disclaimer": "Ce rapport est informatif et non médical. Il ne constitue pas un diagnostic psychologique. Pour tout accompagnement approfondi, consultez un professionnel qualifié."
+  },
+  "resend_count": 3,
+  "last_resend": "2026-03-12T17:05:02.369349",
+  "scores": {
+    "O": {
+      "total": -2,
+      "count": 2
+    },
+    "C": {
+      "total": -2,
+      "count": 2
+    },
+    "E": {
+      "total": -1,
+      "count": 2
+    },
+    "A": {
+      "total": 10,
+      "count": 2
+    },
+    "N": {
+      "total": -3,
+      "count": 2
+    }
+  }
+}

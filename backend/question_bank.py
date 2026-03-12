@@ -197,7 +197,7 @@ QUESTIONS = [
     },
 ]
 
-TOTAL_QUESTIONS = 10  # Nombre de questions posées par session
+TOTAL_QUESTIONS = 15  # Nombre de questions posées par session
 
 ANSWER_OPTIONS = [
     {"value": 1, "label": "Pas du tout d'accord"},

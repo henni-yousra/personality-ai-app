@@ -1,0 +1,181 @@
+{
+  "session_id": "19ff81f4-8c82-471a-b1ca-b23a23d872ce",
+  "email": "knight95360@hotmail.fr",
+  "created_at": "2026-03-12T17:05:31.463727",
+  "updated_at": "2026-03-12T17:06:27.748022",
+  "responses": [
+    {
+      "question_id": "O3",
+      "question_text": "Je préfère les routines connues plutôt que les nouvelles expériences.",
+      "trait": "O",
+      "polarity": -1,
+      "answer": 1,
+      "answered_at": "2026-03-12T17:05:36.249371"
+    },
+    {
+      "question_id": "C1",
+      "question_text": "J'aime planifier mes tâches et suivre un planning précis.",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 1,
+      "answered_at": "2026-03-12T17:05:40.195815"
+    },
+    {
+      "question_id": "E4",
+      "question_text": "J'aime être au centre de l'attention lors de rassemblements.",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T17:05:46.012149"
+    },
+    {
+      "question_id": "A1",
+      "question_text": "Je ressens de l'empathie pour les personnes en difficulté.",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 5,
+      "answered_at": "2026-03-12T17:05:48.961562"
+    },
+    {
+      "question_id": "N5",
+      "question_text": "Je peux facilement être envahi(e) par des émotions intenses.",
+      "trait": "N",
+      "polarity": 1,
+      "answer": 1,
+      "answered_at": "2026-03-12T17:05:54.696664"
+    },
+    {
+      "question_id": "O6",
+      "question_text": "Les sujets abstraits ou philosophiques m'ennuient rapidement.",
+      "trait": "O",
+      "polarity": -1,
+      "answer": 5,
+      "answered_at": "2026-03-12T17:06:02.113991"
+    },
+    {
+      "question_id": "C3",
+      "question_text": "Je remets souvent les tâches importantes au lendemain.",
+      "trait": "C",
+      "polarity": -1,
+      "answer": 5,
+      "answered_at": "2026-03-12T17:06:04.628316"
+    },
+    {
+      "question_id": "E1",
+      "question_text": "Je me sens à l'aise pour engager la conversation avec des inconnus.",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T17:06:08.777964"
+    },
+    {
+      "question_id": "A2",
+      "question_text": "J'évite les conflits et préfère trouver des compromis.",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 2,
+      "answered_at": "2026-03-12T17:06:15.045191"
+    },
+    {
+      "question_id": "N4",
+      "question_text": "Je récupère rapidement après un événement négatif.",
+      "trait": "N",
+      "polarity": -1,
+      "answer": 2,
+      "answered_at": "2026-03-12T17:06:19.911708"
+    }
+  ],
+  "used_question_ids": [
+    "O3",
+    "C1",
+    "E4",
+    "A1",
+    "N5",
+    "O6",
+    "C3",
+    "E1",
+    "A2",
+    "N4"
+  ],
+  "completed": true,
+  "report": {
+    "archetype": {
+      "name": "L'Empathique",
+      "emoji": "💛",
+      "tagline": "Chaleureux, à l'écoute et profondément humain",
+      "description": "Vous ressentez profondément les émotions — les vôtres et celles des autres. Votre capacité d'écoute et votre chaleur humaine créent des liens forts et authentiques. Vous êtes souvent la personne vers qui les autres se tournent dans les moments difficiles."
+    },
+    "overall_summary": "Vous êtes une personne sociable et chaleureuse, avec une forte propension à vous investir dans les relations et les interactions avec les autres. Votre profil montre une grande ouverture d'esprit et une capacité à vous adapter, mais vous avez également tendance à préférer les routines et les approches éprouvées. Vous êtes équilibré(e) dans vos émotions et avez une grande empathie pour les autres.",
+    "traits": {
+      "O": {
+        "score": 20.0,
+        "label": "Ouverture",
+        "emoji": "🌿",
+        "interpretation": "Vous préférez les routines et les approches éprouvées, ce qui peut vous aider à vous sentir en sécurité et à vous concentrer sur vos objectifs. Cependant, cela peut également limiter votre ouverture d'esprit et votre capacité à explorer de nouvelles idées et expériences."
+      },
+      "C": {
+        "score": 30.0,
+        "label": "Conscienciosité",
+        "emoji": "🎯",
+        "interpretation": "Vous êtes flexible et spontané(e) dans votre approche, ce qui peut vous aider à vous adapter aux situations imprévues et à trouver des solutions créatives. Cependant, cela peut également signifier que vous avez du mal à planifier et à organiser vos tâches de manière efficace."
+      },
+      "E": {
+        "score": 80.0,
+        "label": "Extraversion",
+        "emoji": "☀️",
+        "interpretation": "Vous êtes énergisé(e) par les interactions sociales et l'entourage, ce qui peut vous aider à vous sentir connecté(e) et à vous investir dans les relations. Vous avez également tendance à être extravertie et à aimer être au centre de l'attention, ce qui peut vous aider à vous exprimer et à partager vos idées avec les autres."
+      },
+      "A": {
+        "score": 85.0,
+        "label": "Agréabilité",
+        "emoji": "💛",
+        "interpretation": "Vous êtes chaleureux(se), empathique et attentif(ve) aux autres, ce qui peut vous aider à créer des relations solides et à vous connecter avec les personnes qui vous entourent. Vous avez également tendance à être coopératif et à chercher des compromis, ce qui peut vous aider à résoudre les conflits et à trouver des solutions qui conviennent à tout le monde."
+      },
+      "N": {
+        "score": 45.0,
+        "label": "Névrosisme",
+        "emoji": "🌊",
+        "interpretation": "Vous ressentez les émotions de manière équilibrée, ce qui peut vous aider à vous sentir stable et à vous adapter aux situations difficiles. Cependant, cela peut également signifier que vous avez du mal à exprimer vos émotions de manière authentique et à demander de l'aide lorsque vous en avez besoin."
+      }
+    },
+    "strengths": [
+      "Votre capacité à créer des relations solides et à vous connecter avec les personnes qui vous entourent",
+      "Votre ouverture d'esprit et votre capacité à vous adapter aux situations imprévues",
+      "Votre énergie et votre enthousiasme pour les interactions sociales et les activités de groupe"
+    ],
+    "areas_of_attention": [
+      "Développer votre capacité à planifier et à organiser vos tâches de manière efficace",
+      "Travailler sur votre ouverture d'esprit et votre capacité à explorer de nouvelles idées et expériences"
+    ],
+    "recommendations": [
+      "Prenez le temps de planifier et d'organiser vos tâches de manière efficace, en utilisant des outils et des stratégies qui vous conviennent",
+      "Essayez de nouvelles activités et de nouvelles expériences, même si elles vous sortent de votre zone de confort",
+      "Prenez le temps de vous connecter avec les personnes qui vous entourent et de créer des relations solides et significatives"
+    ],
+    "disclaimer": "Ce rapport est informatif et non médical. Il ne constitue pas un diagnostic psychologique. Pour tout accompagnement approfondi, consultez un professionnel qualifié."
+  },
+  "resend_count": 1,
+  "last_resend": "2026-03-12T17:06:27.747862",
+  "scores": {
+    "O": {
+      "total": -6,
+      "count": 2
+    },
+    "C": {
+      "total": -4,
+      "count": 2
+    },
+    "E": {
+      "total": 6,
+      "count": 2
+    },
+    "A": {
+      "total": 7,
+      "count": 2
+    },
+    "N": {
+      "total": -1,
+      "count": 2
+    }
+  }
+}

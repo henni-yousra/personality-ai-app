@@ -1,0 +1,181 @@
+{
+  "session_id": "b6fac610-3fd4-4294-957a-641ada1e913c",
+  "email": "samirafawaz@outlook.com",
+  "created_at": "2026-03-12T16:39:51.384390",
+  "updated_at": "2026-03-12T16:43:32.943273",
+  "responses": [
+    {
+      "question_id": "O5",
+      "question_text": "J'ai tendance à aborder les problèmes de façon créative et originale.",
+      "trait": "O",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T16:40:02.760545"
+    },
+    {
+      "question_id": "C3",
+      "question_text": "Je remets souvent les tâches importantes au lendemain.",
+      "trait": "C",
+      "polarity": -1,
+      "answer": 4,
+      "answered_at": "2026-03-12T16:40:05.070164"
+    },
+    {
+      "question_id": "E4",
+      "question_text": "J'aime être au centre de l'attention lors de rassemblements.",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T16:42:59.852931"
+    },
+    {
+      "question_id": "A1",
+      "question_text": "Je ressens de l'empathie pour les personnes en difficulté.",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T16:43:10.652342"
+    },
+    {
+      "question_id": "N4",
+      "question_text": "Je récupère rapidement après un événement négatif.",
+      "trait": "N",
+      "polarity": -1,
+      "answer": 3,
+      "answered_at": "2026-03-12T16:43:12.386030"
+    },
+    {
+      "question_id": "O6",
+      "question_text": "Les sujets abstraits ou philosophiques m'ennuient rapidement.",
+      "trait": "O",
+      "polarity": -1,
+      "answer": 3,
+      "answered_at": "2026-03-12T16:43:14.418612"
+    },
+    {
+      "question_id": "C4",
+      "question_text": "Je fais attention aux détails et vérifie mon travail.",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T16:43:23.736223"
+    },
+    {
+      "question_id": "E1",
+      "question_text": "Je me sens à l'aise pour engager la conversation avec des inconnus.",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T16:43:25.851931"
+    },
+    {
+      "question_id": "A2",
+      "question_text": "J'évite les conflits et préfère trouver des compromis.",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T16:43:27.451840"
+    },
+    {
+      "question_id": "N3",
+      "question_text": "Je me sens souvent stressé(e) ou sous pression.",
+      "trait": "N",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T16:43:28.968857"
+    }
+  ],
+  "used_question_ids": [
+    "O5",
+    "C3",
+    "E4",
+    "A1",
+    "N4",
+    "O6",
+    "C4",
+    "E1",
+    "A2",
+    "N3"
+  ],
+  "completed": true,
+  "report": {
+    "archetype": {
+      "name": "L'Empathique",
+      "emoji": "💛",
+      "tagline": "Chaleureux, à l'écoute et profondément humain",
+      "description": "Vous ressentez profondément les émotions — les vôtres et celles des autres. Votre capacité d'écoute et votre chaleur humaine créent des liens forts et authentiques. Vous êtes souvent la personne vers qui les autres se tournent dans les moments difficiles."
+    },
+    "overall_summary": "Vous présentez un profil équilibré, avec une forte propension à l'extraversion et à l'agrément, ce qui vous permet de vous connecter facilement avec les autres et de créer des relations positives. Vous avez également une ouverture et une conscienciosité modérées, indiquant une capacité à adapter vos approches et à vous engager dans des activités variées. Votre score de névrosisme moyen suggère une résilience face aux émotions négatives, mais il est important de rester attentif à vos émotions pour maintenir un bien-être global.",
+    "traits": {
+      "O": {
+        "score": 50.0,
+        "label": "Ouverture",
+        "emoji": "🌿",
+        "interpretation": "Avec un score d'ouverture à 50, vous avez une approche équilibrée entre la curiosité et le pragmatisme. Vous êtes capable de vous intéresser à de nouvelles idées et expériences, mais vous savez également vous concentrer sur les aspects pratiques et concrets lorsque nécessaire."
+      },
+      "C": {
+        "score": 45.0,
+        "label": "Conscienciosité",
+        "emoji": "🎯",
+        "interpretation": "Un score de conscienciosité de 45 indique que vous avez une approche flexible et adaptable face aux tâches et aux responsabilités. Vous pouvez parfois vous laisser aller à la procrastination, mais vous savez vous organiser lorsque les circonstances le nécessitent."
+      },
+      "E": {
+        "score": 80.0,
+        "label": "Extraversion",
+        "emoji": "☀️",
+        "interpretation": "Avec un score d'extraversion élevé à 80, vous êtes une personne très sociable et énergique. Vous trouvez de la joie et de l'énergie dans les interactions avec les autres et vous avez tendance à être au centre de l'attention lors des rassemblements sociaux."
+      },
+      "A": {
+        "score": 80.0,
+        "label": "Agréabilité",
+        "emoji": "💛",
+        "interpretation": "Un score d'agrément de 80 reflète votre nature chaleureuse, empathique et attentionnée envers les autres. Vous avez une forte capacité à créer des liens solides avec les personnes qui vous entourent et à résoudre les conflits de manière constructive."
+      },
+      "N": {
+        "score": 50.0,
+        "label": "Névrosisme",
+        "emoji": "🌊",
+        "interpretation": "Avec un score de névrosisme moyen de 50, vous ressentez les émotions de manière équilibrée. Vous pouvez parfois ressentir du stress ou de la pression, mais vous avez également la capacité de vous remettre rapidement des événements négatifs et de maintenir un niveau de bien-être émotionnel stable."
+      }
+    },
+    "strengths": [
+      "Votre capacité à vous connecter avec les autres et à créer des relations positives est l'une de vos forces majeures.",
+      "Vous avez une grande adaptabilité et flexibilité face aux situations et aux défis.",
+      "Votre empathie et votre chaleur humaine vous permettent de résoudre les conflits de manière constructive et de maintenir des relations solides."
+    ],
+    "areas_of_attention": [
+      "Il serait bénéfique pour vous de travailler sur votre organisation et votre planification pour mieux gérer les tâches et les responsabilités.",
+      "Prendre conscience de vos émotions et apprendre à les gérer de manière saine pour maintenir un bien-être émotionnel optimal."
+    ],
+    "recommendations": [
+      "Engagez-vous dans des activités qui favorisent la créativité et l'expression personnelle pour stimuler votre ouverture d'esprit.",
+      "Pratiquez des techniques de gestion du stress et de la pression, comme la méditation ou l'exercice physique, pour améliorer votre résilience émotionnelle.",
+      "Investissez du temps dans les relations avec vos proches et engagez-vous dans des activités sociales pour renforcer vos liens avec les autres et votre sentiment de bien-être."
+    ],
+    "disclaimer": "Ce rapport est informatif et non médical. Il ne constitue pas un diagnostic psychologique. Pour tout accompagnement approfondi, consultez un professionnel qualifié."
+  },
+  "resend_count": 0,
+  "last_resend": null,
+  "scores": {
+    "O": {
+      "total": 0,
+      "count": 2
+    },
+    "C": {
+      "total": -1,
+      "count": 2
+    },
+    "E": {
+      "total": 6,
+      "count": 2
+    },
+    "A": {
+      "total": 6,
+      "count": 2
+    },
+    "N": {
+      "total": 0,
+      "count": 2
+    }
+  }
+}

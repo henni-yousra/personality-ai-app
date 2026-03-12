@@ -1,0 +1,36 @@
+{
+  "session_id": "1e934e90-c99f-43b4-877c-6a0e10b5c96d",
+  "email": "samirafawaz@outlook.com",
+  "created_at": "2026-03-12T22:21:50.422133",
+  "updated_at": "2026-03-12T22:21:50.423198",
+  "responses": [],
+  "used_question_ids": [
+    "O5"
+  ],
+  "completed": false,
+  "report": null,
+  "resend_count": 0,
+  "last_resend": null,
+  "scores": {
+    "O": {
+      "total": 0,
+      "count": 0
+    },
+    "C": {
+      "total": 0,
+      "count": 0
+    },
+    "E": {
+      "total": 0,
+      "count": 0
+    },
+    "A": {
+      "total": 0,
+      "count": 0
+    },
+    "N": {
+      "total": 0,
+      "count": 0
+    }
+  }
+}

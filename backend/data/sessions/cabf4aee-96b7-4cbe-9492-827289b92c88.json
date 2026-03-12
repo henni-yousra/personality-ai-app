@@ -1,0 +1,226 @@
+{
+  "session_id": "cabf4aee-96b7-4cbe-9492-827289b92c88",
+  "email": "samirafawaz@outlook.com",
+  "created_at": "2026-03-12T22:22:16.738507",
+  "updated_at": "2026-03-12T22:24:51.208995",
+  "responses": [
+    {
+      "question_id": "O4",
+      "question_text": "J'aime imaginer des scénarios alternatifs et des mondes fictifs.",
+      "trait": "O",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T22:22:30.929766"
+    },
+    {
+      "question_id": "C2",
+      "question_text": "Je termine toujours ce que j'ai commencé.",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 2,
+      "answered_at": "2026-03-12T22:22:36.104996"
+    },
+    {
+      "question_id": "E1",
+      "question_text": "Je me sens à l'aise pour engager la conversation avec des inconnus.",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 5,
+      "answered_at": "2026-03-12T22:22:39.605445"
+    },
+    {
+      "question_id": "A2",
+      "question_text": "J'évite les conflits et préfère trouver des compromis.",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 4,
+      "answered_at": "2026-03-12T22:22:50.872299"
+    },
+    {
+      "question_id": "N4",
+      "question_text": "Je récupère rapidement après un événement négatif.",
+      "trait": "N",
+      "polarity": -1,
+      "answer": 4,
+      "answered_at": "2026-03-12T22:22:57.255658"
+    },
+    {
+      "question_id": "O5",
+      "question_text": "J'ai tendance à aborder les problèmes de façon créative et originale.",
+      "trait": "O",
+      "polarity": 1,
+      "answer": 2,
+      "answered_at": "2026-03-12T22:23:04.308492"
+    },
+    {
+      "question_id": "C6",
+      "question_text": "Il m'arrive fréquemment d'oublier des engagements ou des rendez-vous.",
+      "trait": "C",
+      "polarity": -1,
+      "answer": 4,
+      "answered_at": "2026-03-12T22:23:26.089049"
+    },
+    {
+      "question_id": "E3",
+      "question_text": "Les interactions sociales me donnent de l'énergie.",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 5,
+      "answered_at": "2026-03-12T22:23:29.238584"
+    },
+    {
+      "question_id": "A4",
+      "question_text": "Je trouve facilement quelque chose de positif chez chaque personne.",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 4,
+      "answered_at": "2026-03-12T22:24:00.971354"
+    },
+    {
+      "question_id": "N3",
+      "question_text": "Je me sens souvent stressé(e) ou sous pression.",
+      "trait": "N",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T22:24:10.021377"
+    },
+    {
+      "question_id": "O2",
+      "question_text": "Je suis attiré(e) par l'art, la musique ou la littérature.",
+      "trait": "O",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T22:24:15.754624"
+    },
+    {
+      "question_id": "C4",
+      "question_text": "Je fais attention aux détails et vérifie mon travail.",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T22:24:21.404652"
+    },
+    {
+      "question_id": "E5",
+      "question_text": "Je parle facilement de moi-même et de mes expériences.",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 4,
+      "answered_at": "2026-03-12T22:24:31.822272"
+    },
+    {
+      "question_id": "A1",
+      "question_text": "Je ressens de l'empathie pour les personnes en difficulté.",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 5,
+      "answered_at": "2026-03-12T22:24:34.838071"
+    },
+    {
+      "question_id": "N1",
+      "question_text": "Je m'inquiète facilement pour des choses qui pourraient mal tourner.",
+      "trait": "N",
+      "polarity": 1,
+      "answer": 4,
+      "answered_at": "2026-03-12T22:24:39.621475"
+    }
+  ],
+  "used_question_ids": [
+    "O4",
+    "C2",
+    "E1",
+    "A2",
+    "N4",
+    "O5",
+    "C6",
+    "E3",
+    "A4",
+    "N3",
+    "O2",
+    "C4",
+    "E5",
+    "A1",
+    "N1"
+  ],
+  "completed": true,
+  "report": {
+    "archetype": {
+      "name": "Le Visionnaire",
+      "emoji": "🔮",
+      "tagline": "Créatif, inspirant et tourné vers l'avenir",
+      "description": "Vous voyez le monde comme un terrain d'exploration infini. Votre imagination débordante et votre enthousiasme naturel inspirent ceux qui vous entourent. Vous aimez bousculer les idées reçues et proposer des perspectives nouvelles."
+    },
+    "overall_summary": "Vous possédez un profil de personnalité riche et équilibré, caractérisé par une grande ouverture aux nouvelles idées, une forte extraversion et une agréabilité marquée. Vous êtes à l'aise dans les interactions sociales et avez tendance à vous adapter aisément aux situations. Cependant, il est important de noter que vous pouvez bénéficier d'un développement plus poussé de votre conscienciosité pour améliorer votre organisation et votre gestion du stress.",
+    "traits": {
+      "O": {
+        "score": 76.7,
+        "label": "Ouverture",
+        "emoji": "🌿",
+        "interpretation": "Votre score élevé en ouverture indique que vous êtes naturellement curieux et ouvert aux nouvelles idées, ce qui vous permet de vous adapter facilement à de nouvelles situations et de vous intéresser à différents domaines. Vous avez une imagination développée, comme le montre votre goût pour imaginer des scénarios alternatifs."
+      },
+      "C": {
+        "score": 53.3,
+        "label": "Conscienciosité",
+        "emoji": "🎯",
+        "interpretation": "Votre score moyen en conscienciosité suggère que vous combinez organisation et adaptabilité, mais que vous pourriez améliorer votre planification et votre gestion du temps pour atteindre vos objectifs de manière plus efficace. Vous avez parfois tendance à oublier des engagements, ce qui pourrait être amélioré avec une meilleure organisation."
+      },
+      "E": {
+        "score": 96.7,
+        "label": "Extraversion",
+        "emoji": "☀️",
+        "interpretation": "Votre score très élevé en extraversion indique que vous êtes énergisé par les interactions sociales et que vous avez une forte propension à engager la conversation avec les autres, même avec des inconnus. Les interactions sociales vous donnent de l'énergie et vous vous sentez à l'aise dans ces contextes."
+      },
+      "A": {
+        "score": 93.3,
+        "label": "Agréabilité",
+        "emoji": "💛",
+        "interpretation": "Votre score élevé en agréabilité montre que vous êtes chaleureux, empathique et attentif aux autres. Vous évitez les conflits et préférez trouver des compromis, ce qui démontre votre capacité à maintenir de bonnes relations avec les autres. Vous avez également une tendance positive à trouver du positif chez chaque personne."
+      },
+      "N": {
+        "score": 60.0,
+        "label": "Névrosisme",
+        "emoji": "🌊",
+        "interpretation": "Votre score moyen en névrosisme suggère que vous ressentez les émotions de manière équilibrée. Vous pouvez ressentir du stress ou de la pression, mais vous avez également la capacité de vous remettre rapidement des événements négatifs. Cela indique une certaine résilience face aux défis émotionnels."
+      }
+    },
+    "strengths": [
+      "Votre grande capacité d'adaptation et votre ouverture aux nouvelles expériences",
+      "Votre extraversion et votre facilité à interagir avec les autres",
+      "Votre agréabilité et votre empathie, qui vous permettent de maintenir de bonnes relations"
+    ],
+    "areas_of_attention": [
+      "Développer votre conscienciosité pour améliorer votre organisation et votre gestion du temps",
+      "Apprendre à gérer votre stress et votre pression de manière plus efficace pour préserver votre bien-être émotionnel"
+    ],
+    "recommendations": [
+      "Pratiquez des techniques de gestion du stress, comme la méditation ou l'exercice physique, pour améliorer votre résilience",
+      "Établissez des objectifs clairs et mettez en place un système d'organisation pour améliorer votre conscienciosité",
+      "Poursuivez des activités qui vous permettent de rencontrer de nouvelles personnes et de développer vos compétences sociales"
+    ],
+    "disclaimer": "Ce rapport est informatif et non médical. Il ne constitue pas un diagnostic psychologique. Pour tout accompagnement approfondi, consultez un professionnel qualifié."
+  },
+  "resend_count": 1,
+  "last_resend": "2026-03-12T22:24:51.208803",
+  "scores": {
+    "O": {
+      "total": 8,
+      "count": 3
+    },
+    "C": {
+      "total": 1,
+      "count": 3
+    },
+    "E": {
+      "total": 14,
+      "count": 3
+    },
+    "A": {
+      "total": 13,
+      "count": 3
+    },
+    "N": {
+      "total": 3,
+      "count": 3
+    }
+  }
+}
