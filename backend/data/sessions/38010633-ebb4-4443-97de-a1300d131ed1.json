@@ -1,0 +1,181 @@
+{
+  "session_id": "38010633-ebb4-4443-97de-a1300d131ed1",
+  "email": "samirafawaz@outlook.com",
+  "created_at": "2026-03-12T16:04:41.967355",
+  "updated_at": "2026-03-12T16:05:11.714258",
+  "responses": [
+    {
+      "question_id": "O4",
+      "question_text": "J'aime imaginer des scénarios alternatifs et des mondes fictifs.",
+      "trait": "O",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T16:04:44.520337"
+    },
+    {
+      "question_id": "C6",
+      "question_text": "Il m'arrive fréquemment d'oublier des engagements ou des rendez-vous.",
+      "trait": "C",
+      "polarity": -1,
+      "answer": 3,
+      "answered_at": "2026-03-12T16:04:45.965011"
+    },
+    {
+      "question_id": "E3",
+      "question_text": "Les interactions sociales me donnent de l'énergie.",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T16:04:47.565637"
+    },
+    {
+      "question_id": "A4",
+      "question_text": "Je trouve facilement quelque chose de positif chez chaque personne.",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T16:04:49.164774"
+    },
+    {
+      "question_id": "N3",
+      "question_text": "Je me sens souvent stressé(e) ou sous pression.",
+      "trait": "N",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T16:04:50.648471"
+    },
+    {
+      "question_id": "O5",
+      "question_text": "J'ai tendance à aborder les problèmes de façon créative et originale.",
+      "trait": "O",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T16:04:52.515290"
+    },
+    {
+      "question_id": "C5",
+      "question_text": "Je maintiens mes espaces (bureau, chambre) propres et organisés.",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T16:04:53.965218"
+    },
+    {
+      "question_id": "E5",
+      "question_text": "Je parle facilement de moi-même et de mes expériences.",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T16:04:55.530957"
+    },
+    {
+      "question_id": "A5",
+      "question_text": "Je prends soin des autres et j'aime les aider.",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T16:04:57.464359"
+    },
+    {
+      "question_id": "N4",
+      "question_text": "Je récupère rapidement après un événement négatif.",
+      "trait": "N",
+      "polarity": -1,
+      "answer": 3,
+      "answered_at": "2026-03-12T16:04:58.981382"
+    }
+  ],
+  "used_question_ids": [
+    "O4",
+    "C6",
+    "E3",
+    "A4",
+    "N3",
+    "O5",
+    "C5",
+    "E5",
+    "A5",
+    "N4"
+  ],
+  "completed": true,
+  "report": {
+    "archetype": {
+      "name": "Le Visionnaire",
+      "emoji": "🔮",
+      "tagline": "Créatif, inspirant et tourné vers l'avenir",
+      "description": "Vous voyez le monde comme un terrain d'exploration infini. Votre imagination débordante et votre enthousiasme naturel inspirent ceux qui vous entourent. Vous aimez bousculer les idées reçues et proposer des perspectives nouvelles."
+    },
+    "overall_summary": "Vous êtes une personne curieuse, énergique et chaleureuse, avec une forte capacité d'adaptation et une ouverture d'esprit remarquable. Vous avez une tendance naturelle à vous investir dans les interactions sociales et à vous préoccuper du bien-être des autres. Votre profil présente un équilibre entre créativité, empathie et stabilité émotionnelle, ce qui vous permet de naviguer dans divers contextes avec aisance.",
+    "traits": {
+      "O": {
+        "score": 80.0,
+        "label": "Ouverture",
+        "emoji": "🌿",
+        "interpretation": "Votre score élevé en ouverture indique que vous êtes naturellement curieux et ouvert aux nouvelles idées, ce qui vous pousse à explorer de nouvelles expériences et à imaginer des scénarios alternatifs. Vous avez une pensée créative et originale qui peut être un atout dans de nombreux domaines de votre vie."
+      },
+      "C": {
+        "score": 50.0,
+        "label": "Conscienciosité",
+        "emoji": "🎯",
+        "interpretation": "Votre score moyen en conscienciosité suggère que vous combinez organisation et adaptabilité, ce qui vous permet de gérer vos tâches et vos engagements de manière efficace sans être trop rigide. Vous avez une certaine flexibilité qui peut vous aider à faire face aux imprévus et aux changements."
+      },
+      "E": {
+        "score": 80.0,
+        "label": "Extraversion",
+        "emoji": "☀️",
+        "interpretation": "Votre score élevé en extraversion indique que vous êtes énergisé par les interactions sociales et que vous avez tendance à être très sociable. Vous aimez partager vos expériences et vos pensées avec les autres, ce qui peut renforcer vos liens sociaux et votre sentiment d'appartenance."
+      },
+      "A": {
+        "score": 80.0,
+        "label": "Agréabilité",
+        "emoji": "💛",
+        "interpretation": "Votre score élevé en agréabilité montre que vous êtes une personne chaleureuse, empathique et attentive aux autres. Vous avez une forte capacité à comprendre et à partager les sentiments des autres, ce qui facilite la construction de relations solides et positives."
+      },
+      "N": {
+        "score": 50.0,
+        "label": "Névrosisme",
+        "emoji": "🌊",
+        "interpretation": "Votre score moyen en névrosisme suggère que vous ressentez les émotions de manière équilibrée, sans tendance excessive vers l'anxiété, la colère ou la dépression. Vous avez une certaine stabilité émotionnelle qui peut vous aider à gérer le stress et les situations difficiles de manière plus efficace."
+      }
+    },
+    "strengths": [
+      "Votre créativité et votre ouverture d'esprit vous permettent de trouver des solutions innovantes aux problèmes",
+      "Votre extraversion et votre agréabilité facilitent la construction de relations solides et positives avec les autres",
+      "Votre capacité à vous adapter et à gérer le stress de manière équilibrée vous aide à naviguer dans les situations complexes"
+    ],
+    "areas_of_attention": [
+      "Développer une organisation plus structurée pour améliorer votre productivité et réduire les oublis",
+      "Pratiquer l'écoute active et la communication assertive pour renforcer vos relations et éviter les malentendus"
+    ],
+    "recommendations": [
+      "Prenez du temps pour vous engager dans des activités créatives qui vous passionnent, comme la peinture, l'écriture ou la musique",
+      "Organisez régulièrement des rencontres avec vos proches pour maintenir et renforcer vos liens sociaux",
+      "Apprenez des techniques de gestion du stress, comme la méditation ou le yoga, pour améliorer votre bien-être émotionnel"
+    ],
+    "disclaimer": "Ce rapport est informatif et non médical. Il ne constitue pas un diagnostic psychologique. Pour tout accompagnement approfondi, consultez un professionnel qualifié."
+  },
+  "resend_count": 2,
+  "last_resend": "2026-03-12T16:05:11.714205",
+  "scores": {
+    "O": {
+      "total": 6,
+      "count": 2
+    },
+    "C": {
+      "total": 0,
+      "count": 2
+    },
+    "E": {
+      "total": 6,
+      "count": 2
+    },
+    "A": {
+      "total": 6,
+      "count": 2
+    },
+    "N": {
+      "total": 0,
+      "count": 2
+    }
+  }
+}

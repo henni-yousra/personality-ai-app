@@ -1,0 +1,99 @@
+<div class="page-container quiz-page">
+  <div class="container">
+
+    <!-- En-tête avec progression -->
+    <header class="quiz-header animate-fade-in">
+      <a href="/" class="quiz-logo">🌿 <span>Persona</span></a>
+
+      <div class="progress-container">
+        <div class="progress-info">
+          <span class="progress-label">Progression</span>
+          <span class="progress-count">
+            {{ progress().current }} / {{ progress().total }}
+          </span>
+        </div>
+        <div class="progress-bar-track">
+          <div
+            class="progress-bar-fill"
+            [style.width.%]="progress().percent"
+          ></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Carte de question -->
+    @if (question()) {
+      <div class="quiz-card card" [class.animating]="animating()">
+
+        <!-- Numéro de question -->
+        <div class="question-number animate-fade-in delay-1">
+          Question {{ progress().current + 1 }}
+        </div>
+
+        <!-- Texte de la question -->
+        <h2 class="question-text animate-fade-in delay-2">
+          {{ question()!.text }}
+        </h2>
+
+        <!-- Échelle de réponse -->
+        <div class="answers-scale animate-fade-in delay-3">
+          <span class="scale-label scale-label-left">Pas du tout d'accord</span>
+
+          <div class="answer-options">
+            @for (opt of question()!.options; track opt.value) {
+              <button
+                class="answer-btn"
+                [class.selected]="selectedAnswer() === opt.value"
+                (click)="selectAnswer(opt.value)"
+                [attr.aria-label]="opt.label"
+                [attr.aria-pressed]="selectedAnswer() === opt.value"
+                [disabled]="loading()"
+              >
+                <span class="answer-circle">{{ opt.value }}</span>
+                <span class="answer-label">{{ getOptionLabel(opt.value) }}</span>
+              </button>
+            }
+          </div>
+
+          <span class="scale-label scale-label-right">Tout à fait d'accord</span>
+        </div>
+
+        <!-- Erreur -->
+        @if (error()) {
+          <div class="quiz-error animate-fade-in">⚠️ {{ error() }}</div>
+        }
+
+        <!-- Actions -->
+        <div class="quiz-actions animate-fade-in delay-4">
+          <button
+            class="btn btn-primary btn-lg"
+            [disabled]="selectedAnswer() === null || loading()"
+            (click)="submitAnswer()"
+          >
+            @if (loading()) {
+              <span class="spinner-btn"></span>
+              Traitement…
+            } @else if (progress().current + 1 >= progress().total) {
+              Terminer le test ✓
+            } @else {
+              Continuer →
+            }
+          </button>
+        </div>
+
+      </div>
+    }
+
+    <!-- Indicateurs de trait (discrets) -->
+    <div class="trait-dots animate-fade-in delay-5">
+      @for (trait of ['O','C','E','A','N']; track trait) {
+        <div
+          class="trait-dot"
+          [class.active]="question()?.trait === trait"
+          [attr.title]="trait"
+        ></div>
+      }
+    </div>
+
+  </div>
+</div>

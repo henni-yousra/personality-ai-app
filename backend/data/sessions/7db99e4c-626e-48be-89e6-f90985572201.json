@@ -1,0 +1,181 @@
+{
+  "session_id": "7db99e4c-626e-48be-89e6-f90985572201",
+  "email": "samirafawaz@outlook.com",
+  "created_at": "2026-03-12T15:45:27.375297",
+  "updated_at": "2026-03-12T15:45:54.151522",
+  "responses": [
+    {
+      "question_id": "O5",
+      "question_text": "J'ai tendance à aborder les problèmes de façon créative et originale.",
+      "trait": "O",
+      "polarity": 1,
+      "answer": 2,
+      "answered_at": "2026-03-12T15:45:30.592021"
+    },
+    {
+      "question_id": "C4",
+      "question_text": "Je fais attention aux détails et vérifie mon travail.",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T15:45:32.471283"
+    },
+    {
+      "question_id": "E1",
+      "question_text": "Je me sens à l'aise pour engager la conversation avec des inconnus.",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T15:45:34.720907"
+    },
+    {
+      "question_id": "A6",
+      "question_text": "Dans une négociation, je cherche avant tout à gagner.",
+      "trait": "A",
+      "polarity": -1,
+      "answer": 3,
+      "answered_at": "2026-03-12T15:45:36.703876"
+    },
+    {
+      "question_id": "N5",
+      "question_text": "Je peux facilement être envahi(e) par des émotions intenses.",
+      "trait": "N",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T15:45:38.521917"
+    },
+    {
+      "question_id": "O1",
+      "question_text": "J'aime explorer de nouvelles idées et de nouveaux sujets.",
+      "trait": "O",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T15:45:40.737641"
+    },
+    {
+      "question_id": "C2",
+      "question_text": "Je termine toujours ce que j'ai commencé.",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T15:45:43.137810"
+    },
+    {
+      "question_id": "E5",
+      "question_text": "Je parle facilement de moi-même et de mes expériences.",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T15:45:45.720362"
+    },
+    {
+      "question_id": "A2",
+      "question_text": "J'évite les conflits et préfère trouver des compromis.",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T15:45:48.059182"
+    },
+    {
+      "question_id": "N6",
+      "question_text": "Je reste calme dans des situations de pression ou d'urgence.",
+      "trait": "N",
+      "polarity": -1,
+      "answer": 3,
+      "answered_at": "2026-03-12T15:45:50.654826"
+    }
+  ],
+  "used_question_ids": [
+    "O5",
+    "C4",
+    "E1",
+    "A6",
+    "N5",
+    "O1",
+    "C2",
+    "E5",
+    "A2",
+    "N6"
+  ],
+  "completed": true,
+  "report": {
+    "archetype": {
+      "name": "L'Architecte",
+      "emoji": "⚡",
+      "tagline": "Ambitieux, stratégique et déterminé",
+      "description": "Vous avez une vision claire et la volonté de la réaliser. Votre sens de l'organisation et votre détermination font de vous un leader naturel. Vous excellez à structurer des projets complexes et à mobiliser votre énergie vers des objectifs concrets."
+    },
+    "overall_summary": "Vous présentez un profil équilibré avec des forces marquées dans l'ouverture, la conscienciosité et l'extraversion. Votre capacité à être à la fois organisé et sociable vous permet de naviguer efficacement dans divers contextes. Cependant, il est important de considérer vos scores plus neutres en agréabilité et en névrosisme pour mieux comprendre vos interactions et vos réactions émotionnelles.",
+    "traits": {
+      "O": {
+        "score": 75.0,
+        "label": "Ouverture",
+        "emoji": "🌿",
+        "interpretation": "Avec un score élevé en ouverture, vous êtes naturellement curieux et ouvert aux nouvelles idées, ce qui vous permet de vous adapter facilement à de nouvelles situations et de considérer différentes perspectives."
+      },
+      "C": {
+        "score": 80.0,
+        "label": "Conscienciosité",
+        "emoji": "🎯",
+        "interpretation": "Votre score élevé en conscienciosité indique que vous êtes organisé, fiable et orienté vers les objectifs, ce qui vous aide à accomplir vos tâches de manière efficace et à maintenir une certaine discipline dans votre vie quotidienne."
+      },
+      "E": {
+        "score": 80.0,
+        "label": "Extraversion",
+        "emoji": "☀️",
+        "interpretation": "Avec un score élevé en extraversion, vous êtes énergisé par les interactions sociales et avez tendance à être sociable et à rechercher la compagnie des autres, ce qui peut enrichir votre vie personnelle et professionnelle."
+      },
+      "A": {
+        "score": 50.0,
+        "label": "Agréabilité",
+        "emoji": "💛",
+        "interpretation": "Votre score moyen en agréabilité suggère que vous savez coopérer avec les autres tout en affirmant vos propres besoins et désirs, ce qui peut parfois nécessiter un équilibre délicat pour maintenir des relations harmonieuses."
+      },
+      "N": {
+        "score": 50.0,
+        "label": "Névrosisme",
+        "emoji": "🌊",
+        "interpretation": "Avec un score moyen en névrosisme, vous ressentez les émotions de manière équilibrée, ce qui signifie que vous n'êtes ni excessivement sensible ni complètement imperméable aux émotions, permettant une certaine stabilité émotionnelle."
+      }
+    },
+    "strengths": [
+      "Vous êtes capable de vous adapter facilement à de nouvelles situations grâce à votre ouverture d'esprit.",
+      "Votre conscienciosité vous aide à être organisé et à atteindre vos objectifs de manière efficace.",
+      "Votre extraversion vous permet de vous connecter facilement avec les autres et de créer des réseaux solides."
+    ],
+    "areas_of_attention": [
+      "Développer une plus grande conscience de vos émotions et de celles des autres pour améliorer vos relations.",
+      "Apprendre à gérer les situations conflictuelles de manière constructive pour maintenir l'harmonie dans vos relations."
+    ],
+    "recommendations": [
+      "Pratiquez l'empathie active en vous efforçant de comprendre le point de vue des autres dans les interactions quotidiennes.",
+      "Engagez-vous dans des activités qui favorisent la créativité et l'innovation pour stimuler votre ouverture d'esprit.",
+      "Définissez des objectifs personnels et professionnels clairs et utilisez votre conscienciosité pour les atteindre de manière structurée."
+    ],
+    "disclaimer": "Ce rapport est informatif et non médical. Il ne constitue pas un diagnostic psychologique. Pour tout accompagnement approfondi, consultez un professionnel qualifié."
+  },
+  "resend_count": 0,
+  "last_resend": null,
+  "scores": {
+    "O": {
+      "total": 5,
+      "count": 2
+    },
+    "C": {
+      "total": 6,
+      "count": 2
+    },
+    "E": {
+      "total": 6,
+      "count": 2
+    },
+    "A": {
+      "total": 0,
+      "count": 2
+    },
+    "N": {
+      "total": 0,
+      "count": 2
+    }
+  }
+}

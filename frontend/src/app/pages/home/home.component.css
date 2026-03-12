@@ -1,0 +1,106 @@
+.home-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.home-logo {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.home-hero {
+  margin-bottom: 2rem;
+}
+
+.home-hero h1 {
+  margin-bottom: 1rem;
+}
+
+.home-hero h1 em {
+  font-style: italic;
+  color: var(--sage);
+}
+
+.home-subtitle {
+  font-size: 1.05rem;
+  max-width: 520px;
+  color: var(--text-secondary);
+}
+
+/* Caractéristiques */
+.home-features {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.feature-icon {
+  font-size: 1rem;
+}
+
+.feature-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--sage-pale);
+}
+
+/* Carte */
+.home-card {
+  margin-bottom: 1.5rem;
+}
+
+.home-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.card-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* Erreur */
+.error-msg {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: #FEF3F2;
+  border: 1px solid #FCA5A5;
+  border-radius: var(--radius-md);
+  color: #B91C1C;
+  font-size: 0.875rem;
+}
+
+/* Spinner */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+
+/* Footer */
+.home-footer {
+  text-align: center;
+}
+
+.home-footer p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}

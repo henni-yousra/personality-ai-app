@@ -1,0 +1,181 @@
+{
+  "session_id": "6bad6323-3766-40dc-a3f7-375f3accec89",
+  "email": "samirafawaz@outlook.com",
+  "created_at": "2026-03-12T16:09:06.992639",
+  "updated_at": "2026-03-12T16:10:14.704528",
+  "responses": [
+    {
+      "question_id": "O4",
+      "question_text": "J'aime imaginer des scénarios alternatifs et des mondes fictifs.",
+      "trait": "O",
+      "polarity": 1,
+      "answer": 5,
+      "answered_at": "2026-03-12T16:09:11.868264"
+    },
+    {
+      "question_id": "C1",
+      "question_text": "J'aime planifier mes tâches et suivre un planning précis.",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 1,
+      "answered_at": "2026-03-12T16:09:15.113208"
+    },
+    {
+      "question_id": "E4",
+      "question_text": "J'aime être au centre de l'attention lors de rassemblements.",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 2,
+      "answered_at": "2026-03-12T16:09:19.613099"
+    },
+    {
+      "question_id": "A2",
+      "question_text": "J'évite les conflits et préfère trouver des compromis.",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T16:09:27.630396"
+    },
+    {
+      "question_id": "N5",
+      "question_text": "Je peux facilement être envahi(e) par des émotions intenses.",
+      "trait": "N",
+      "polarity": 1,
+      "answer": 1,
+      "answered_at": "2026-03-12T16:09:31.163600"
+    },
+    {
+      "question_id": "O6",
+      "question_text": "Les sujets abstraits ou philosophiques m'ennuient rapidement.",
+      "trait": "O",
+      "polarity": -1,
+      "answer": 5,
+      "answered_at": "2026-03-12T16:09:40.313648"
+    },
+    {
+      "question_id": "C2",
+      "question_text": "Je termine toujours ce que j'ai commencé.",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T16:09:46.130844"
+    },
+    {
+      "question_id": "E5",
+      "question_text": "Je parle facilement de moi-même et de mes expériences.",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 1,
+      "answered_at": "2026-03-12T16:09:49.446249"
+    },
+    {
+      "question_id": "A3",
+      "question_text": "J'ai tendance à être critique envers les autres.",
+      "trait": "A",
+      "polarity": -1,
+      "answer": 2,
+      "answered_at": "2026-03-12T16:09:53.729944"
+    },
+    {
+      "question_id": "N4",
+      "question_text": "Je récupère rapidement après un événement négatif.",
+      "trait": "N",
+      "polarity": -1,
+      "answer": 2,
+      "answered_at": "2026-03-12T16:10:03.330429"
+    }
+  ],
+  "used_question_ids": [
+    "O4",
+    "C1",
+    "E4",
+    "A2",
+    "N5",
+    "O6",
+    "C2",
+    "E5",
+    "A3",
+    "N4"
+  ],
+  "completed": true,
+  "report": {
+    "archetype": {
+      "name": "L'Architecte",
+      "emoji": "⚡",
+      "tagline": "Ambitieux, stratégique et déterminé",
+      "description": "Vous avez une vision claire et la volonté de la réaliser. Votre sens de l'organisation et votre détermination font de vous un leader naturel. Vous excellez à structurer des projets complexes et à mobiliser votre énergie vers des objectifs concrets."
+    },
+    "overall_summary": "Vous présentez un profil équilibré, avec une tendance à être organisé et fiable, tout en ayant une certaine ouverture d'esprit et une capacité à vous épanouir dans différents contextes sociaux. Votre personnalité est caractérisée par une bonne dose de pragmatisme et une certaine réserve, mais également par une capacité à coopérer et à trouver des compromis. Vous avez une bonne résilience face aux émotions intenses et une propension à vous concentrer sur vos objectifs.",
+    "traits": {
+      "O": {
+        "score": 50.0,
+        "label": "Ouverture",
+        "emoji": "🌿",
+        "interpretation": "Vous avez une certaine ouverture d'esprit, mais vous n'êtes pas nécessairement attiré par les idées abstraites ou les expériences nouvelles. Vous préférez peut-être avoir les deux pieds sur terre et aborder les choses de manière pratique. Cependant, vous avez une certaine curiosité et une capacité à imaginer des scénarios alternatifs, ce qui peut vous aider à trouver des solutions créatives."
+      },
+      "C": {
+        "score": 70.0,
+        "label": "Conscienciosité",
+        "emoji": "🎯",
+        "interpretation": "Vous êtes une personne organisée et fiable, avec une forte tendance à planifier et à suivre un planning précis. Vous êtes orienté vers les objectifs et vous vous efforcez de les atteindre de manière efficace. Cela vous permet de vous sentir en contrôle et de réaliser vos projets de manière satisfaisante."
+      },
+      "E": {
+        "score": 65.0,
+        "label": "Extraversion",
+        "emoji": "☀️",
+        "interpretation": "Vous êtes une personne qui se sent à l'aise dans différents contextes sociaux, mais vous n'avez pas nécessairement besoin d'être constamment entouré de gens. Vous avez une certaine capacité à vous épanouir en solo, mais vous appréciez également la compagnie des autres et vous savez vous adapter à différents groupes et situations."
+      },
+      "A": {
+        "score": 55.0,
+        "label": "Agréabilité",
+        "emoji": "💛",
+        "interpretation": "Vous êtes une personne qui sait coopérer et trouver des compromis, mais vous n'êtes pas nécessairement prêt à tout pour éviter les conflits. Vous avez une certaine capacité à affirmer vos besoins et vos limites, tout en étant ouvert à la communication et à la négociation avec les autres."
+      },
+      "N": {
+        "score": 45.0,
+        "label": "Névrosisme",
+        "emoji": "🌊",
+        "interpretation": "Vous avez une certaine capacité à gérer vos émotions et à les réguler de manière saine. Vous n'êtes pas nécessairement sujet à des émotions intenses ou à des sautes d'humeur, et vous savez vous ressourcer et vous calmer lorsque vous en avez besoin."
+      }
+    },
+    "strengths": [
+      "Votre capacité à planifier et à organiser vos tâches de manière efficace",
+      "Votre ouverture d'esprit et votre capacité à trouver des solutions créatives",
+      "Votre capacité à vous épanouir dans différents contextes sociaux et à vous adapter à différents groupes et situations"
+    ],
+    "areas_of_attention": [
+      "Développer votre capacité à vous affirmer et à exprimer vos besoins de manière claire et assertive",
+      "Améliorer votre capacité à gérer le stress et les émotions intenses de manière saine et constructive"
+    ],
+    "recommendations": [
+      "Prenez le temps de vous ressourcer et de vous calmer lorsque vous vous sentez stressé ou submergé",
+      "Pratiquez la communication active et la négociation pour améliorer vos relations avec les autres",
+      "Essayez de vous impliquer dans des activités qui vous permettent de développer votre créativité et votre ouverture d'esprit"
+    ],
+    "disclaimer": "Ce rapport est informatif et non médical. Il ne constitue pas un diagnostic psychologique. Pour tout accompagnement approfondi, consultez un professionnel qualifié."
+  },
+  "resend_count": 1,
+  "last_resend": "2026-03-12T16:10:14.704314",
+  "scores": {
+    "O": {
+      "total": 0,
+      "count": 2
+    },
+    "C": {
+      "total": 4,
+      "count": 2
+    },
+    "E": {
+      "total": 3,
+      "count": 2
+    },
+    "A": {
+      "total": 1,
+      "count": 2
+    },
+    "N": {
+      "total": -1,
+      "count": 2
+    }
+  }
+}

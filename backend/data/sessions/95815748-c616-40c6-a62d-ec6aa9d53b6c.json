@@ -1,0 +1,175 @@
+{
+  "session_id": "95815748-c616-40c6-a62d-ec6aa9d53b6c",
+  "email": "samirafawaz@outlook.com",
+  "created_at": "2026-03-12T15:38:49.646964",
+  "updated_at": "2026-03-12T15:40:16.844079",
+  "responses": [
+    {
+      "question_id": "O2",
+      "question_text": "Je suis attiré(e) par l'art, la musique ou la littérature.",
+      "trait": "O",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T15:39:19.559586"
+    },
+    {
+      "question_id": "C4",
+      "question_text": "Je fais attention aux détails et vérifie mon travail.",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 5,
+      "answered_at": "2026-03-12T15:39:27.920563"
+    },
+    {
+      "question_id": "E2",
+      "question_text": "Je préfère passer du temps seul(e) plutôt qu'en groupe.",
+      "trait": "E",
+      "polarity": -1,
+      "answer": 3,
+      "answered_at": "2026-03-12T15:39:32.420198"
+    },
+    {
+      "question_id": "A5",
+      "question_text": "Je prends soin des autres et j'aime les aider.",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 5,
+      "answered_at": "2026-03-12T15:39:38.771009"
+    },
+    {
+      "question_id": "N5",
+      "question_text": "Je peux facilement être envahi(e) par des émotions intenses.",
+      "trait": "N",
+      "polarity": 1,
+      "answer": 1,
+      "answered_at": "2026-03-12T15:39:47.837385"
+    },
+    {
+      "question_id": "O6",
+      "question_text": "Les sujets abstraits ou philosophiques m'ennuient rapidement.",
+      "trait": "O",
+      "polarity": -1,
+      "answer": 5,
+      "answered_at": "2026-03-12T15:39:54.103069"
+    },
+    {
+      "question_id": "C3",
+      "question_text": "Je remets souvent les tâches importantes au lendemain.",
+      "trait": "C",
+      "polarity": -1,
+      "answer": 5,
+      "answered_at": "2026-03-12T15:39:57.836478"
+    },
+    {
+      "question_id": "E1",
+      "question_text": "Je me sens à l'aise pour engager la conversation avec des inconnus.",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T15:40:02.186008"
+    },
+    {
+      "question_id": "A3",
+      "question_text": "J'ai tendance à être critique envers les autres.",
+      "trait": "A",
+      "polarity": -1,
+      "answer": 4,
+      "answered_at": "2026-03-12T15:40:08.604574"
+    },
+    {
+      "question_id": "N6",
+      "question_text": "Je reste calme dans des situations de pression ou d'urgence.",
+      "trait": "N",
+      "polarity": -1,
+      "answer": 5,
+      "answered_at": "2026-03-12T15:40:13.453656"
+    }
+  ],
+  "used_question_ids": [
+    "O2",
+    "C4",
+    "E2",
+    "A5",
+    "N5",
+    "O6",
+    "C3",
+    "E1",
+    "A3",
+    "N6"
+  ],
+  "completed": true,
+  "report": {
+    "overall_summary": "Vous présentez un profil équilibré, capable de concilier curiosité et pragmatisme, avec une tendance à être organisé et adaptable. Vous savez vous épanouir autant en solo qu'en groupe et faites preuve d'empathie envers les autres. Vous êtes également émotionnellement stable et résistant au stress.",
+    "traits": {
+      "O": {
+        "score": 40.0,
+        "label": "Ouverture",
+        "emoji": "🌿",
+        "interpretation": "Vous avez une ouverture d'esprit modérée, ce qui vous permet d'apprécier les arts et la littérature sans vous y investir de manière excessive. Vous êtes capable de vous intéresser à différents sujets, mais vous privilégiez souvent la simplicité et la clarté."
+      },
+      "C": {
+        "score": 50.0,
+        "label": "Conscienciosité",
+        "emoji": "🎯",
+        "interpretation": "Vous faites preuve d'une conscienciosité moyenne, ce qui vous permet de vous organiser et de planifier vos tâches sans être excessivement perfectionniste. Vous êtes capable de vous adapter aux situations et de trouver un équilibre entre travail et loisirs."
+      },
+      "E": {
+        "score": 50.0,
+        "label": "Extraversion",
+        "emoji": "☀️",
+        "interpretation": "Vous avez un niveau d'extraversion moyen, ce qui vous permet de vous épanouir autant en solo qu'en groupe. Vous n'êtes pas excessivement sociable, mais vous appréciez la compagnie des autres et savez vous montrer ouvert et accueillant."
+      },
+      "A": {
+        "score": 55.0,
+        "label": "Agréabilité",
+        "emoji": "💛",
+        "interpretation": "Vous faites preuve d'une agréabilité supérieure à la moyenne, ce qui vous permet de vous entendre avec les autres et de trouver des compromis. Vous êtes capable de vous montrer empathique et compréhensif envers les besoins et les sentiments des autres."
+      },
+      "N": {
+        "score": 30.0,
+        "label": "Névrosisme",
+        "emoji": "🌊",
+        "interpretation": "Vous présentez un niveau de névrosisme très bas, ce qui vous permet de vous montrer émotionnellement stable et résistant au stress. Vous êtes capable de gérer vos émotions de manière saine et de vous adapter aux situations difficiles."
+      }
+    },
+    "strengths": [
+      "Vous êtes capable de vous adapter à diferentes situations et de trouver un équilibre entre travail et loisirs",
+      "Vous faites preuve d'empathie et de compréhension envers les autres",
+      "Vous êtes émotionnellement stable et résistant au stress"
+    ],
+    "areas_of_attention": [
+      "Développer votre confiance en vous pour prendre des décisions et affronter les défis",
+      "Apprendre à gérer votre temps de manière plus efficace pour atteindre vos objectifs"
+    ],
+    "recommendations": [
+      "Pratiquez la communication active et ouverte avec les autres pour renforcer vos relations",
+      "Apprenez à vous fixer des objectifs réalistes et à vous récompenser pour vos réussites",
+      "Prenez soin de votre bien-être physique et mental en pratiquant des activités qui vous apportent du plaisir et de la détente"
+    ],
+    "disclaimer": "Ce rapport est informatif et non médical. Il ne constitue pas un diagnostic psychologique. Pour tout accompagnement approfondi, consultez un professionnel qualifié."
+  },
+  "resend_count": 0,
+  "last_resend": null,
+  "scores": {
+    "O": {
+      "total": -2,
+      "count": 2
+    },
+    "C": {
+      "total": 0,
+      "count": 2
+    },
+    "E": {
+      "total": 0,
+      "count": 2
+    },
+    "A": {
+      "total": 1,
+      "count": 2
+    },
+    "N": {
+      "total": -4,
+      "count": 2
+    }
+  }
+}

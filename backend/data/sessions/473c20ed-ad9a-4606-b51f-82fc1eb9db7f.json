@@ -1,0 +1,181 @@
+{
+  "session_id": "473c20ed-ad9a-4606-b51f-82fc1eb9db7f",
+  "email": "samirafawaz@outlook.com",
+  "created_at": "2026-03-12T16:07:21.698610",
+  "updated_at": "2026-03-12T16:08:13.799954",
+  "responses": [
+    {
+      "question_id": "O6",
+      "question_text": "Les sujets abstraits ou philosophiques m'ennuient rapidement.",
+      "trait": "O",
+      "polarity": -1,
+      "answer": 5,
+      "answered_at": "2026-03-12T16:07:27.899146"
+    },
+    {
+      "question_id": "C3",
+      "question_text": "Je remets souvent les tâches importantes au lendemain.",
+      "trait": "C",
+      "polarity": -1,
+      "answer": 5,
+      "answered_at": "2026-03-12T16:07:31.597790"
+    },
+    {
+      "question_id": "E1",
+      "question_text": "Je me sens à l'aise pour engager la conversation avec des inconnus.",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 2,
+      "answered_at": "2026-03-12T16:07:37.747500"
+    },
+    {
+      "question_id": "A5",
+      "question_text": "Je prends soin des autres et j'aime les aider.",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 5,
+      "answered_at": "2026-03-12T16:07:40.880695"
+    },
+    {
+      "question_id": "N6",
+      "question_text": "Je reste calme dans des situations de pression ou d'urgence.",
+      "trait": "N",
+      "polarity": -1,
+      "answer": 5,
+      "answered_at": "2026-03-12T16:07:44.447893"
+    },
+    {
+      "question_id": "O5",
+      "question_text": "J'ai tendance à aborder les problèmes de façon créative et originale.",
+      "trait": "O",
+      "polarity": 1,
+      "answer": 5,
+      "answered_at": "2026-03-12T16:07:48.430571"
+    },
+    {
+      "question_id": "C2",
+      "question_text": "Je termine toujours ce que j'ai commencé.",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-03-12T16:07:53.114638"
+    },
+    {
+      "question_id": "E5",
+      "question_text": "Je parle facilement de moi-même et de mes expériences.",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 1,
+      "answered_at": "2026-03-12T16:07:57.430541"
+    },
+    {
+      "question_id": "A3",
+      "question_text": "J'ai tendance à être critique envers les autres.",
+      "trait": "A",
+      "polarity": -1,
+      "answer": 3,
+      "answered_at": "2026-03-12T16:08:01.563406"
+    },
+    {
+      "question_id": "N5",
+      "question_text": "Je peux facilement être envahi(e) par des émotions intenses.",
+      "trait": "N",
+      "polarity": 1,
+      "answer": 1,
+      "answered_at": "2026-03-12T16:08:06.248017"
+    }
+  ],
+  "used_question_ids": [
+    "O6",
+    "C3",
+    "E1",
+    "A5",
+    "N6",
+    "O5",
+    "C2",
+    "E5",
+    "A3",
+    "N5"
+  ],
+  "completed": true,
+  "report": {
+    "archetype": {
+      "name": "L'Explorateur",
+      "emoji": "🧭",
+      "tagline": "Libre, spontané et toujours en mouvement",
+      "description": "Vous vivez dans l'instant présent et vous adaptez à toutes les situations avec une aisance naturelle. Votre ouverture d'esprit et votre soif de nouvelles expériences vous poussent constamment à sortir des sentiers battus."
+    },
+    "overall_summary": "Vous présentez un profil équilibré, avec une capacité à naviguer entre différentes situations et à adapter votre comportement en fonction des contextes. Vous êtes à la fois curieux et pragmatique, ce qui vous permet de faire face aux défis de manière efficace. Votre personnalité est caractérisée par une bonne dose d'extraversion, ce qui facilite vos interactions sociales, mais vous savez également apprécier les moments de solitude.",
+    "traits": {
+      "O": {
+        "score": 50.0,
+        "label": "Ouverture",
+        "emoji": "🌿",
+        "interpretation": "Avec un score d'ouverture à 50, vous avez une approche équilibrée entre la curiosité pour les idées nouvelles et le pragmatisme nécessaire pour les mettre en pratique. Vous n'hésitez pas à explorer des sujets variés, mais vous gardez également les pieds sur terre."
+      },
+      "C": {
+        "score": 40.0,
+        "label": "Conscienciosité",
+        "emoji": "🎯",
+        "interpretation": "Un score de conscienciosité à 40 indique que vous avez une approche plutôt flexible de l'organisation et de la planification. Vous savez vous adapter aux situations, mais vous pourriez parfois avoir du mal à respecter les délais ou à maintenir une routine stricte."
+      },
+      "E": {
+        "score": 65.0,
+        "label": "Extraversion",
+        "emoji": "☀️",
+        "interpretation": "Avec un score d'extraversion à 65, vous êtes une personne qui aime interagir avec les autres et qui tire de l'énergie de ces interactions. Vous êtes probablement à l'aise dans les situations sociales et vous savez comment faire pour mettre les autres à l'aise."
+      },
+      "A": {
+        "score": 60.0,
+        "label": "Agréabilité",
+        "emoji": "💛",
+        "interpretation": "Un score d'agréabilité à 60 montre que vous êtes capable de coopérer avec les autres tout en étant assertif lorsque cela est nécessaire. Vous savez trouver un équilibre entre les besoins des autres et les vôtres, ce qui facilite les relations positives."
+      },
+      "N": {
+        "score": 30.0,
+        "label": "Névrosisme",
+        "emoji": "🌊",
+        "interpretation": "Avec un score de névrosisme à 30, vous êtes généralement émotionnellement stable et résistant au stress. Vous savez gérer vos émotions de manière saine, ce qui vous permet de rester calme et lucide même dans les situations difficiles."
+      }
+    },
+    "strengths": [
+      "Votre capacité à vous adapter aux situations sociales et professionnelles avec aisance",
+      "Votre empathie et votre volonté d'aider les autres, qui sont des atouts précieux dans les relations",
+      "Votre stabilité émotionnelle, qui vous permet de faire face aux défis de manière résiliente"
+    ],
+    "areas_of_attention": [
+      "Développer une organisation et une planification plus rigoureuses pour améliorer votre productivité",
+      "Apprendre à équilibrer votre désir d'aider les autres avec vos propres besoins et limites pour éviter l'épuisement"
+    ],
+    "recommendations": [
+      "Prenez le temps de planifier vos tâches et de fixer des objectifs clairs pour améliorer votre efficacité",
+      "Pratiquez l'écoute active et la communication ouverte pour renforcer vos relations",
+      "Faites preuve de compassion envers vous-même et prenez soin de votre bien-être émotionnel"
+    ],
+    "disclaimer": "Ce rapport est informatif et non médical. Il ne constitue pas un diagnostic psychologique. Pour tout accompagnement approfondi, consultez un professionnel qualifié."
+  },
+  "resend_count": 1,
+  "last_resend": "2026-03-12T16:08:13.799879",
+  "scores": {
+    "O": {
+      "total": 0,
+      "count": 2
+    },
+    "C": {
+      "total": -2,
+      "count": 2
+    },
+    "E": {
+      "total": 3,
+      "count": 2
+    },
+    "A": {
+      "total": 2,
+      "count": 2
+    },
+    "N": {
+      "total": -4,
+      "count": 2
+    }
+  }
+}

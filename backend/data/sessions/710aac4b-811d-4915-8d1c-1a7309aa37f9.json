@@ -1,0 +1,181 @@
+{
+  "session_id": "710aac4b-811d-4915-8d1c-1a7309aa37f9",
+  "email": "samirafawaz@outlook.com",
+  "created_at": "2026-03-12T15:49:39.240287",
+  "updated_at": "2026-03-12T15:52:45.520979",
+  "responses": [
+    {
+      "question_id": "O3",
+      "question_text": "Je préfère les routines connues plutôt que les nouvelles expériences.",
+      "trait": "O",
+      "polarity": -1,
+      "answer": 1,
+      "answered_at": "2026-03-12T15:49:50.391493"
+    },
+    {
+      "question_id": "C2",
+      "question_text": "Je termine toujours ce que j'ai commencé.",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 2,
+      "answered_at": "2026-03-12T15:49:55.902839"
+    },
+    {
+      "question_id": "E4",
+      "question_text": "J'aime être au centre de l'attention lors de rassemblements.",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 2,
+      "answered_at": "2026-03-12T15:50:02.387146"
+    },
+    {
+      "question_id": "A3",
+      "question_text": "J'ai tendance à être critique envers les autres.",
+      "trait": "A",
+      "polarity": -1,
+      "answer": 1,
+      "answered_at": "2026-03-12T15:50:09.153172"
+    },
+    {
+      "question_id": "N3",
+      "question_text": "Je me sens souvent stressé(e) ou sous pression.",
+      "trait": "N",
+      "polarity": 1,
+      "answer": 2,
+      "answered_at": "2026-03-12T15:50:15.253126"
+    },
+    {
+      "question_id": "O6",
+      "question_text": "Les sujets abstraits ou philosophiques m'ennuient rapidement.",
+      "trait": "O",
+      "polarity": -1,
+      "answer": 5,
+      "answered_at": "2026-03-12T15:50:18.653129"
+    },
+    {
+      "question_id": "C1",
+      "question_text": "J'aime planifier mes tâches et suivre un planning précis.",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 1,
+      "answered_at": "2026-03-12T15:50:30.487368"
+    },
+    {
+      "question_id": "E3",
+      "question_text": "Les interactions sociales me donnent de l'énergie.",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 4,
+      "answered_at": "2026-03-12T15:50:44.753383"
+    },
+    {
+      "question_id": "A4",
+      "question_text": "Je trouve facilement quelque chose de positif chez chaque personne.",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 5,
+      "answered_at": "2026-03-12T15:50:52.153552"
+    },
+    {
+      "question_id": "N2",
+      "question_text": "Mes humeurs sont stables et je change rarement d'état émotionnel.",
+      "trait": "N",
+      "polarity": -1,
+      "answer": 3,
+      "answered_at": "2026-03-12T15:50:59.702437"
+    }
+  ],
+  "used_question_ids": [
+    "O3",
+    "C2",
+    "E4",
+    "A3",
+    "N3",
+    "O6",
+    "C1",
+    "E3",
+    "A4",
+    "N2"
+  ],
+  "completed": true,
+  "report": {
+    "archetype": {
+      "name": "Le Gardien",
+      "emoji": "🌿",
+      "tagline": "Fiable, bienveillant et ancré",
+      "description": "Vous êtes le pilier sur lequel les autres s'appuient. Organisé(e) et attentionné(e), vous créez un environnement sécurisant et chaleureux autour de vous. Votre sens du devoir et votre générosité sont des forces remarquables."
+    },
+    "overall_summary": "Vous avez un profil de personnalité équilibré, caractérisé par une forte extraversion et une tendance à vous adapter aux situations. Vous êtes chaleureux et attentionné envers les autres, ce qui vous permet de maintenir des relations solides. Vous avez également une bonne conscience de soi et une capacité à gérer vos émotions de manière équilibrée.",
+    "traits": {
+      "O": {
+        "score": 20.0,
+        "label": "Ouverture",
+        "emoji": "🌿",
+        "interpretation": "Vous préférez les approches éprouvées et les routines connues, ce qui peut vous donner un sentiment de stabilité et de sécurité. Cependant, cela peut également limiter votre ouverture aux nouvelles expériences et idées."
+      },
+      "C": {
+        "score": 65.0,
+        "label": "Conscienciosité",
+        "emoji": "🎯",
+        "interpretation": "Vous combinez organisation et adaptabilité, ce qui vous permet de gérer vos tâches et vos responsabilités de manière efficace. Vous êtes capable de planifier et de suivre un planning, mais vous êtes également ouvert à des changements et à des ajustements si nécessaire."
+      },
+      "E": {
+        "score": 80.0,
+        "label": "Extraversion",
+        "emoji": "☀️",
+        "interpretation": "Vous êtes énergisé par les interactions sociales et l'entourage, ce qui vous permet de vous sentir vivant et motivé. Vous aimez être au centre de l'attention et vous avez une forte tendance à vous connecter avec les autres."
+      },
+      "A": {
+        "score": 70.0,
+        "label": "Agréabilité",
+        "emoji": "💛",
+        "interpretation": "Vous êtes chaleureux, empathique et attentionné envers les autres, ce qui vous permet de maintenir des relations solides et positives. Vous êtes capable de trouver quelque chose de positif chez chaque personne et vous avez une forte tendance à aider les autres."
+      },
+      "N": {
+        "score": 45.0,
+        "label": "Névrosisme",
+        "emoji": "🌊",
+        "interpretation": "Vous ressentez les émotions de manière équilibrée, ce qui vous permet de gérer vos émotions de manière saine. Vous n'êtes pas trop sensible aux stress et aux pressions, mais vous pouvez ressentir des émotions négatives si vous vous sentez dépassé ou si vous vous inquiétez pour l'avenir."
+      }
+    },
+    "strengths": [
+      "Votre capacité à vous connecter avec les autres et à maintenir des relations solides",
+      "Votre adaptabilité et votre capacité à gérer les changements",
+      "Votre chaleur et votre empathie envers les autres"
+    ],
+    "areas_of_attention": [
+      "Développer votre ouverture aux nouvelles expériences et idées pour vous permettre de grandir et de vous épanouir",
+      "Apprendre à gérer vos émotions négatives et à trouver des moyens de vous détendre et de vous calmer"
+    ],
+    "recommendations": [
+      "Prenez le temps de vous connecter avec les autres et de maintenir des relations solides",
+      "Apprenez à vous adapter aux changements et aux situations imprévues",
+      "Prenez soin de votre bien-être émotionnel et trouvez des moyens de vous détendre et de vous calmer"
+    ],
+    "disclaimer": "Ce rapport est informatif et non médical. Il ne constitue pas un diagnostic psychologique. Pour tout accompagnement approfondi, consultez un professionnel qualifié."
+  },
+  "resend_count": 2,
+  "last_resend": "2026-03-12T15:52:45.520911",
+  "scores": {
+    "O": {
+      "total": -6,
+      "count": 2
+    },
+    "C": {
+      "total": 3,
+      "count": 2
+    },
+    "E": {
+      "total": 6,
+      "count": 2
+    },
+    "A": {
+      "total": 4,
+      "count": 2
+    },
+    "N": {
+      "total": -1,
+      "count": 2
+    }
+  }
+}
