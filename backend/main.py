@@ -65,6 +65,32 @@ def _build_progress(session: dict) -> Progress:
     )
 
 
+def _reconstruct_report_from_cache(report_dict) -> "Report":
+    """Reconstructs Report object from cached session data."""
+    from models import Report, TraitScore, Archetype
+
+    traits = {k: TraitScore(**v) for k, v in report_dict["traits"].items()}
+    return Report(
+        archetype=Archetype(**report_dict["archetype"]),
+        overall_summary=report_dict["overall_summary"],
+        traits=traits,
+        strengths=report_dict["strengths"],
+        areas_of_attention=report_dict["areas_of_attention"],
+        recommendations=report_dict["recommendations"],
+        disclaimer=report_dict["disclaimer"],
+    )
+
+
+def _validate_session_for_response(session_id: str) -> dict:
+    """Validates session exists and that the test is still in progress."""
+    session = load_session(session_id)
+    if session is None:
+        raise HTTPException(status_code=404, detail="Session introuvable.")
+    if session.get("completed"):
+        raise HTTPException(status_code=400, detail="Ce test est déjà terminé.")
+    return session
+
+
 def _core_start_session(body: StartSessionRequest) -> SessionStartResponse:
     if not body.consent:
         raise HTTPException(status_code=400, detail="Le consentement est requis.")
@@ -93,11 +119,7 @@ def _core_start_session(body: StartSessionRequest) -> SessionStartResponse:
 
 
 def _core_submit_response(session_id: str, body: AnswerRequest) -> AnswerResponse:
-    session = load_session(session_id)
-    if session is None:
-        raise HTTPException(status_code=404, detail="Session introuvable.")
-    if session.get("completed"):
-        raise HTTPException(status_code=400, detail="Ce test est déjà terminé.")
+    session = _validate_session_for_response(session_id)
     if body.answer not in range(1, 6):
         raise HTTPException(status_code=400, detail="La réponse doit être comprise entre 1 et 5.")
 
@@ -249,20 +271,7 @@ async def get_report(session_id: str):
 
     # Retourner le rapport en cache si déjà généré
     if session.get("report"):
-        from models import Report, TraitScore, Archetype
-        report_data = session["report"]
-        traits = {
-            k: TraitScore(**v) for k, v in report_data["traits"].items()
-        }
-        report = Report(
-            archetype=Archetype(**report_data["archetype"]),
-            overall_summary=report_data["overall_summary"],
-            traits=traits,
-            strengths=report_data["strengths"],
-            areas_of_attention=report_data["areas_of_attention"],
-            recommendations=report_data["recommendations"],
-            disclaimer=report_data["disclaimer"],
-        )
+        report = _reconstruct_report_from_cache(session["report"])
         return ReportResponse(report=report, email=session["email"])
 
     # Générer le rapport via Claude
@@ -297,20 +306,7 @@ def resend_report(session_id: str):
             detail="Limite de renvoi atteinte (3 maximum).",
         )
 
-    # Reconstruire l'objet Report depuis le cache
-    from models import Report, TraitScore, Archetype
-    report_data = session["report"]
-    traits = {k: TraitScore(**v) for k, v in report_data["traits"].items()}
-    report = Report(
-        archetype=Archetype(**report_data["archetype"]),
-        overall_summary=report_data["overall_summary"],
-        traits=traits,
-        strengths=report_data["strengths"],
-        areas_of_attention=report_data["areas_of_attention"],
-        recommendations=report_data["recommendations"],
-        disclaimer=report_data["disclaimer"],
-    )
-
+    report = _reconstruct_report_from_cache(session["report"])
     success = send_report_email(session["email"], report)
 
     session["resend_count"] = resend_count + 1

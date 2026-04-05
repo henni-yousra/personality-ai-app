@@ -19,7 +19,7 @@ TRAITS = ["O", "C", "E", "A", "N"]
 ARCHETYPES = [
     {
         "name": "Le Visionnaire",
-        "emoji": "🔮",
+        "emoji": "◉",
         "tagline": "Créatif, inspirant et tourné vers l'avenir",
         "description": (
             "Vous voyez le monde comme un terrain d'exploration infini. "
@@ -31,7 +31,7 @@ ARCHETYPES = [
     },
     {
         "name": "Le Logicien",
-        "emoji": "🧠",
+        "emoji": "■",
         "tagline": "Analytique, précis et indépendant",
         "description": (
             "Vous adorez résoudre des problèmes complexes et aller au fond des choses. "
@@ -43,7 +43,7 @@ ARCHETYPES = [
     },
     {
         "name": "Le Gardien",
-        "emoji": "🌿",
+        "emoji": "●",
         "tagline": "Fiable, bienveillant et ancré",
         "description": (
             "Vous êtes le pilier sur lequel les autres s'appuient. "
@@ -55,7 +55,7 @@ ARCHETYPES = [
     },
     {
         "name": "L'Architecte",
-        "emoji": "⚡",
+        "emoji": "▲",
         "tagline": "Ambitieux, stratégique et déterminé",
         "description": (
             "Vous avez une vision claire et la volonté de la réaliser. "
@@ -67,7 +67,7 @@ ARCHETYPES = [
     },
     {
         "name": "L'Empathique",
-        "emoji": "💛",
+        "emoji": "◆",
         "tagline": "Chaleureux, à l'écoute et profondément humain",
         "description": (
             "Vous ressentez profondément les émotions — les vôtres et celles des autres. "
@@ -79,7 +79,7 @@ ARCHETYPES = [
     },
     {
         "name": "L'Explorateur",
-        "emoji": "🧭",
+        "emoji": "◻",
         "tagline": "Libre, spontané et toujours en mouvement",
         "description": (
             "Vous vivez dans l'instant présent et vous adaptez à toutes les situations "
@@ -142,6 +142,17 @@ def _latent_observation(polarity: int, answer: int) -> float:
 
 
 def _welford_update(state: dict, x: float) -> None:
+    """
+    Updates running mean and variance using Welford's online algorithm.
+    Ensures numerical stability for variance calculation.
+
+    Args:
+        state: Dict with keys 'n', 'mean', 'm2'
+        x: New observation (0-1 range)
+    """
+    if not (0 <= x <= 1):
+        raise ValueError(f"Observation must be in [0, 1], got {x}")
+
     n = state["n"] + 1
     delta = x - state["mean"]
     mean = state["mean"] + delta / n
@@ -150,18 +161,34 @@ def _welford_update(state: dict, x: float) -> None:
     state["n"] = n
     state["mean"] = mean
     state["m2"] = m2
+
     if n < 2:
         state["variance"] = 0.25
     else:
         sample_var = m2 / (n - 1)
-        state["variance"] = (sample_var / n) if n > 0 else 0.25
+        state["variance"] = max(0.0, sample_var / n)
 
 
 def select_next_question(session: dict) -> Tuple[Optional[Question], str]:
     """
-    Choisit la question suivante : trait avec variance de la moyenne la plus élevée
-    (le plus incertain), puis difficulté adaptée (bas → haut si le trait se stabilise).
-    Retourne (Question | None, raison courte pour logs / API).
+    Selects the next question using adaptive strategy.
+
+    Strategy:
+    1. Identifies trait with highest variance of mean (most uncertain)
+    2. Selects difficulty based on variance threshold:
+       - variance > 0.08: difficulty 1 (direct questions)
+       - variance > 0.03: difficulty 2 (moderate)
+       - variance ≤ 0.03: difficulty 3 (nuanced)
+    3. Randomly selects from candidates matching target difficulty
+
+    Args:
+        session: Current session with traits_latent and used_question_ids
+
+    Returns:
+        Tuple of (Question or None, selection_reason string)
+
+    Raises:
+        None - returns (None, reason_string) on failure
     """
     ensure_traits_latent(session)
     used_ids = set(session.get("used_question_ids", []))
