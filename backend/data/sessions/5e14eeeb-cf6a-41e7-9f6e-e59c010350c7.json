@@ -1,0 +1,109 @@
+{
+  "session_id": "5e14eeeb-cf6a-41e7-9f6e-e59c010350c7",
+  "email": "t@t.co",
+  "created_at": "2026-04-03T20:43:01.311162",
+  "updated_at": "2026-04-03T20:43:01.720629",
+  "responses": [
+    {
+      "question_id": "O6",
+      "question_text": "Les sujets abstraits ou philosophiques m'ennuient rapidement.",
+      "trait": "O",
+      "polarity": -1,
+      "answer": 3,
+      "answered_at": "2026-04-03T20:43:01.366305"
+    },
+    {
+      "question_id": "O6",
+      "question_text": "Les sujets abstraits ou philosophiques m'ennuient rapidement.",
+      "trait": "O",
+      "polarity": -1,
+      "answer": 3,
+      "answered_at": "2026-04-03T20:43:01.467152"
+    },
+    {
+      "question_id": "O6",
+      "question_text": "Les sujets abstraits ou philosophiques m'ennuient rapidement.",
+      "trait": "O",
+      "polarity": -1,
+      "answer": 3,
+      "answered_at": "2026-04-03T20:43:01.524026"
+    },
+    {
+      "question_id": "O6",
+      "question_text": "Les sujets abstraits ou philosophiques m'ennuient rapidement.",
+      "trait": "O",
+      "polarity": -1,
+      "answer": 3,
+      "answered_at": "2026-04-03T20:43:01.558061"
+    },
+    {
+      "question_id": "O6",
+      "question_text": "Les sujets abstraits ou philosophiques m'ennuient rapidement.",
+      "trait": "O",
+      "polarity": -1,
+      "answer": 3,
+      "answered_at": "2026-04-03T20:43:01.604077"
+    },
+    {
+      "question_id": "C2",
+      "question_text": "Je termine toujours ce que j'ai commencé.",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-04-03T20:43:01.642330"
+    },
+    {
+      "question_id": "E2",
+      "question_text": "Je préfère passer du temps seul(e) plutôt qu'en groupe.",
+      "trait": "E",
+      "polarity": -1,
+      "answer": 3,
+      "answered_at": "2026-04-03T20:43:01.683183"
+    },
+    {
+      "question_id": "A5",
+      "question_text": "Je prends soin des autres et j'aime les aider.",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-04-03T20:43:01.719735"
+    }
+  ],
+  "used_question_ids": [
+    "O6",
+    "C4",
+    "C5",
+    "C6",
+    "C3",
+    "C2",
+    "E2",
+    "A5",
+    "N5"
+  ],
+  "completed": false,
+  "report": null,
+  "resend_count": 0,
+  "last_resend": null,
+  "scores": {
+    "O": {
+      "total": -15,
+      "count": 5
+    },
+    "C": {
+      "total": 3,
+      "count": 1
+    },
+    "E": {
+      "total": -3,
+      "count": 1
+    },
+    "A": {
+      "total": 3,
+      "count": 1
+    },
+    "N": {
+      "total": 0,
+      "count": 0
+    }
+  }
+}

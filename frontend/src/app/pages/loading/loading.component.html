@@ -8,7 +8,9 @@
         <!-- Orbe animée -->
         <div class="loading-orb-wrapper">
           <div class="loading-orb">
-            <div class="loading-orb-inner">🌿</div>
+            <div class="loading-orb-inner">
+              <i class="pi pi-sparkles loading-orb-icon" aria-hidden="true"></i>
+            </div>
           </div>
           <div class="loading-rings">
             <div class="loading-ring ring-1"></div>
@@ -41,7 +43,7 @@
     @if (error()) {
       <!-- État d'erreur -->
       <div class="loading-error animate-fade-in">
-        <div class="error-icon">🌧</div>
+        <i class="pi pi-cloud loading-error-pi" aria-hidden="true"></i>
         <h2>Une erreur est survenue</h2>
         <p>{{ error() }}</p>
         <button class="btn btn-primary" (click)="retry()">

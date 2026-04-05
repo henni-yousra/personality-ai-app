@@ -1,0 +1,36 @@
+{
+  "session_id": "0914dfbf-ebd4-4852-b03f-686866c22705",
+  "email": "hennimansour.yousrayasmine@gmail.com",
+  "created_at": "2026-04-03T20:21:28.624051",
+  "updated_at": "2026-04-03T20:21:28.628963",
+  "responses": [],
+  "used_question_ids": [
+    "O1"
+  ],
+  "completed": false,
+  "report": null,
+  "resend_count": 0,
+  "last_resend": null,
+  "scores": {
+    "O": {
+      "total": 0,
+      "count": 0
+    },
+    "C": {
+      "total": 0,
+      "count": 0
+    },
+    "E": {
+      "total": 0,
+      "count": 0
+    },
+    "A": {
+      "total": 0,
+      "count": 0
+    },
+    "N": {
+      "total": 0,
+      "count": 0
+    }
+  }
+}

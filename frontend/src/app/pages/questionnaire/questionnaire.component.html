@@ -1,9 +1,16 @@
 <div class="page-container quiz-page">
   <div class="container">
 
-    <!-- En-tête avec progression -->
+    @if (resuming()) {
+      <div class="quiz-resume-loading animate-fade-in">
+        <p>Reprise de votre session…</p>
+      </div>
+    } @else {
     <header class="quiz-header animate-fade-in">
-      <a href="/" class="quiz-logo">🌿 <span>Persona</span></a>
+      <a routerLink="/commencer" class="quiz-logo">
+        <i class="pi pi-sparkles quiz-logo-icon" aria-hidden="true"></i>
+        <span>Persona</span>
+      </a>
 
       <div class="progress-container">
         <div class="progress-info">
@@ -12,36 +19,28 @@
             {{ progress().current }} / {{ progress().total }}
           </span>
         </div>
-        <div class="progress-bar-track">
-          <div
-            class="progress-bar-fill"
-            [style.width.%]="progress().percent"
-          ></div>
-        </div>
+        <p-progressbar [value]="progress().percent" [showValue]="false" styleClass="quiz-p-progress" />
       </div>
     </header>
 
-    <!-- Carte de question -->
     @if (question()) {
       <div class="quiz-card card" [class.animating]="animating()">
 
-        <!-- Numéro de question -->
         <div class="question-number animate-fade-in delay-1">
-          Question {{ progress().current + 1 }}
+          Question {{ progress().current }} / {{ progress().total }}
         </div>
 
-        <!-- Texte de la question -->
         <h2 class="question-text animate-fade-in delay-2">
           {{ question()!.text }}
         </h2>
 
-        <!-- Échelle de réponse -->
         <div class="answers-scale animate-fade-in delay-3">
           <span class="scale-label scale-label-left">Pas du tout d'accord</span>
 
           <div class="answer-options">
             @for (opt of question()!.options; track opt.value) {
               <button
+                type="button"
                 class="answer-btn"
                 [class.selected]="selectedAnswer() === opt.value"
                 (click)="selectAnswer(opt.value)"
@@ -58,33 +57,25 @@
           <span class="scale-label scale-label-right">Tout à fait d'accord</span>
         </div>
 
-        <!-- Erreur -->
         @if (error()) {
-          <div class="quiz-error animate-fade-in">⚠️ {{ error() }}</div>
+          <p-message severity="error" [text]="error()" styleClass="w-full mt-2" />
         }
 
-        <!-- Actions -->
         <div class="quiz-actions animate-fade-in delay-4">
-          <button
-            class="btn btn-primary btn-lg"
+          <p-button
+            [label]="primaryActionLabel()"
+            [icon]="primaryActionIcon()"
+            iconPos="right"
+            styleClass="w-full"
             [disabled]="selectedAnswer() === null || loading()"
-            (click)="submitAnswer()"
-          >
-            @if (loading()) {
-              <span class="spinner-btn"></span>
-              Traitement…
-            } @else if (progress().current + 1 >= progress().total) {
-              Terminer le test ✓
-            } @else {
-              Continuer →
-            }
-          </button>
+            [loading]="loading()"
+            (onClick)="submitAnswer()"
+          />
         </div>
 
       </div>
     }
 
-    <!-- Indicateurs de trait (discrets) -->
     <div class="trait-dots animate-fade-in delay-5">
       @for (trait of ['O','C','E','A','N']; track trait) {
         <div
@@ -94,6 +85,7 @@
         ></div>
       }
     </div>
+    }
 
   </div>
 </div>

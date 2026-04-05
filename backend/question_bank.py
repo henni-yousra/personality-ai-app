@@ -197,6 +197,10 @@ QUESTIONS = [
     },
 ]
 
+# Difficulté (1 = la plus directe, 3 = la plus nuancée) — sélection adaptative
+for _i, _q in enumerate(QUESTIONS):
+    _q.setdefault("difficulty", (_i % 3) + 1)
+
 TOTAL_QUESTIONS = 15  # Nombre de questions posées par session
 
 ANSWER_OPTIONS = [

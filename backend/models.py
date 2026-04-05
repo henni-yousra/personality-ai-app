@@ -13,6 +13,14 @@ class AnswerRequest(BaseModel):
     answer: int  # 1 à 5 (échelle de Likert)
 
 
+class CdcSubmitResponseBody(BaseModel):
+    """Corps POST /responses (contrat CDC §4)."""
+
+    session_id: str
+    question_id: str
+    answer_value: int
+
+
 class AnswerOption(BaseModel):
     value: int
     label: str
@@ -36,12 +44,14 @@ class SessionStartResponse(BaseModel):
     session_id: str
     question: Question
     progress: Progress
+    selection_reason: Optional[str] = None
 
 
 class AnswerResponse(BaseModel):
     question: Optional[Question] = None
     completed: bool
     progress: Progress
+    selection_reason: Optional[str] = None
 
 
 class TraitScore(BaseModel):
@@ -76,3 +86,19 @@ class ReportResponse(BaseModel):
 class ResendEmailResponse(BaseModel):
     success: bool
     message: str
+
+
+class SessionResumeProgress(BaseModel):
+    """Progression pour reprise de session (réponses déjà enregistrées)."""
+
+    answered: int
+    total: int
+
+
+class SessionStateResponse(BaseModel):
+    """État courant d'une session (reprise après rechargement)."""
+
+    completed: bool
+    current_question_index: int
+    current_question: Optional[Question] = None
+    progress: SessionResumeProgress

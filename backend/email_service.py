@@ -18,8 +18,8 @@ def _build_html(report: Report, email: str) -> str:
         traits_html += f"""
         <tr>
           <td style="padding:10px 0; border-bottom:1px solid #EDE8DC;">
-            <span style="font-size:1.1rem;">{trait.emoji}</span>
-            <strong style="color:#2A2725; margin-left:8px;">{trait.label}</strong>
+            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#7A9467;vertical-align:middle;margin-right:10px;"></span>
+            <strong style="color:#2A2725;">{trait.label}</strong>
             <div style="background:#EDE8DC; border-radius:99px; height:6px; margin:8px 0; overflow:hidden;">
               <div style="background:{bar_color}; width:{trait.score}%; height:100%; border-radius:99px;"></div>
             </div>
@@ -28,8 +28,12 @@ def _build_html(report: Report, email: str) -> str:
         </tr>"""
 
     strengths_html = "".join(
-        f'<li style="margin:6px 0; color:#6B6560;">✦ {s}</li>'
+        f'<li style="margin:6px 0; color:#6B6560;">• {s}</li>'
         for s in report.strengths
+    )
+    areas_html = "".join(
+        f'<li style="margin:6px 0; color:#6B6560;">• {a}</li>'
+        for a in report.areas_of_attention
     )
     recommendations_html = "".join(
         f'<li style="margin:8px 0; color:#6B6560; line-height:1.6;">{r}</li>'
@@ -45,7 +49,7 @@ def _build_html(report: Report, email: str) -> str:
 
     <!-- En-tête -->
     <div style="text-align:center; margin-bottom:32px;">
-      <div style="font-size:2.5rem; margin-bottom:8px;">🌿</div>
+      <div style="width:56px;height:56px;margin:0 auto 12px;border-radius:14px;background:linear-gradient(135deg,#7A9467,#C4A07A);"></div>
       <h1 style="font-family:Georgia, serif; font-weight:500; color:#2A2725; margin:0; font-size:1.6rem;">
         Votre rapport de personnalité
       </h1>
@@ -56,7 +60,7 @@ def _build_html(report: Report, email: str) -> str:
     <div style="background:linear-gradient(135deg,#FDFCF8,#EEE8DA); border-radius:20px; padding:32px; margin-bottom:24px; box-shadow:0 8px 32px rgba(42,39,37,.10); border:1px solid rgba(122,148,103,.18);">
       <p style="font-size:0.75rem; font-weight:600; color:#7A9467; letter-spacing:.08em; text-transform:uppercase; margin:0 0 12px;">Vous êtes</p>
       <div style="display:flex; align-items:center; gap:20px; margin-bottom:16px;">
-        <div style="font-size:2.5rem; background:#F5F1E8; width:64px; height:64px; display:flex; align-items:center; justify-content:center; border-radius:12px; text-align:center; line-height:64px;">{report.archetype.emoji}</div>
+        <div style="width:64px; height:64px; flex-shrink:0; border-radius:12px; background:linear-gradient(135deg,#7A9467,#8B7FA8);"></div>
         <div>
           <h2 style="font-family:Georgia,serif; font-size:1.8rem; font-weight:500; color:#2A2725; margin:0; line-height:1.1;">{report.archetype.name}</h2>
           <p style="color:#7A9467; font-style:italic; margin:4px 0 0; font-size:0.95rem;">{report.archetype.tagline}</p>
@@ -75,20 +79,26 @@ def _build_html(report: Report, email: str) -> str:
 
     <!-- Points forts -->
     <div style="background:#FDFCF8; border-radius:16px; padding:24px; margin-bottom:24px; box-shadow:0 4px 16px rgba(42,39,37,.06); border:1px solid rgba(122,148,103,.18);">
-      <h3 style="font-family:Georgia,serif; font-size:1.1rem; font-weight:500; color:#2A2725; margin:0 0 12px;">✨ Points forts</h3>
+      <h3 style="font-family:Georgia,serif; font-size:1.1rem; font-weight:500; color:#2A2725; margin:0 0 12px;">Points forts</h3>
       <ul style="margin:0; padding:0 0 0 4px; list-style:none;">{strengths_html}</ul>
+    </div>
+
+    <!-- Points de vigilance -->
+    <div style="background:#FDFCF8; border-radius:16px; padding:24px; margin-bottom:24px; box-shadow:0 4px 16px rgba(42,39,37,.06); border:1px solid rgba(139,127,168,.25);">
+      <h3 style="font-family:Georgia,serif; font-size:1.1rem; font-weight:500; color:#2A2725; margin:0 0 12px;">Points de vigilance</h3>
+      <ul style="margin:0; padding:0 0 0 4px; list-style:none;">{areas_html}</ul>
     </div>
 
     <!-- Recommandations -->
     <div style="background:#FDFCF8; border-radius:16px; padding:24px; margin-bottom:32px; box-shadow:0 4px 16px rgba(42,39,37,.06); border:1px solid rgba(122,148,103,.18);">
-      <h3 style="font-family:Georgia,serif; font-size:1.1rem; font-weight:500; color:#2A2725; margin:0 0 12px;">🧭 Recommandations</h3>
+      <h3 style="font-family:Georgia,serif; font-size:1.1rem; font-weight:500; color:#2A2725; margin:0 0 12px;">Recommandations</h3>
       <ol style="margin:0; padding:0 0 0 20px;">{recommendations_html}</ol>
     </div>
 
     <!-- Footer -->
     <div style="text-align:center; padding-top:16px; border-top:1px solid #EDE8DC;">
       <p style="color:#9A9490; font-size:0.75rem; line-height:1.7;">{report.disclaimer}</p>
-      <p style="color:#9A9490; font-size:0.75rem; margin-top:8px;">🌿 Persona — Test de personnalité adaptatif par IA</p>
+      <p style="color:#9A9490; font-size:0.75rem; margin-top:8px;">Persona — Test de personnalité adaptatif par IA</p>
     </div>
 
   </div>
@@ -114,11 +124,11 @@ def send_report_email(to_email: str, report: Report) -> bool:
     from_name = os.getenv("SMTP_FROM_NAME", "Persona Test")
 
     if not smtp_user or not smtp_password:
-        print("⚠️  SMTP_USER/SMTP_PASSWORD non définis — e-mail non envoyé.")
+        print("[WARN] SMTP_USER/SMTP_PASSWORD non définis — e-mail non envoyé.")
         return False
 
     msg = MIMEMultipart("alternative")
-    msg["Subject"] = f"🌿 Votre rapport Persona — {report.archetype.name}"
+    msg["Subject"] = f"Votre rapport Persona — {report.archetype.name}"
     msg["From"] = f"{from_name} <{smtp_user}>"
     msg["To"] = to_email
 
@@ -137,8 +147,8 @@ def send_report_email(to_email: str, report: Report) -> bool:
             with smtplib.SMTP_SSL(smtp_host, smtp_port) as server:
                 server.login(smtp_user, smtp_password)
                 server.sendmail(smtp_user, to_email, msg.as_string())
-        print(f"✅ E-mail envoyé à {to_email}")
+        print(f"[OK] E-mail envoyé à {to_email}")
         return True
     except Exception as e:
-        print(f"❌ Erreur envoi e-mail : {e}")
+        print(f"[ERR] Erreur envoi e-mail : {e}")
         return False

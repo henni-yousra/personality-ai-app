@@ -4,6 +4,11 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
+      import('./pages/welcome/welcome.component').then((m) => m.WelcomeComponent),
+  },
+  {
+    path: 'commencer',
+    loadComponent: () =>
       import('./pages/home/home.component').then((m) => m.HomeComponent),
   },
   {

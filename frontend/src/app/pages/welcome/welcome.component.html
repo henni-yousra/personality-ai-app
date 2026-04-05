@@ -1,0 +1,51 @@
+<div class="welcome-page">
+  <div class="welcome-wave" aria-hidden="true"></div>
+
+  <div class="welcome-inner">
+    <p class="welcome-kicker">Persona</p>
+    <h1 class="welcome-title">Hello, who are you?</h1>
+    <p class="welcome-lead">
+      Avant le test Big Five, présentez-vous en quelques mots — ce n’est pas obligatoire pour les scores,
+      mais cela personnalise l’expérience.
+    </p>
+
+    <div class="welcome-field">
+      <label class="welcome-label" for="prenom">Prénom ou pseudo</label>
+      <input
+        id="prenom"
+        type="text"
+        class="welcome-input"
+        placeholder="Alex"
+        [value]="firstName()"
+        (input)="firstName.set($any($event.target).value)"
+        autocomplete="given-name"
+      />
+    </div>
+
+    <p class="welcome-label" style="margin-top: 1.5rem">Centres d’intérêt (facultatif)</p>
+    <div class="welcome-chips">
+      @for (c of chips; track c) {
+        <button
+          type="button"
+          class="chip"
+          [class.chip-on]="isSelected(c)"
+          (click)="toggleChip(c)"
+        >
+          {{ c }}
+        </button>
+      }
+    </div>
+
+    <button
+      type="button"
+      class="welcome-cta"
+      [disabled]="!canContinue"
+      (click)="continue()"
+    >
+      <span>Continuer vers le test</span>
+      <i class="pi pi-arrow-right welcome-cta-icon" aria-hidden="true"></i>
+    </button>
+
+    <a routerLink="/commencer" class="welcome-skip">Passer cette étape</a>
+  </div>
+</div>

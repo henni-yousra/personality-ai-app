@@ -6,7 +6,7 @@ toujours le trait le moins répondu, puis une question aléatoire pour ce trait.
 
 import random
 import math
-from typing import Optional, List, Dict
+from typing import Optional, List, Dict, Tuple
 from question_bank import QUESTIONS, ANSWER_OPTIONS, TRAIT_LABELS, TRAIT_EMOJIS
 from models import Question, AnswerOption, Archetype
 
@@ -125,41 +125,88 @@ def build_question(raw: dict) -> Question:
     )
 
 
-def select_next_question(session: dict) -> Optional[Question]:
-    """
-    Sélectionne la prochaine question la plus informative.
-    1. Identifie le trait avec le moins de réponses (parmi les traits non saturés).
-    2. Choisit aléatoirement une question non encore posée pour ce trait.
-    Si toutes les questions disponibles sont épuisées, retourne None.
-    """
-    used_ids = set(session.get("used_question_ids", []))
-    scores = session.get("scores", {})
+def ensure_traits_latent(session: dict) -> None:
+    """Initialise traits_latent (moyenne 0–1, variance de la moyenne, n, m2 Welford)."""
+    if "traits_latent" in session:
+        return
+    session["traits_latent"] = {
+        t: {"mean": 0.5, "variance": 0.25, "n": 0, "m2": 0.0} for t in TRAITS
+    }
 
-    # Questions encore disponibles
+
+def _latent_observation(polarity: int, answer: int) -> float:
+    """Valeur 0–1 : haut = fort sur le trait (question positive ou inversée)."""
+    if polarity == 1:
+        return (answer - 1) / 4.0
+    return (5 - answer) / 4.0
+
+
+def _welford_update(state: dict, x: float) -> None:
+    n = state["n"] + 1
+    delta = x - state["mean"]
+    mean = state["mean"] + delta / n
+    delta2 = x - mean
+    m2 = state.get("m2", 0.0) + delta * delta2
+    state["n"] = n
+    state["mean"] = mean
+    state["m2"] = m2
+    if n < 2:
+        state["variance"] = 0.25
+    else:
+        sample_var = m2 / (n - 1)
+        state["variance"] = (sample_var / n) if n > 0 else 0.25
+
+
+def select_next_question(session: dict) -> Tuple[Optional[Question], str]:
+    """
+    Choisit la question suivante : trait avec variance de la moyenne la plus élevée
+    (le plus incertain), puis difficulté adaptée (bas → haut si le trait se stabilise).
+    Retourne (Question | None, raison courte pour logs / API).
+    """
+    ensure_traits_latent(session)
+    used_ids = set(session.get("used_question_ids", []))
+
     available = [q for q in QUESTIONS if q["id"] not in used_ids]
     if not available:
-        return None
+        return None, "no_available_questions"
 
-    # Trait avec le moins de réponses parmi les disponibles
-    trait_counts = {t: scores.get(t, {}).get("count", 0) for t in TRAITS}
-
-    # Grouper les questions disponibles par trait
     available_by_trait: Dict[str, List[dict]] = {t: [] for t in TRAITS}
     for q in available:
         available_by_trait[q["trait"]].append(q)
 
-    # Filtrer les traits qui ont encore des questions disponibles
     traits_with_questions = [t for t in TRAITS if available_by_trait[t]]
-
     if not traits_with_questions:
-        return None
+        return None, "no_trait_slot"
 
-    # Choisir le trait le moins répondu parmi ceux disponibles
-    target_trait = min(traits_with_questions, key=lambda t: trait_counts.get(t, 0))
+    latent = session["traits_latent"]
 
-    # Sélectionner une question aléatoire pour ce trait
-    chosen_raw = random.choice(available_by_trait[target_trait])
-    return build_question(chosen_raw)
+    def trait_sort_key(t: str):
+        st = latent[t]
+        return (st["variance"], -st["n"])
+
+    target_trait = max(traits_with_questions, key=trait_sort_key)
+    st = latent[target_trait]
+    n_trait = int(st["n"])
+    var_trait = float(st["variance"])
+
+    if n_trait < 2 or var_trait > 0.08:
+        target_diff = 1
+    elif var_trait > 0.03:
+        target_diff = 2
+    else:
+        target_diff = 3
+
+    candidates = available_by_trait[target_trait]
+    dists = [abs(int(q.get("difficulty", 2)) - target_diff) for q in candidates]
+    best_d = min(dists)
+    pool = [q for q, d in zip(candidates, dists) if d == best_d]
+    chosen_raw = random.choice(pool)
+    diff = int(chosen_raw.get("difficulty", 2))
+    reason = (
+        f"trait={target_trait} var_mean={var_trait:.4f} n={n_trait} "
+        f"difficulty_pick={diff} (target={target_diff}) qid={chosen_raw['id']}"
+    )
+    return build_question(chosen_raw), reason
 
 
 def update_scores(session: dict, question_id: str, answer: int) -> dict:
@@ -182,6 +229,10 @@ def update_scores(session: dict, question_id: str, answer: int) -> dict:
 
     scores[trait]["total"] += contribution
     scores[trait]["count"] += 1
+
+    ensure_traits_latent(session)
+    x = _latent_observation(polarity, answer)
+    _welford_update(session["traits_latent"][trait], x)
 
     return session
 

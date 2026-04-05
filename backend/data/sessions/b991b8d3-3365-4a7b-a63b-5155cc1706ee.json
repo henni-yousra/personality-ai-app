@@ -1,0 +1,73 @@
+{
+  "session_id": "b991b8d3-3365-4a7b-a63b-5155cc1706ee",
+  "email": "t2@t.co",
+  "created_at": "2026-04-03T20:43:17.753888",
+  "updated_at": "2026-04-03T20:43:17.915171",
+  "responses": [
+    {
+      "question_id": "O5",
+      "question_text": "J'ai tendance à aborder les problèmes de façon créative et originale.",
+      "trait": "O",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-04-03T20:43:17.788847"
+    },
+    {
+      "question_id": "C2",
+      "question_text": "Je termine toujours ce que j'ai commencé.",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-04-03T20:43:17.828146"
+    },
+    {
+      "question_id": "E1",
+      "question_text": "Je me sens à l'aise pour engager la conversation avec des inconnus.",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-04-03T20:43:17.870824"
+    },
+    {
+      "question_id": "A5",
+      "question_text": "Je prends soin des autres et j'aime les aider.",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-04-03T20:43:17.914298"
+    }
+  ],
+  "used_question_ids": [
+    "O5",
+    "C2",
+    "E1",
+    "A5",
+    "N4"
+  ],
+  "completed": false,
+  "report": null,
+  "resend_count": 0,
+  "last_resend": null,
+  "scores": {
+    "O": {
+      "total": 3,
+      "count": 1
+    },
+    "C": {
+      "total": 3,
+      "count": 1
+    },
+    "E": {
+      "total": 3,
+      "count": 1
+    },
+    "A": {
+      "total": 3,
+      "count": 1
+    },
+    "N": {
+      "total": 0,
+      "count": 0
+    }
+  }
+}

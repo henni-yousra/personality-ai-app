@@ -1,0 +1,171 @@
+{
+  "session_id": "848943fa-7327-4146-b941-7575bb8f27f3",
+  "email": "hennimansour.yousrayasmine@gmail.com",
+  "created_at": "2026-04-03T20:14:13.771219",
+  "updated_at": "2026-04-03T20:14:56.581876",
+  "responses": [
+    {
+      "question_id": "O3",
+      "question_text": "Je préfère les routines connues plutôt que les nouvelles expériences.",
+      "trait": "O",
+      "polarity": -1,
+      "answer": 4,
+      "answered_at": "2026-04-03T20:14:25.648762"
+    },
+    {
+      "question_id": "C6",
+      "question_text": "Il m'arrive fréquemment d'oublier des engagements ou des rendez-vous.",
+      "trait": "C",
+      "polarity": -1,
+      "answer": 3,
+      "answered_at": "2026-04-03T20:14:31.143307"
+    },
+    {
+      "question_id": "E5",
+      "question_text": "Je parle facilement de moi-même et de mes expériences.",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 5,
+      "answered_at": "2026-04-03T20:14:32.620438"
+    },
+    {
+      "question_id": "A1",
+      "question_text": "Je ressens de l'empathie pour les personnes en difficulté.",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 2,
+      "answered_at": "2026-04-03T20:14:34.406669"
+    },
+    {
+      "question_id": "N2",
+      "question_text": "Mes humeurs sont stables et je change rarement d'état émotionnel.",
+      "trait": "N",
+      "polarity": -1,
+      "answer": 4,
+      "answered_at": "2026-04-03T20:14:35.886329"
+    },
+    {
+      "question_id": "O6",
+      "question_text": "Les sujets abstraits ou philosophiques m'ennuient rapidement.",
+      "trait": "O",
+      "polarity": -1,
+      "answer": 5,
+      "answered_at": "2026-04-03T20:14:37.357956"
+    },
+    {
+      "question_id": "C4",
+      "question_text": "Je fais attention aux détails et vérifie mon travail.",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-04-03T20:14:38.989136"
+    },
+    {
+      "question_id": "E4",
+      "question_text": "J'aime être au centre de l'attention lors de rassemblements.",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 2,
+      "answered_at": "2026-04-03T20:14:40.836066"
+    },
+    {
+      "question_id": "A5",
+      "question_text": "Je prends soin des autres et j'aime les aider.",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 4,
+      "answered_at": "2026-04-03T20:14:43.036680"
+    },
+    {
+      "question_id": "N5",
+      "question_text": "Je peux facilement être envahi(e) par des émotions intenses.",
+      "trait": "N",
+      "polarity": 1,
+      "answer": 5,
+      "answered_at": "2026-04-03T20:14:49.119438"
+    },
+    {
+      "question_id": "O2",
+      "question_text": "Je suis attiré(e) par l'art, la musique ou la littérature.",
+      "trait": "O",
+      "polarity": 1,
+      "answer": 2,
+      "answered_at": "2026-04-03T20:14:50.640791"
+    },
+    {
+      "question_id": "C1",
+      "question_text": "J'aime planifier mes tâches et suivre un planning précis.",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 5,
+      "answered_at": "2026-04-03T20:14:52.542905"
+    },
+    {
+      "question_id": "E3",
+      "question_text": "Les interactions sociales me donnent de l'énergie.",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 4,
+      "answered_at": "2026-04-03T20:14:53.872176"
+    },
+    {
+      "question_id": "A4",
+      "question_text": "Je trouve facilement quelque chose de positif chez chaque personne.",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-04-03T20:14:55.226622"
+    },
+    {
+      "question_id": "N1",
+      "question_text": "Je m'inquiète facilement pour des choses qui pourraient mal tourner.",
+      "trait": "N",
+      "polarity": 1,
+      "answer": 2,
+      "answered_at": "2026-04-03T20:14:56.581261"
+    }
+  ],
+  "used_question_ids": [
+    "O3",
+    "C6",
+    "E5",
+    "A1",
+    "N2",
+    "O6",
+    "C4",
+    "E4",
+    "A5",
+    "N5",
+    "O2",
+    "C1",
+    "E3",
+    "A4",
+    "N1"
+  ],
+  "completed": true,
+  "report": null,
+  "resend_count": 0,
+  "last_resend": null,
+  "scores": {
+    "O": {
+      "total": -7,
+      "count": 3
+    },
+    "C": {
+      "total": 5,
+      "count": 3
+    },
+    "E": {
+      "total": 11,
+      "count": 3
+    },
+    "A": {
+      "total": 9,
+      "count": 3
+    },
+    "N": {
+      "total": 3,
+      "count": 3
+    }
+  }
+}

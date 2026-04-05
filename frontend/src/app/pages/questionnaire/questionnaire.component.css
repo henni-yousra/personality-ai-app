@@ -3,6 +3,23 @@
   padding-top: 2rem;
 }
 
+.quiz-resume-loading {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-secondary);
+}
+
+::ng-deep .quiz-p-progress {
+  height: 6px;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+::ng-deep .quiz-p-progress .p-progressbar-value {
+  border-radius: 99px;
+  background: var(--gradient-progress) !important;
+}
+
 /* ── En-tête ───────────────────────────────────────────────────── */
 .quiz-header {
   display: grid;
@@ -23,7 +40,17 @@
   white-space: nowrap;
 }
 
-.quiz-logo span { color: var(--sage); }
+.quiz-logo-icon {
+  font-size: 1.15rem;
+  color: var(--color-violet);
+}
+
+.quiz-logo span {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 
 /* ── Carte de question ─────────────────────────────────────────── */
 .quiz-card {
@@ -37,11 +64,14 @@
 
 .question-number {
   font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--sage);
+  font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 1rem;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .question-text {
@@ -108,18 +138,18 @@
 }
 
 .answer-btn:hover:not(:disabled) .answer-circle {
-  border-color: var(--sage-light);
-  background: var(--sage-pale);
-  color: var(--sage);
+  border-color: var(--color-violet);
+  background: var(--color-indigo-soft);
+  color: var(--color-indigo);
   transform: scale(1.08);
 }
 
 .answer-btn.selected .answer-circle {
-  border-color: var(--sage);
-  background: var(--sage);
+  border-color: transparent;
+  background: var(--gradient-brand);
   color: white;
   transform: scale(1.12);
-  box-shadow: 0 4px 16px rgba(122, 148, 103, 0.35);
+  box-shadow: var(--shadow-brand);
 }
 
 .answer-label {
@@ -139,8 +169,8 @@
 }
 
 .answer-btn.selected .answer-label {
-  color: var(--sage);
-  font-weight: 500;
+  color: var(--color-violet);
+  font-weight: 600;
 }
 
 /* ── Actions ───────────────────────────────────────────────────── */
@@ -183,14 +213,27 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--sage-pale);
+  background: var(--bg-secondary);
+  border: 2px solid var(--border);
   transition: all var(--transition);
 }
 
+.trait-dot:nth-child(1) { background: var(--color-sky-soft); border-color: rgba(2, 132, 199, 0.35); }
+.trait-dot:nth-child(2) { background: var(--color-amber-soft); border-color: rgba(217, 119, 6, 0.35); }
+.trait-dot:nth-child(3) { background: var(--color-rose-soft); border-color: rgba(219, 39, 119, 0.35); }
+.trait-dot:nth-child(4) { background: var(--color-teal-soft); border-color: rgba(13, 148, 136, 0.35); }
+.trait-dot:nth-child(5) { background: var(--color-violet-soft); border-color: rgba(124, 58, 237, 0.35); }
+
 .trait-dot.active {
-  background: var(--sage);
-  transform: scale(1.3);
+  transform: scale(1.35);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
 }
+
+.trait-dot:nth-child(1).active { background: var(--color-sky); border-color: var(--color-sky); }
+.trait-dot:nth-child(2).active { background: var(--color-amber); border-color: var(--color-amber); }
+.trait-dot:nth-child(3).active { background: var(--color-rose); border-color: var(--color-rose); }
+.trait-dot:nth-child(4).active { background: var(--color-teal); border-color: var(--color-teal); }
+.trait-dot:nth-child(5).active { background: var(--color-violet); border-color: var(--color-violet); }
 
 /* ── Responsive ────────────────────────────────────────────────── */
 @media (max-width: 520px) {

@@ -1,12 +1,15 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { DecimalPipe } from '@angular/common';
+import { Button } from 'primeng/button';
+import { Message } from 'primeng/message';
 import { QuizService } from '../../services/quiz.service';
 import { Report, TraitScore } from '../../models/quiz.models';
+import { primeIconClassFromEmoji } from '../../utils/prime-icon-from-emoji';
 
 @Component({
   selector: 'app-results',
-  imports: [DecimalPipe],
+  imports: [DecimalPipe, RouterLink, Button, Message],
   templateUrl: './results.component.html',
   styleUrl: './results.component.css',
 })
@@ -21,6 +24,20 @@ export class ResultsComponent implements OnInit {
   resendError = signal('');
 
   readonly traitOrder = ['O', 'C', 'E', 'A', 'N'];
+
+  readonly primeIconClassFromEmoji = primeIconClassFromEmoji;
+
+  /** Icônes PrimeNG fixes par dimension Big Five (évite l’affichage d’emojis dans l’UI). */
+  traitPrimeIconClass(traitKey: string): string {
+    const map: Record<string, string> = {
+      O: 'pi pi-lightbulb',
+      C: 'pi pi-list-check',
+      E: 'pi pi-users',
+      A: 'pi pi-heart',
+      N: 'pi pi-chart-line',
+    };
+    return map[traitKey] ?? 'pi pi-circle';
+  }
 
   constructor(
     private route: ActivatedRoute,
@@ -72,25 +89,35 @@ export class ResultsComponent implements OnInit {
   }
 
   startAgain(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/commencer']);
   }
 
   getTraitScore(key: string): TraitScore | undefined {
     return this.report()?.traits?.[key];
   }
 
-  getScoreLevel(score: number): 'low' | 'mid' | 'high' {
-    if (score < 35) return 'low';
-    if (score > 65) return 'high';
-    return 'mid';
+  /** Couleur du texte du score (lisible sur fond clair). */
+  getTraitScoreColor(traitKey: string): string {
+    const c = this.traitPalette[traitKey];
+    return c?.solid ?? '#4b4658';
   }
 
-  getScoreColor(score: number): string {
-    const level = this.getScoreLevel(score);
-    if (level === 'high') return 'var(--sage)';
-    if (level === 'low') return 'var(--lavender)';
-    return 'var(--sand)';
+  /** Dégradé pour la barre de score selon le trait Big Five. */
+  getTraitBarGradient(traitKey: string): string {
+    const c = this.traitPalette[traitKey];
+    return c?.gradient ?? 'linear-gradient(90deg, #4f46e5, #7c3aed)';
   }
+
+  private readonly traitPalette: Record<
+    string,
+    { solid: string; gradient: string }
+  > = {
+    O: { solid: '#0284c7', gradient: 'linear-gradient(90deg, #0369a1, #38bdf8)' },
+    C: { solid: '#d97706', gradient: 'linear-gradient(90deg, #b45309, #fbbf24)' },
+    E: { solid: '#db2777', gradient: 'linear-gradient(90deg, #be185d, #f472b6)' },
+    A: { solid: '#0d9488', gradient: 'linear-gradient(90deg, #0f766e, #2dd4bf)' },
+    N: { solid: '#7c3aed', gradient: 'linear-gradient(90deg, #5b21b6, #a78bfa)' },
+  };
 
   orderedTraits(): Array<[string, TraitScore]> {
     const r = this.report();

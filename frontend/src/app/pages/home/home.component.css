@@ -1,3 +1,24 @@
+.home-back {
+  margin-bottom: 0.75rem;
+  font-size: 0.88rem;
+}
+
+.home-back a {
+  color: var(--text-muted);
+}
+
+.consent-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.consent-label {
+  margin-top: 0;
+  cursor: pointer;
+}
+
 .home-header {
   display: flex;
   align-items: center;
@@ -6,8 +27,20 @@
 }
 
 .home-logo {
-  font-size: 2rem;
+  display: flex;
+  align-items: center;
   line-height: 1;
+}
+
+.home-logo-icon {
+  font-size: 2rem;
+  color: var(--color-violet);
+}
+
+.home-back-icon {
+  font-size: 0.75rem;
+  margin-right: 0.2rem;
+  vertical-align: middle;
 }
 
 .home-hero {
@@ -20,7 +53,10 @@
 
 .home-hero h1 em {
   font-style: italic;
-  color: var(--sage);
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .home-subtitle {
@@ -48,13 +84,14 @@
 
 .feature-icon {
   font-size: 1rem;
+  color: var(--color-indigo);
 }
 
 .feature-dot {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: var(--sage-pale);
+  background: linear-gradient(180deg, var(--color-coral), var(--color-violet));
 }
 
 /* Carte */

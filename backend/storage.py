@@ -54,6 +54,13 @@ def create_session(session_id: str, email: str) -> dict:
             "A": {"total": 0, "count": 0},
             "N": {"total": 0, "count": 0},
         },
+        "traits_latent": {
+            "O": {"mean": 0.5, "variance": 0.25, "n": 0, "m2": 0.0},
+            "C": {"mean": 0.5, "variance": 0.25, "n": 0, "m2": 0.0},
+            "E": {"mean": 0.5, "variance": 0.25, "n": 0, "m2": 0.0},
+            "A": {"mean": 0.5, "variance": 0.25, "n": 0, "m2": 0.0},
+            "N": {"mean": 0.5, "variance": 0.25, "n": 0, "m2": 0.0},
+        },
     }
     save_session(session_id, session)
     return session
