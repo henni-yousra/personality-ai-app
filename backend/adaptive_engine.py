@@ -7,7 +7,14 @@ toujours le trait le moins répondu, puis une question aléatoire pour ce trait.
 import random
 import math
 from typing import Optional, List, Dict, Tuple
-from question_bank import QUESTIONS, ANSWER_OPTIONS, TRAIT_LABELS, TRAIT_EMOJIS
+from question_bank import (
+    QUESTIONS,
+    ANSWER_OPTIONS,
+    ANSWER_MIN,
+    ANSWER_MAX,
+    TRAIT_LABELS,
+    TRAIT_EMOJIS,
+)
 from models import Question, AnswerOption, Archetype
 
 
@@ -134,11 +141,18 @@ def ensure_traits_latent(session: dict) -> None:
     }
 
 
+def _answer_scale_denom() -> float:
+    return float(ANSWER_MAX - ANSWER_MIN)
+
+
 def _latent_observation(polarity: int, answer: int) -> float:
     """Valeur 0–1 : haut = fort sur le trait (question positive ou inversée)."""
+    d = _answer_scale_denom()
+    if d <= 0:
+        return 0.5
     if polarity == 1:
-        return (answer - 1) / 4.0
-    return (5 - answer) / 4.0
+        return (answer - ANSWER_MIN) / d
+    return (ANSWER_MAX - answer) / d
 
 
 def _welford_update(state: dict, x: float) -> None:
@@ -239,7 +253,7 @@ def select_next_question(session: dict) -> Tuple[Optional[Question], str]:
 def update_scores(session: dict, question_id: str, answer: int) -> dict:
     """
     Met à jour les scores de la session après une réponse.
-    Le score contribué = answer * polarity (sur une échelle 1–5 → −5 à 5).
+    Le score contribué = answer * polarity (échelle ANSWER_MIN–ANSWER_MAX → contribution par item bornée).
     """
     # Trouver la question dans la banque
     raw = next((q for q in QUESTIONS if q["id"] == question_id), None)
@@ -248,7 +262,7 @@ def update_scores(session: dict, question_id: str, answer: int) -> dict:
 
     trait = raw["trait"]
     polarity = raw["polarity"]
-    contribution = answer * polarity  # −5 à 5
+    contribution = answer * polarity
 
     scores = session.setdefault("scores", {})
     if trait not in scores:
@@ -267,8 +281,9 @@ def update_scores(session: dict, question_id: str, answer: int) -> dict:
 def compute_final_scores(session: dict) -> Dict[str, float]:
     """
     Convertit les scores bruts en pourcentages 0–100.
-    Score brut moyen ∈ [−5, 5] → normalisé en [0, 100].
+    Moyenne des contributions answer×polarity ∈ [−ANSWER_MAX, ANSWER_MAX] → [0, 100].
     """
+    span = float(ANSWER_MAX)
     scores = session.get("scores", {})
     result = {}
     for trait in TRAITS:
@@ -277,8 +292,8 @@ def compute_final_scores(session: dict) -> Dict[str, float]:
         if count == 0:
             result[trait] = 50.0  # valeur neutre par défaut
         else:
-            raw_avg = data["total"] / count  # ∈ [−5, 5]
-            normalized = (raw_avg + 5) / 10 * 100  # ∈ [0, 100]
+            raw_avg = data["total"] / count
+            normalized = (raw_avg + span) / (2.0 * span) * 100.0
             result[trait] = round(max(0.0, min(100.0, normalized)), 1)
     return result
 

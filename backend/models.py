@@ -10,7 +10,7 @@ class StartSessionRequest(BaseModel):
 
 class AnswerRequest(BaseModel):
     question_id: str
-    answer: int  # 1 à 5 (échelle de Likert)
+    answer: int  # indice de l’option choisie (voir ANSWER_OPTIONS côté API)
 
 
 class CdcSubmitResponseBody(BaseModel):

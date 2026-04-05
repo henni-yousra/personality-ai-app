@@ -34,27 +34,23 @@
           {{ question()!.text }}
         </h2>
 
-        <div class="answers-scale animate-fade-in delay-3">
-          <span class="scale-label scale-label-left">Pas du tout d'accord</span>
-
-          <div class="answer-options">
+        <div class="answers-block animate-fade-in delay-3">
+          <p class="answers-prompt">Choisissez la réponse qui vous correspond le mieux :</p>
+          <div class="answer-options answer-options-verbal">
             @for (opt of question()!.options; track opt.value) {
               <button
                 type="button"
-                class="answer-btn"
+                class="answer-btn answer-btn-verbal"
                 [class.selected]="selectedAnswer() === opt.value"
                 (click)="selectAnswer(opt.value)"
                 [attr.aria-label]="opt.label"
                 [attr.aria-pressed]="selectedAnswer() === opt.value"
                 [disabled]="loading()"
               >
-                <span class="answer-circle">{{ opt.value }}</span>
-                <span class="answer-label">{{ getOptionLabel(opt.value) }}</span>
+                {{ opt.label }}
               </button>
             }
           </div>
-
-          <span class="scale-label scale-label-right">Tout à fait d'accord</span>
         </div>
 
         @if (error()) {

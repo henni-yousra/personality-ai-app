@@ -203,13 +203,16 @@ for _i, _q in enumerate(QUESTIONS):
 
 TOTAL_QUESTIONS = 15  # Nombre de questions posées par session
 
+# 4 choix de réponse (plus de grille 1–5) — valeurs 1..4 conservées pour l’API et le scoring
 ANSWER_OPTIONS = [
-    {"value": 1, "label": "Pas du tout d'accord"},
-    {"value": 2, "label": "Plutôt en désaccord"},
-    {"value": 3, "label": "Neutre"},
-    {"value": 4, "label": "Plutôt d'accord"},
-    {"value": 5, "label": "Tout à fait d'accord"},
+    {"value": 1, "label": "Pas du tout"},
+    {"value": 2, "label": "Plutôt non"},
+    {"value": 3, "label": "Plutôt oui"},
+    {"value": 4, "label": "Tout à fait"},
 ]
+
+ANSWER_MIN = 1
+ANSWER_MAX = 4
 
 TRAIT_LABELS = {
     "O": "Ouverture",

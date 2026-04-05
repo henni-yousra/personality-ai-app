@@ -126,17 +126,6 @@ export class QuestionnaireComponent implements OnInit {
     return this.progress().percent;
   }
 
-  getOptionLabel(value: number): string {
-    const labels: Record<number, string> = {
-      1: 'Pas du tout',
-      2: 'Peu',
-      3: 'Neutre',
-      4: 'Plutôt',
-      5: 'Tout à fait',
-    };
-    return labels[value] ?? '';
-  }
-
   primaryActionLabel(): string {
     if (this.loading()) return 'Traitement…';
     if (this.progress().current >= this.progress().total) return 'Terminer le test';

@@ -38,7 +38,7 @@ from adaptive_engine import select_next_question, update_scores, build_question
 from report_generator import generate_report
 from email_service import send_report_email
 from llm_questions import maybe_reformulate_question_text
-from question_bank import TOTAL_QUESTIONS
+from question_bank import TOTAL_QUESTIONS, ANSWER_MIN, ANSWER_MAX
 
 app = FastAPI(
     title="Personality AI API",
@@ -127,8 +127,11 @@ def _core_start_session(body: StartSessionRequest) -> SessionStartResponse:
 
 def _core_submit_response(session_id: str, body: AnswerRequest) -> AnswerResponse:
     session = _validate_session_for_response(session_id)
-    if body.answer not in range(1, 6):
-        raise HTTPException(status_code=400, detail="La réponse doit être comprise entre 1 et 5.")
+    if body.answer not in range(ANSWER_MIN, ANSWER_MAX + 1):
+        raise HTTPException(
+            status_code=400,
+            detail=f"La réponse doit être un entier entre {ANSWER_MIN} et {ANSWER_MAX}.",
+        )
 
     from question_bank import QUESTIONS
     raw_q = next((q for q in QUESTIONS if q["id"] == body.question_id), None)
@@ -247,8 +250,11 @@ def questions_start(email: str, consent: bool = False):
 @app.post("/responses", response_model=AnswerResponse)
 def responses_cdc(body: CdcSubmitResponseBody):
     """Soumission d'une réponse (contrat CDC)."""
-    if body.answer_value not in range(1, 6):
-        raise HTTPException(status_code=400, detail="La réponse doit être comprise entre 1 et 5.")
+    if body.answer_value not in range(ANSWER_MIN, ANSWER_MAX + 1):
+        raise HTTPException(
+            status_code=400,
+            detail=f"La réponse doit être un entier entre {ANSWER_MIN} et {ANSWER_MAX}.",
+        )
     return _core_submit_response(
         body.session_id,
         AnswerRequest(question_id=body.question_id, answer=body.answer_value),
