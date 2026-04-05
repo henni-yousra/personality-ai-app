@@ -254,7 +254,46 @@
 }
 
 .home-hero h1 {
+  margin-bottom: 0.65rem;
+}
+
+.home-duration {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary);
   margin-bottom: 1rem;
+}
+
+.home-duration .pi {
+  font-size: 0.95rem;
+  color: var(--color-indigo);
+}
+
+.home-privacy {
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  padding: 1.1rem 1.25rem;
+  text-align: left;
+  border-color: var(--border);
+  background: var(--bg-card);
+}
+
+.home-privacy-title {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--text-heading);
+}
+
+.home-privacy-text {
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+  margin: 0;
 }
 
 .home-hero h1 em {

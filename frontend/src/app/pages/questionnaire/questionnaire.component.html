@@ -26,8 +26,15 @@
     @if (question()) {
       <div class="quiz-card card" [class.animating]="animating()">
 
-        <div class="question-number animate-fade-in delay-1">
-          Question {{ progress().current }} / {{ progress().total }}
+        <div class="question-meta animate-fade-in delay-1">
+          <span class="question-number">
+            Question {{ progress().current }} / {{ progress().total }}
+          </span>
+          @if (questionReformulated()) {
+            <span class="quiz-reformulated-badge" title="Énoncé reformulé par l’IA pour plus de clarté">
+              ✦ reformulée
+            </span>
+          }
         </div>
 
         <h2 class="question-text animate-fade-in delay-2">

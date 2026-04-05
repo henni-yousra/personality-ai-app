@@ -29,6 +29,13 @@ export const routes: Routes = [
       import('./pages/results/results.component').then((m) => m.ResultsComponent),
   },
   {
+    path: 'big-five',
+    loadComponent: () =>
+      import('./pages/big-five-traits/big-five-traits.component').then(
+        (m) => m.BigFiveTraitsComponent
+      ),
+  },
+  {
     path: '**',
     redirectTo: '',
   },

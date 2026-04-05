@@ -274,7 +274,24 @@
 /* ── Section titles ────────────────────────────────────────────── */
 .section-title {
   font-size: 1.5rem;
+  margin-bottom: 0;
+}
+
+.traits-section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.25rem;
   margin-bottom: 1.5rem;
+}
+
+.traits-section-head .section-title {
+  margin-bottom: 0;
+}
+
+.traits-section .traits-grid {
+  margin-top: 0;
 }
 
 /* ── Grille des traits ─────────────────────────────────────────── */

@@ -86,7 +86,11 @@ export class HomeComponent implements OnInit {
           }
           void this.router
             .navigate(['/questionnaire', res.session_id], {
-              state: { question: res.question, progress: res.progress },
+              state: {
+                question: res.question,
+                progress: res.progress,
+                reformulated: res.reformulated === true,
+              },
             })
             .then((ok) => {
               if (!ok) {

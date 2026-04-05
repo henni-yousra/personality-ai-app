@@ -70,7 +70,17 @@
 
         <!-- (2) Traits Big Five -->
         <section class="traits-section animate-fade-in delay-2">
-          <h2 class="section-title">Vos cinq dimensions</h2>
+          <div class="traits-section-head">
+            <h2 class="section-title">Vos cinq dimensions</h2>
+            <p-button
+              type="button"
+              label="Comprendre les 5 traits"
+              icon="pi pi-book"
+              [outlined]="true"
+              styleClass="traits-guide-btn"
+              (onClick)="openBigFiveGuide()"
+            />
+          </div>
 
           <div class="traits-grid">
             @for (entry of orderedTraits(); track entry[0]; let i = $index) {

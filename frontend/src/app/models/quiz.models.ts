@@ -35,6 +35,7 @@ export interface SessionStartResponse {
   question: Question;
   progress: Progress;
   selection_reason?: string | null;
+  reformulated?: boolean;
 }
 
 export interface AnswerResponse {
@@ -42,6 +43,7 @@ export interface AnswerResponse {
   completed: boolean;
   progress: Progress;
   selection_reason?: string | null;
+  reformulated?: boolean;
 }
 
 export interface TraitScore {

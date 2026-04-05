@@ -92,6 +92,11 @@ export class ResultsComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+  /** Page pédagogique sur les cinq dimensions du Big Five. */
+  openBigFiveGuide(): void {
+    void this.router.navigate(['/big-five']);
+  }
+
   getTraitScore(key: string): TraitScore | undefined {
     return this.report()?.traits?.[key];
   }

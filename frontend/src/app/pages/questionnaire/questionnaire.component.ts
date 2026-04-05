@@ -21,6 +21,8 @@ export class QuestionnaireComponent implements OnInit {
   resuming = signal(false);
   animating = signal(false);
   error = signal('');
+  /** True si l’énoncé affiché a été reformulé par le LLM (réponse API). */
+  questionReformulated = signal(false);
 
   constructor(
     private route: ActivatedRoute,
@@ -43,10 +45,15 @@ export class QuestionnaireComponent implements OnInit {
       return;
     }
 
-    const state = history.state as { question?: Question; progress?: Progress };
+    const state = history.state as {
+      question?: Question;
+      progress?: Progress;
+      reformulated?: boolean;
+    };
     if (state?.question && state?.progress) {
       this.question.set(state.question);
       this.progress.set(state.progress);
+      this.questionReformulated.set(state.reformulated === true);
       return;
     }
 
@@ -63,6 +70,7 @@ export class QuestionnaireComponent implements OnInit {
           return;
         }
         this.question.set(s.current_question);
+        this.questionReformulated.set(false);
         const t = s.progress.total;
         const idx = s.current_question_index;
         const percent = t > 0 ? Math.round((idx / t) * 1000) / 10 : 0;
@@ -108,6 +116,7 @@ export class QuestionnaireComponent implements OnInit {
           this.animating.set(true);
           setTimeout(() => {
             this.question.set(res.question);
+            this.questionReformulated.set(res.reformulated === true);
             this.selectedAnswer.set(null);
             this.loading.set(false);
             this.animating.set(false);

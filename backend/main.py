@@ -111,9 +111,10 @@ def _core_start_session(body: StartSessionRequest) -> SessionStartResponse:
     if question is None:
         raise HTTPException(status_code=500, detail="Impossible de charger les questions.")
 
-    question = question.model_copy(
-        update={"text": maybe_reformulate_question_text(question.text)}
+    q_text, was_reformulated = maybe_reformulate_question_text(
+        question.text, question.id
     )
+    question = question.model_copy(update={"text": q_text})
     session["used_question_ids"].append(question.id)
     save_session(session_id, session)
 
@@ -122,6 +123,7 @@ def _core_start_session(body: StartSessionRequest) -> SessionStartResponse:
         question=question,
         progress=_build_progress(session),
         selection_reason=selection_reason,
+        reformulated=was_reformulated,
     )
 
 
@@ -163,6 +165,7 @@ def _core_submit_response(session_id: str, body: AnswerRequest) -> AnswerRespons
             completed=True,
             progress=_build_progress(session),
             selection_reason=None,
+            reformulated=False,
         )
 
     next_q, selection_reason = select_next_question(session)
@@ -174,11 +177,11 @@ def _core_submit_response(session_id: str, body: AnswerRequest) -> AnswerRespons
             completed=True,
             progress=_build_progress(session),
             selection_reason=None,
+            reformulated=False,
         )
 
-    next_q = next_q.model_copy(
-        update={"text": maybe_reformulate_question_text(next_q.text)}
-    )
+    n_text, n_ref = maybe_reformulate_question_text(next_q.text, next_q.id)
+    next_q = next_q.model_copy(update={"text": n_text})
     session["used_question_ids"].append(next_q.id)
     save_session(session_id, session)
 
@@ -187,6 +190,7 @@ def _core_submit_response(session_id: str, body: AnswerRequest) -> AnswerRespons
         completed=False,
         progress=_build_progress(session),
         selection_reason=selection_reason,
+        reformulated=n_ref,
     )
 
 
