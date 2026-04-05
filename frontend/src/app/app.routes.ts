@@ -4,12 +4,12 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./pages/welcome/welcome.component').then((m) => m.WelcomeComponent),
+      import('./pages/home/home.component').then((m) => m.HomeComponent),
   },
   {
     path: 'commencer',
-    loadComponent: () =>
-      import('./pages/home/home.component').then((m) => m.HomeComponent),
+    redirectTo: '',
+    pathMatch: 'full',
   },
   {
     path: 'questionnaire/:sessionId',

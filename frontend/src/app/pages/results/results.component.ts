@@ -89,7 +89,7 @@ export class ResultsComponent implements OnInit {
   }
 
   startAgain(): void {
-    this.router.navigate(['/commencer']);
+    this.router.navigate(['/']);
   }
 
   getTraitScore(key: string): TraitScore | undefined {

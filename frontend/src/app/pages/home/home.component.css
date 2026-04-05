@@ -1,10 +1,153 @@
-.home-back {
-  margin-bottom: 0.75rem;
-  font-size: 0.88rem;
+.home-page {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
 }
 
-.home-back a {
+.home-wave {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 128px;
+  background: linear-gradient(
+    115deg,
+    rgba(79, 70, 229, 0.45) 0%,
+    rgba(124, 58, 237, 0.4) 22%,
+    rgba(219, 39, 119, 0.35) 48%,
+    rgba(14, 165, 233, 0.38) 72%,
+    rgba(244, 63, 94, 0.32) 100%
+  );
+  clip-path: ellipse(120% 100% at 50% 0%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.home-page .page-container {
+  position: relative;
+  z-index: 1;
+}
+
+.home-page-outer {
+  align-items: stretch;
+  justify-content: flex-start;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.home-shell {
+  width: 100%;
+}
+
+/* Deux colonnes : gauche = message, droite = carte (formulaire) */
+.home-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .home-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 400px);
+    gap: 2.5rem 3rem;
+  }
+
+  .home-layout-right {
+    position: sticky;
+    top: 2rem;
+  }
+}
+
+.home-layout-left {
+  text-align: left;
+}
+
+.home-layout-left .home-header {
+  margin-bottom: 1.75rem;
+}
+
+.home-layout-left .home-hero {
+  margin-bottom: 1.75rem;
+}
+
+.home-layout-left .home-subtitle {
+  max-width: 36rem;
+}
+
+.home-layout-left .home-features {
+  margin-bottom: 0;
+}
+
+.home-profile {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.home-email-block {
+  margin-top: 1.25rem;
+}
+
+.home-profile-title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin-bottom: 0.35rem;
+  color: var(--text-primary);
+}
+
+.home-profile-lead {
+  font-size: 0.88rem;
   color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 1rem;
+}
+
+.home-profile-input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border);
+  background: var(--bg-card);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.home-profile-input:focus {
+  outline: none;
+  border-color: var(--color-violet);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+}
+
+.home-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.chip {
+  border: 1.5px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  padding: 0.45rem 0.9rem;
+  border-radius: 99px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.chip:hover {
+  transform: translateY(-1px);
+}
+
+.chip-on {
+  border-color: var(--color-violet);
+  background: linear-gradient(135deg, var(--color-indigo-soft), var(--color-rose-soft));
+  color: var(--color-indigo);
+  font-weight: 500;
 }
 
 .consent-row {
@@ -35,12 +178,6 @@
 .home-logo-icon {
   font-size: 2rem;
   color: var(--color-violet);
-}
-
-.home-back-icon {
-  font-size: 0.75rem;
-  margin-right: 0.2rem;
-  vertical-align: middle;
 }
 
 .home-hero {
@@ -94,9 +231,9 @@
   background: linear-gradient(180deg, var(--color-coral), var(--color-violet));
 }
 
-/* Carte */
+/* Carte (colonne droite) */
 .home-card {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
 }
 
 .home-card h3 {
@@ -131,9 +268,12 @@
   display: inline-block;
 }
 
-/* Footer */
+/* Footer (pleine largeur sous les colonnes) */
 .home-footer {
   text-align: center;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
 }
 
 .home-footer p {

@@ -1,5 +1,5 @@
-import { Component, computed, signal } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Component, OnInit, computed, signal } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { InputText } from 'primeng/inputtext';
@@ -8,13 +8,20 @@ import { Button } from 'primeng/button';
 import { Message } from 'primeng/message';
 import { QuizService } from '../../services/quiz.service';
 
+const STORAGE_FIRST = 'quiz_profile_first_name';
+const STORAGE_INTERESTS = 'quiz_profile_interests';
+
 @Component({
   selector: 'app-home',
-  imports: [FormsModule, RouterLink, InputText, Checkbox, Button, Message],
+  imports: [FormsModule, InputText, Checkbox, Button, Message],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  firstName = signal('');
+  readonly chips = ['Sport', 'Créativité', 'Tech', 'Nature', 'Social', 'Lecture'];
+  selected = signal<Set<string>>(new Set());
+
   email = signal('');
   consent = signal(false);
   loading = signal(false);
@@ -31,11 +38,40 @@ export class HomeComponent {
     private router: Router
   ) {}
 
+  ngOnInit(): void {
+    try {
+      const fn = localStorage.getItem(STORAGE_FIRST);
+      if (fn) this.firstName.set(fn);
+      const raw = localStorage.getItem(STORAGE_INTERESTS);
+      if (raw) this.selected.set(new Set(JSON.parse(raw) as string[]));
+    } catch {
+      /* ignore */
+    }
+  }
+
+  toggleChip(label: string): void {
+    const next = new Set(this.selected());
+    if (next.has(label)) next.delete(label);
+    else next.add(label);
+    this.selected.set(next);
+  }
+
+  isSelected(label: string): boolean {
+    return this.selected().has(label);
+  }
+
   startTest(): void {
     if (!this.canStart()) return;
 
     this.loading.set(true);
     this.error.set('');
+
+    try {
+      localStorage.setItem(STORAGE_FIRST, this.firstName().trim());
+      localStorage.setItem(STORAGE_INTERESTS, JSON.stringify([...this.selected()]));
+    } catch {
+      /* ignore */
+    }
 
     const email = this.email().trim();
     this.quizService

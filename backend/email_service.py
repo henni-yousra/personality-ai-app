@@ -106,16 +106,22 @@ def _build_html(report: Report, email: str) -> str:
 </html>"""
 
 
-def send_report_email(to_email: str, report: Report) -> bool:
+def send_report_email(to_email: str, report: Report) -> tuple[bool, str | None]:
     """
-    Envoie le rapport par e-mail via SMTP. Retourne True si succès.
+    Envoie le rapport par e-mail via SMTP.
 
-    Variables d'environnement :
+    Retourne (True, None) si succès, sinon (False, code) avec :
+      - \"missing_credentials\" : aucun couple user/mot de passe configuré
+      - \"smtp_failed\"         : erreur réseau / SMTP (détails dans les logs serveur)
+
+    Variables d'environnement (priorité SMTP_*, sinon alias Gmail) :
       SMTP_HOST         — serveur SMTP  (défaut: smtp.gmail.com)
-      SMTP_PORT         — port          (défaut: 465)
+      SMTP_PORT         — port          (défaut: 465 ; 587 + STARTTLS si besoin)
       SMTP_USER         — adresse d'envoi
-      SMTP_PASSWORD     — mot de passe / app password
+      SMTP_PASSWORD     — mot de passe ou mot de passe d'application
       SMTP_FROM_NAME    — nom affiché   (défaut: Persona Test)
+      GMAIL_USER        — alias de SMTP_USER
+      GMAIL_APP_PASSWORD — alias de SMTP_PASSWORD
     """
     smtp_host = os.getenv("SMTP_HOST", "smtp.gmail.com")
     smtp_port = int(os.getenv("SMTP_PORT", "465"))
@@ -124,8 +130,11 @@ def send_report_email(to_email: str, report: Report) -> bool:
     from_name = os.getenv("SMTP_FROM_NAME", "Persona Test")
 
     if not smtp_user or not smtp_password:
-        print("[WARN] SMTP_USER/SMTP_PASSWORD non définis — e-mail non envoyé.")
-        return False
+        print(
+            "[WARN] E-mail non envoyé : définissez SMTP_USER et SMTP_PASSWORD "
+            "(ou GMAIL_USER et GMAIL_APP_PASSWORD)."
+        )
+        return False, "missing_credentials"
 
     msg = MIMEMultipart("alternative")
     msg["Subject"] = f"Votre rapport Persona — {report.archetype.name}"
@@ -148,7 +157,7 @@ def send_report_email(to_email: str, report: Report) -> bool:
                 server.login(smtp_user, smtp_password)
                 server.sendmail(smtp_user, to_email, msg.as_string())
         print(f"[OK] E-mail envoyé à {to_email}")
-        return True
+        return True, None
     except Exception as e:
         print(f"[ERR] Erreur envoi e-mail : {e}")
-        return False
+        return False, "smtp_failed"

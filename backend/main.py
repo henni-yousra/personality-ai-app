@@ -8,8 +8,15 @@ Endpoints hérités :
 """
 
 import uuid
+from pathlib import Path
+
 from dotenv import load_dotenv
-load_dotenv()
+
+# Charge backend/.env même si uvicorn est lancé depuis la racine du dépôt
+_backend_dir = Path(__file__).resolve().parent
+load_dotenv(_backend_dir / ".env")
+load_dotenv(_backend_dir.parent / ".env")
+
 from datetime import datetime
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -284,8 +291,16 @@ async def get_report(session_id: str):
     session["report"] = report.model_dump()
     save_session(session_id, session)
 
-    # Envoyer le rapport par e-mail
-    send_report_email(session["email"], report)
+    # Envoyer le rapport par e-mail (le rapport reste disponible même si l'envoi échoue)
+    ok, mail_reason = send_report_email(session["email"], report)
+    if not ok:
+        if mail_reason == "missing_credentials":
+            print(
+                "[WARN] Rapport généré mais e-mail non envoyé : "
+                "SMTP_USER/SMTP_PASSWORD (ou GMAIL_USER/GMAIL_APP_PASSWORD) non définis."
+            )
+        else:
+            print("[WARN] Rapport généré mais e-mail non envoyé (échec SMTP — voir logs).")
 
     return ReportResponse(report=report, email=session["email"])
 
@@ -307,17 +322,27 @@ def resend_report(session_id: str):
         )
 
     report = _reconstruct_report_from_cache(session["report"])
-    success = send_report_email(session["email"], report)
+    success, mail_reason = send_report_email(session["email"], report)
+
+    if not success:
+        if mail_reason == "missing_credentials":
+            detail = (
+                "Envoi d'e-mail non configuré. Définissez SMTP_USER et SMTP_PASSWORD "
+                "dans l'environnement du backend (ou GMAIL_USER et GMAIL_APP_PASSWORD). "
+                "Pour Gmail : compte Google → Sécurité → validation en deux étapes → "
+                "mots de passe des applications."
+            )
+        else:
+            detail = (
+                "L'envoi SMTP a échoué (réseau, port, identifiants ou blocage du fournisseur). "
+                "Vérifiez SMTP_HOST, SMTP_PORT (465 SSL ou 587 STARTTLS), le compte et le mot de passe ; "
+                "consultez les logs du serveur pour le détail."
+            )
+        raise HTTPException(status_code=503, detail=detail)
 
     session["resend_count"] = resend_count + 1
     session["last_resend"] = datetime.utcnow().isoformat()
     save_session(session_id, session)
-
-    if not success:
-        raise HTTPException(
-            status_code=503,
-            detail="Impossible d'envoyer l'e-mail. Vérifiez la configuration GMAIL_USER et GMAIL_APP_PASSWORD.",
-        )
 
     return ResendEmailResponse(
         success=True,

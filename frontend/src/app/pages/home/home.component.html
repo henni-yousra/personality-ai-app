@@ -1,98 +1,140 @@
-<div class="page-container">
-  <div class="container animate-fade-in">
+<div class="home-page">
+  <div class="home-wave" aria-hidden="true"></div>
 
-    <header class="home-header animate-fade-in delay-1">
-      <div class="home-logo" aria-hidden="true">
-        <i class="pi pi-sparkles home-logo-icon"></i>
+  <div class="page-container home-page-outer">
+    <div class="container-wide home-shell animate-fade-in">
+      <div class="home-layout">
+        <div class="home-layout-left">
+          <header class="home-header animate-fade-in delay-1">
+            <div class="home-logo" aria-hidden="true">
+              <i class="pi pi-sparkles home-logo-icon"></i>
+            </div>
+            <span class="badge badge-sage">Test de personnalité · Big Five</span>
+          </header>
+
+          <div class="home-hero animate-fade-in delay-2">
+            <h1>Découvrez qui<br><em>vous êtes vraiment</em></h1>
+            <p class="home-subtitle">
+              Un test adaptatif guidé par l'intelligence artificielle pour révéler
+              votre profil de personnalité unique selon le modèle Big Five.
+            </p>
+          </div>
+
+          <div class="home-features animate-fade-in delay-3">
+            <div class="feature-item">
+              <i class="pi pi-sparkles feature-icon" aria-hidden="true"></i>
+              <span>Adaptatif & personnalisé</span>
+            </div>
+            <div class="feature-dot"></div>
+            <div class="feature-item">
+              <i class="pi pi-clock feature-icon" aria-hidden="true"></i>
+              <span>~7 minutes</span>
+            </div>
+            <div class="feature-dot"></div>
+            <div class="feature-item">
+              <i class="pi pi-envelope feature-icon" aria-hidden="true"></i>
+              <span>Rapport par e-mail</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="home-layout-right">
+          <div class="card home-card animate-fade-in delay-4">
+            <h3>Commencer le test</h3>
+            <p class="card-desc">
+              Renseignez votre e-mail pour recevoir votre rapport personnalisé.
+            </p>
+
+            <div class="form-group home-email-block">
+              <label class="form-label" for="email">Adresse e-mail</label>
+              <input
+                id="email"
+                pInputText
+                fluid
+                type="email"
+                placeholder="votre@email.com"
+                [value]="email()"
+                (input)="email.set($any($event.target).value)"
+                autocomplete="email"
+                class="w-full"
+              />
+            </div>
+
+            <div class="home-profile">
+              <h4 class="home-profile-title">Personnalisation (facultatif)</h4>
+              <p class="home-profile-lead">
+                Prénom ou centres d’intérêt : ce n’est pas utilisé pour les scores, mais cela peut
+                personnaliser l’expérience.
+              </p>
+              <div class="form-group">
+                <label class="form-label" for="prenom">Prénom ou pseudo</label>
+                <input
+                  id="prenom"
+                  type="text"
+                  class="home-profile-input"
+                  placeholder="Alex"
+                  [value]="firstName()"
+                  (input)="firstName.set($any($event.target).value)"
+                  autocomplete="given-name"
+                />
+              </div>
+              <p class="form-label" style="margin-top: 1rem">Centres d’intérêt</p>
+              <div class="home-chips">
+                @for (c of chips; track c) {
+                  <button
+                    type="button"
+                    class="chip"
+                    [class.chip-on]="isSelected(c)"
+                    (click)="toggleChip(c)"
+                  >
+                    {{ c }}
+                  </button>
+                }
+              </div>
+            </div>
+
+
+
+            <div class="consent-row">
+              <p-checkbox
+                inputId="consent"
+                name="consent"
+                [binary]="true"
+                [ngModel]="consent()"
+                (ngModelChange)="consent.set($event)"
+              />
+              <label for="consent" class="checkbox-label consent-label">
+                J'accepte que mes réponses soient traitées anonymement pour générer
+                mon rapport de personnalité. Ces données ne seront pas partagées avec
+                des tiers.
+              </label>
+            </div>
+
+            @if (error()) {
+              <p-message severity="error" [text]="error()" styleClass="w-full mt-3" />
+            }
+
+            
+            <p-button
+              type="button"
+              icon="pi pi-arrow-right"
+              iconPos="right"
+              label="Commencer mon test"
+              styleClass="w-full mt-4"
+              [disabled]="!canStart()"
+              [loading]="loading()"
+              (onClick)="startTest()"
+            />
+          </div>
+        </div>
       </div>
-      <span class="badge badge-sage">Test de personnalité · Big Five</span>
-    </header>
 
-      <p class="home-back">
-      <a routerLink="/"><i class="pi pi-arrow-left home-back-icon" aria-hidden="true"></i> Retour</a>
-    </p>
-
-    <div class="home-hero animate-fade-in delay-2">
-      <h1>Découvrez qui<br><em>vous êtes vraiment</em></h1>
-      <p class="home-subtitle">
-        Un test adaptatif guidé par l'intelligence artificielle pour révéler
-        votre profil de personnalité unique selon le modèle Big Five.
-      </p>
+      <footer class="home-footer animate-fade-in delay-5">
+        <p>
+          Ce test est à visée informative uniquement.<br>
+          Il ne constitue pas un diagnostic médical ou psychologique.
+        </p>
+      </footer>
     </div>
-
-    <div class="home-features animate-fade-in delay-3">
-      <div class="feature-item">
-        <i class="pi pi-sparkles feature-icon" aria-hidden="true"></i>
-        <span>Adaptatif & personnalisé</span>
-      </div>
-      <div class="feature-dot"></div>
-      <div class="feature-item">
-        <i class="pi pi-clock feature-icon" aria-hidden="true"></i>
-        <span>~7 minutes</span>
-      </div>
-      <div class="feature-dot"></div>
-      <div class="feature-item">
-        <i class="pi pi-envelope feature-icon" aria-hidden="true"></i>
-        <span>Rapport par e-mail</span>
-      </div>
-    </div>
-
-    <div class="card home-card animate-fade-in delay-4">
-      <h3>Commencer le test</h3>
-      <p class="card-desc">Renseignez votre e-mail pour recevoir votre rapport personnalisé.</p>
-
-      <div class="form-group" style="margin-top: 1.5rem;">
-        <label class="form-label" for="email">Adresse e-mail</label>
-        <input
-          id="email"
-          pInputText
-          fluid
-          type="email"
-          placeholder="votre@email.com"
-          [value]="email()"
-          (input)="email.set($any($event.target).value)"
-          autocomplete="email"
-          class="w-full"
-        />
-      </div>
-
-      <div class="consent-row">
-        <p-checkbox
-          inputId="consent"
-          name="consent"
-          [binary]="true"
-          [ngModel]="consent()"
-          (ngModelChange)="consent.set($event)"
-        />
-        <label for="consent" class="checkbox-label consent-label">
-          J'accepte que mes réponses soient traitées anonymement pour générer
-          mon rapport de personnalité. Ces données ne seront pas partagées avec
-          des tiers.
-        </label>
-      </div>
-
-      @if (error()) {
-        <p-message severity="error" [text]="error()" styleClass="w-full mt-3" />
-      }
-
-      <p-button
-        type="button"
-        icon="pi pi-arrow-right"
-        iconPos="right"
-        label="Commencer mon test"
-        styleClass="w-full mt-4"
-        [disabled]="!canStart()"
-        [loading]="loading()"
-        (onClick)="startTest()"
-      />
-    </div>
-
-    <footer class="home-footer animate-fade-in delay-5">
-      <p>
-        Ce test est à visée informative uniquement.<br>
-        Il ne constitue pas un diagnostic médical ou psychologique.
-      </p>
-    </footer>
-
   </div>
 </div>

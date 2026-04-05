@@ -39,7 +39,7 @@ export class QuestionnaireComponent implements OnInit {
     }
     this.sessionId.set(id);
     if (!id) {
-      this.router.navigate(['/commencer']);
+      this.router.navigate(['/']);
       return;
     }
 
@@ -59,7 +59,7 @@ export class QuestionnaireComponent implements OnInit {
           return;
         }
         if (!s.current_question) {
-          this.router.navigate(['/commencer']);
+          this.router.navigate(['/']);
           return;
         }
         this.question.set(s.current_question);
@@ -74,7 +74,7 @@ export class QuestionnaireComponent implements OnInit {
       },
       error: () => {
         this.resuming.set(false);
-        this.router.navigate(['/commencer']);
+        this.router.navigate(['/']);
       },
     });
   }
