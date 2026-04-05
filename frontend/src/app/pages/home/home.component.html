@@ -93,38 +93,39 @@
               </div>
             </div>
 
+            <div class="home-card-bottom">
+              <div class="consent-row">
+                <p-checkbox
+                  inputId="consent"
+                  name="consent"
+                  [binary]="true"
+                  [ngModel]="consent()"
+                  (ngModelChange)="consent.set($event)"
+                />
+                <label for="consent" class="checkbox-label consent-label">
+                  J'accepte que mes réponses soient traitées anonymement pour générer
+                  mon rapport de personnalité. Ces données ne seront pas partagées avec
+                  des tiers.
+                </label>
+              </div>
 
+              @if (error()) {
+                <p-message severity="error" [text]="error()" styleClass="w-full home-card-error" />
+              }
 
-            <div class="consent-row">
-              <p-checkbox
-                inputId="consent"
-                name="consent"
-                [binary]="true"
-                [ngModel]="consent()"
-                (ngModelChange)="consent.set($event)"
-              />
-              <label for="consent" class="checkbox-label consent-label">
-                J'accepte que mes réponses soient traitées anonymement pour générer
-                mon rapport de personnalité. Ces données ne seront pas partagées avec
-                des tiers.
-              </label>
+              <div class="home-card-cta-row">
+                <p-button
+                  type="button"
+                  icon="pi pi-arrow-right"
+                  iconPos="right"
+                  label="Commencer mon test"
+                  styleClass="home-start-btn"
+                  [disabled]="!canStart()"
+                  [loading]="loading()"
+                  (onClick)="startTest()"
+                />
+              </div>
             </div>
-
-            @if (error()) {
-              <p-message severity="error" [text]="error()" styleClass="w-full mt-3" />
-            }
-
-            
-            <p-button
-              type="button"
-              icon="pi pi-arrow-right"
-              iconPos="right"
-              label="Commencer mon test"
-              styleClass="w-full mt-4"
-              [disabled]="!canStart()"
-              [loading]="loading()"
-              (onClick)="startTest()"
-            />
           </div>
         </div>
       </div>

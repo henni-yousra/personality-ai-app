@@ -35,8 +35,13 @@
   padding-bottom: 2.5rem;
 }
 
-.home-shell {
+/* Plus large que .container-wide global (960px) : bloc moins « étroit » au centre */
+.home-shell.container-wide {
   width: 100%;
+  max-width: min(1240px, calc(100vw - 3rem));
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
 }
 
 /* Deux colonnes : gauche = message, droite = carte (formulaire) */
@@ -49,13 +54,26 @@
 
 @media (min-width: 900px) {
   .home-layout {
-    grid-template-columns: minmax(0, 1fr) minmax(300px, 400px);
-    gap: 2.5rem 3rem;
+    grid-template-columns: minmax(0, 1.1fr) minmax(340px, 520px);
+    gap: 2.5rem 3.5rem;
+    align-items: stretch;
   }
 
   .home-layout-right {
     position: sticky;
     top: 2rem;
+    align-self: stretch;
+  }
+}
+
+@media (min-width: 1200px) {
+  .home-shell.container-wide {
+    max-width: min(1320px, calc(100vw - 4rem));
+  }
+
+  .home-layout {
+    grid-template-columns: minmax(0, 1.15fr) minmax(380px, 560px);
+    gap: 3rem 4rem;
   }
 }
 
@@ -64,15 +82,16 @@
 }
 
 .home-layout-left .home-header {
-  margin-bottom: 1.75rem;
+  margin-bottom: 2.85rem;
 }
 
 .home-layout-left .home-hero {
+  margin-top: 0.35rem;
   margin-bottom: 1.75rem;
 }
 
 .home-layout-left .home-subtitle {
-  max-width: 36rem;
+  max-width: 42rem;
 }
 
 .home-layout-left .home-features {
@@ -157,6 +176,45 @@
   margin-top: 1.25rem;
 }
 
+.home-layout-right {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Bas de carte : consentement + erreur + CTA ; sur grand écran le bloc descend avec la hauteur de ligne */
+.home-card-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 2rem;
+  margin-top: 1.25rem;
+}
+
+.home-card-bottom .consent-row {
+  margin-top: 0;
+}
+
+@media (min-width: 900px) {
+  .home-card-bottom {
+    margin-top: auto;
+    padding-top: 1.5rem;
+    gap: 2.25rem;
+  }
+}
+
+:host ::ng-deep .home-card-error {
+  margin-top: 0 !important;
+}
+
+.home-card-cta-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+:host ::ng-deep .home-card-cta-row .p-button {
+  width: auto;
+}
+
 .consent-label {
   margin-top: 0;
   cursor: pointer;
@@ -198,7 +256,7 @@
 
 .home-subtitle {
   font-size: 1.05rem;
-  max-width: 520px;
+  max-width: 38rem;
   color: var(--text-secondary);
 }
 
@@ -234,6 +292,10 @@
 /* Carte (colonne droite) */
 .home-card {
   margin-bottom: 0;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 .home-card h3 {
