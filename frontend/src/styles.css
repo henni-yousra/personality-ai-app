@@ -87,6 +87,17 @@
 
   --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --sticky-header-bg: rgba(245, 245, 240, 0.92);
+  --disclaimer-bg: var(--palette-footer-sage);
+  --disclaimer-text: var(--palette-text-body);
+  --msg-error-text: #c62828;
+  --msg-error-border: rgba(244, 67, 54, 0.45);
+  --msg-error-bg: var(--color-coral-soft);
+
+  --loading-orb-gradient: linear-gradient(135deg, #8fa882, #d4a843, #87aabf);
+  --loading-pulse-mid: rgba(74, 103, 65, 0.35);
+  --loading-ring-border: rgba(74, 103, 65, 0.35);
 }
 
 *, *::before, *::after {
@@ -136,7 +147,8 @@ a:hover { color: var(--color-violet); }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem 1.5rem;
+  /* Laisse la place au bouton thème fixe en haut à droite */
+  padding: 2rem max(1.5rem, calc(1rem + 2.75rem + 0.5rem));
   position: relative;
   z-index: 1;
 }
@@ -459,7 +471,7 @@ a:hover { color: var(--color-violet); }
 
 /* PrimeNG — outlined (ex. Recommencer, Renvoyer par e-mail) : olive + blanc */
 .p-button.p-button-outlined {
-  background: var(--palette-white) !important;
+  background: var(--bg-card) !important;
   border-color: var(--palette-olive) !important;
   color: var(--palette-olive) !important;
   box-shadow: none !important;
@@ -479,7 +491,7 @@ a:hover { color: var(--color-violet); }
 
 /* PrimeNG — secondary (ex. Refaire le test) */
 .p-button.p-button-secondary {
-  background: var(--palette-white) !important;
+  background: var(--bg-card) !important;
   border-color: var(--palette-border-input) !important;
   color: var(--palette-text-body) !important;
   box-shadow: none !important;
@@ -496,7 +508,7 @@ a:hover { color: var(--color-violet); }
 /* PrimeNG — checkbox (accueil, etc.) : bordure grise, coches olive */
 p-checkbox .p-checkbox-box {
   border-color: var(--palette-border-input) !important;
-  background: var(--palette-white) !important;
+  background: var(--bg-card) !important;
 }
 p-checkbox.p-checkbox-checked .p-checkbox-box,
 p-checkbox .p-checkbox-checked .p-checkbox-box {
@@ -504,7 +516,7 @@ p-checkbox .p-checkbox-checked .p-checkbox-box {
   border-color: var(--palette-olive) !important;
 }
 p-checkbox .p-checkbox-icon {
-  color: var(--palette-white) !important;
+  color: #fff !important;
 }
 p-checkbox:not(.p-disabled) .p-checkbox-box:hover {
   border-color: var(--palette-olive) !important;
@@ -517,4 +529,120 @@ p-checkbox .p-checkbox-box.p-focus {
 @media (max-width: 600px) {
   .card { padding: 1.75rem 1.25rem; }
   .btn-lg { width: 100%; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Mode sombre — ambiance forêt / sauge (pas copie 1:1 du mode clair)
+   ═══════════════════════════════════════════════════════════════ */
+
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  /* Accents plus lisibles sur fond sombre, toujours dans le thème nature */
+  --palette-olive: #8ecf7a;
+  --palette-sage-muted: #6d9b72;
+  --palette-yellow-green: #c4c070;
+  --palette-golden: #e0c76a;
+  --palette-distant-hills: #2d4034;
+  --palette-trees: #7ec85a;
+  --palette-hills: #9ed67a;
+  --palette-sky: #5fa090;
+  --palette-wheat: #d4c060;
+  --palette-roof: #c9957a;
+  --palette-strength-dot: #9fe06a;
+  --palette-weakness-dot: #ff7a6e;
+
+  --palette-white: #e4ebe3;
+  --palette-off-white: #0c100d;
+  --palette-text-body: #cfd8cc;
+  --palette-text-heading: #f2f7f0;
+  --palette-border-input: #3a4f42;
+  --palette-footer-sage: #1a2620;
+
+  --bg-primary: #0c100d;
+  --bg-secondary: #141c17;
+  --bg-card: #1a231d;
+  --bg-card-hover: #222d26;
+
+  --color-indigo-soft: #2a3f31;
+  --color-violet-soft: #243228;
+  --color-coral-soft: rgba(255, 140, 120, 0.12);
+  --color-teal-soft: #1f322c;
+  --color-amber-soft: #363024;
+  --color-sky-soft: #1f322c;
+  --color-rose-soft: #342824;
+
+  --gradient-brand: linear-gradient(135deg, #4d7a42 0%, #6aad4a 42%, #8bc97a 100%);
+  --gradient-brand-hover: linear-gradient(135deg, #3f6636 0%, #5c9438 42%, #78b064 100%);
+  --gradient-progress: linear-gradient(90deg, #4a8c78 0%, #5fa848 45%, #d4b84a 100%);
+  --gradient-text: linear-gradient(135deg, #a8e090, #e8d078);
+
+  --text-primary: var(--palette-text-body);
+  --text-heading: var(--palette-text-heading);
+  --text-secondary: #a8b5a5;
+  --text-muted: #7d8f80;
+
+  --border: var(--palette-border-input);
+  --shadow-sm: 0 2px 14px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 10px 36px rgba(0, 0, 0, 0.48);
+  --shadow-lg: 0 22px 60px rgba(0, 0, 0, 0.55);
+  --shadow-brand: 0 8px 32px rgba(100, 180, 90, 0.22);
+
+  --sticky-header-bg: rgba(12, 16, 13, 0.88);
+  --disclaimer-bg: #1e2a22;
+  --disclaimer-text: #c5d2c4;
+  --msg-error-text: #ffb59e;
+  --msg-error-border: rgba(255, 120, 100, 0.4);
+  --msg-error-bg: rgba(120, 40, 35, 0.28);
+
+  --loading-orb-gradient: linear-gradient(135deg, #5d9070, #c4a238, #4a8f82);
+  --loading-pulse-mid: rgba(110, 200, 100, 0.3);
+  --loading-ring-border: rgba(120, 200, 110, 0.28);
+}
+
+[data-theme='dark'] body {
+  background-color: var(--bg-primary);
+}
+
+[data-theme='dark'] .bg-orb-1 {
+  background: #3d6b38;
+  opacity: 0.22;
+}
+
+[data-theme='dark'] .bg-orb-2 {
+  background: #6b6220;
+  opacity: 0.18;
+}
+
+[data-theme='dark'] .bg-orb-3 {
+  background: #2d5c48;
+  opacity: 0.2;
+}
+
+[data-theme='dark'] .home-wave {
+  background: linear-gradient(
+    118deg,
+    #121a15 0%,
+    rgba(35, 58, 42, 0.85) 35%,
+    rgba(30, 52, 44, 0.55) 62%,
+    rgba(55, 48, 22, 0.2) 88%,
+    #121a15 100%
+  );
+}
+
+[data-theme='dark'] .p-button.p-button-outlined:hover:not(:disabled) {
+  background: var(--color-indigo-soft) !important;
+}
+
+[data-theme='dark'] .p-button.p-button-secondary {
+  color: var(--text-primary) !important;
+}
+
+[data-theme='dark'] .p-button.p-button-secondary:hover:not(:disabled) {
+  background: var(--color-indigo-soft) !important;
+  color: var(--palette-olive) !important;
+}
+
+[data-theme='dark'] p-checkbox .p-checkbox-box.p-focus {
+  box-shadow: 0 0 0 3px rgba(142, 207, 120, 0.25) !important;
 }

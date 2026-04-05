@@ -137,7 +137,7 @@
 .home-profile-input:focus {
   outline: none;
   border-color: var(--color-violet);
-  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+  box-shadow: 0 0 0 3px rgba(74, 103, 65, 0.28);
 }
 
 .home-chips {
@@ -323,10 +323,10 @@
 .error-msg {
   margin-top: 1rem;
   padding: 0.75rem 1rem;
-  background: var(--color-coral-soft);
-  border: 1px solid rgba(244, 67, 54, 0.45);
+  background: var(--msg-error-bg);
+  border: 1px solid var(--msg-error-border);
   border-radius: var(--radius-md);
-  color: #c62828;
+  color: var(--msg-error-text);
   font-size: 0.875rem;
 }
 

@@ -20,5 +20,6 @@ describe('App', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('router-outlet')).toBeTruthy();
     expect(compiled.querySelector('.bg-orbs')).toBeTruthy();
+    expect(compiled.querySelector('app-theme-toggle .theme-toggle')).toBeTruthy();
   });
 });

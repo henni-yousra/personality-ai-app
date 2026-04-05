@@ -27,6 +27,8 @@
   align-items: center;
   gap: 2rem;
   margin-bottom: 2.5rem;
+  padding-right: 3.25rem;
+  box-sizing: border-box;
 }
 
 .quiz-logo {
@@ -154,10 +156,10 @@
 
 .quiz-error {
   padding: 0.75rem 1rem;
-  background: var(--color-coral-soft);
-  border: 1px solid rgba(244, 67, 54, 0.45);
+  background: var(--msg-error-bg);
+  border: 1px solid var(--msg-error-border);
   border-radius: var(--radius-md);
-  color: #c62828;
+  color: var(--msg-error-text);
   font-size: 0.875rem;
   margin-bottom: 1rem;
 }
