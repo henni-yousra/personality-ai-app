@@ -1,0 +1,223 @@
+{
+  "session_id": "67050d03-baa7-4a96-bb3b-325e733b1b73",
+  "email": "hennimansour.yousrayasmine@gmail.com",
+  "created_at": "2026-04-05T14:15:40.198122",
+  "updated_at": "2026-04-05T14:16:19.854760",
+  "responses": [
+    {
+      "question_id": "O1",
+      "question_text": "Quand on vous parle d’un sujet que vous ne connaissez pas, que faites-vous en général ?",
+      "trait": "O",
+      "polarity": 1,
+      "answer": 2,
+      "answer_label": "J’écoute sans creuser",
+      "answered_at": "2026-04-05T14:15:49.197482"
+    },
+    {
+      "question_id": "C1",
+      "question_text": "Vous avez une échéance dans deux semaines. Comment vous y prenez-vous ?",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 3,
+      "answer_label": "Je découpe en étapes avec des jalons",
+      "answered_at": "2026-04-05T14:15:54.477817"
+    },
+    {
+      "question_id": "E1",
+      "question_text": "Dans une soirée où vous ne connaissez presque personne, vous vous sentez…",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 4,
+      "answer_label": "Énergisé(e), j’aime faire connaissance",
+      "answered_at": "2026-04-05T14:15:56.610936"
+    },
+    {
+      "question_id": "A1",
+      "question_text": "Un collègue prend du retard sur une tâche commune et vous impacte. Votre premier réflexe :",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 2,
+      "answer_label": "Je fais remarquer les faits, sans détour",
+      "answered_at": "2026-04-05T14:15:58.996359"
+    },
+    {
+      "question_id": "N1",
+      "question_text": "La veille d’un entretien ou d’un examen important, vous…",
+      "trait": "N",
+      "polarity": 1,
+      "answer": 1,
+      "answer_label": "Dormez aussi bien que d’habitude",
+      "answered_at": "2026-04-05T14:16:01.327014"
+    },
+    {
+      "question_id": "O2",
+      "question_text": "Les week-ends, vous préférez plutôt…",
+      "trait": "O",
+      "polarity": -1,
+      "answer": 4,
+      "answer_label": "Improviser et tester du nouveau",
+      "answered_at": "2026-04-05T14:16:03.519115"
+    },
+    {
+      "question_id": "C2",
+      "question_text": "Votre bureau ou espace de travail ressemble le plus souvent à…",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 2,
+      "answer_label": "Des piles que je connais par cœur",
+      "answered_at": "2026-04-05T14:16:05.767343"
+    },
+    {
+      "question_id": "E2",
+      "question_text": "Après une longue journée bien remplie, idéal pour vous :",
+      "trait": "E",
+      "polarity": -1,
+      "answer": 4,
+      "answer_label": "Silence total, solo rechargé",
+      "answered_at": "2026-04-05T14:16:07.975542"
+    },
+    {
+      "question_id": "A2",
+      "question_text": "On vous coupe la parole en réunion. Vous…",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 3,
+      "answer_label": "Je m’efface pour la fluidité du groupe",
+      "answered_at": "2026-04-05T14:16:10.785794"
+    },
+    {
+      "question_id": "N2",
+      "question_text": "Face à une décision importante, vous…",
+      "trait": "N",
+      "polarity": 1,
+      "answer": 4,
+      "answer_label": "Hésitez longtemps, redoutez le mauvais choix",
+      "answered_at": "2026-04-05T14:16:13.197973"
+    }
+  ],
+  "used_question_ids": [
+    "O1",
+    "C1",
+    "E1",
+    "A1",
+    "N1",
+    "O2",
+    "C2",
+    "E2",
+    "A2",
+    "N2"
+  ],
+  "completed": true,
+  "report": {
+    "archetype": {
+      "name": "L'Empathique",
+      "emoji": "◆",
+      "tagline": "Chaleureux, à l'écoute et profondément humain",
+      "description": "Vous ressentez profondément les émotions — les vôtres et celles des autres. Votre capacité d'écoute et votre chaleur humaine créent des liens forts et authentiques. Vous êtes souvent la personne vers qui les autres se tournent dans les moments difficiles."
+    },
+    "overall_summary": "Ce profil montre une personne équilibrée, capable de s'adapter à différentes situations tout en maintenant une certaine stabilité. Les scores indiquent une tendance à apprécier la stabilité et les approches éprouvées, ainsi qu'une capacité à combiner organisation et adaptabilité. Cette personne semble également chaleureuse, empathique et attentionnée envers les autres.",
+    "traits": {
+      "O": {
+        "score": 16.7,
+        "label": "Ouverture",
+        "emoji": "◉",
+        "interpretation": "Vous semblez apprécier la stabilité et les approches éprouvées, préférant souvent les méthodes traditionnelles aux expérimentations nouvelles. Cela peut vous aider à maintenir un sens de la routine et de l'organisation dans votre vie quotidienne. Cependant, il est important de rester ouvert aux nouvelles idées et expériences pour éviter de vous sentir trop limité ou rigide dans vos approches."
+      },
+      "C": {
+        "score": 50.0,
+        "label": "Conscienciosité",
+        "emoji": "■",
+        "interpretation": "Vous combinez organisation et adaptabilité, ce qui vous permet de gérer efficacement vos tâches et responsabilités. Vous êtes capable de planifier et de structurer votre travail, mais vous savez également vous adapter aux changements et aux imprévus. Cette flexibilité est un atout précieux dans de nombreux contextes, personnel et professionnel."
+      },
+      "E": {
+        "score": 50.0,
+        "label": "Extraversion",
+        "emoji": "▲",
+        "interpretation": "Vous vous épanouissez aussi bien en solo qu'en groupe, ce qui indique une bonne capacité à vous adapter à différents environnements sociaux. Vous n'avez pas peur de prendre l'initiative ou de vous impliquer dans des activités de groupe, mais vous appréciez également les moments de solitude pour vous ressourcer. Cette balance est essentielle pour maintenir des relations saines et une bonne santé mentale. Profil à confirmer sur ce trait — mesure encore incertaine (variance de la moyenne élevée : 0.250)."
+      },
+      "A": {
+        "score": 66.7,
+        "label": "Agréabilité",
+        "emoji": "◆",
+        "interpretation": "Vous êtes chaleureux, empathique et attentif aux autres, ce qui vous permet de créer des relations solides et positives avec ceux qui vous entourent. Vous avez probablement une forte capacité à comprendre les besoins et les sentiments des autres, et à y répondre de manière appropriée. Cette qualité est très appréciée dans les interactions personnelles et professionnelles, et peut contribuer à un environnement social harmonieux."
+      },
+      "N": {
+        "score": 50.0,
+        "label": "Névrosisme",
+        "emoji": "●",
+        "interpretation": "Vous ressentez les émotions de manière équilibrée, ce qui signifie que vous n'êtes pas excessivement sensible aux stress ou aux émotions négatives. Cela vous aide à maintenir un état d'esprit stable et à gérer les défis de la vie quotidienne de manière plus efficace. Cependant, il est important de rester conscient de vos émotions et de prendre soin de votre bien-être émotionnel pour éviter les accumulations de stress ou d'anxiété. Profil à confirmer sur ce trait — mesure encore incertaine (variance de la moyenne élevée : 0.250)."
+      }
+    },
+    "strengths": [
+      "Capacité d'adaptation",
+      "Empathie et chaleur humaine",
+      "Organisation et planification"
+    ],
+    "areas_of_attention": [
+      "Ouverture aux nouvelles expériences",
+      "Gestion du stress et de l'anxiété"
+    ],
+    "recommendations": [
+      "Prendre des moments pour explorer de nouvelles activités et intérêts",
+      "Pratiquer des techniques de gestion du stress, comme la méditation ou l'exercice physique",
+      "Développer une meilleure conscience de soi pour améliorer la gestion des émotions"
+    ],
+    "disclaimer": "Ce rapport est informatif et non médical. Il ne constitue pas un diagnostic psychologique. Pour tout accompagnement approfondi, consultez un professionnel qualifié."
+  },
+  "resend_count": 0,
+  "last_resend": null,
+  "scores": {
+    "O": {
+      "total": -5.333333333333334,
+      "count": 2
+    },
+    "C": {
+      "total": -4.440892098500626e-16,
+      "count": 2
+    },
+    "E": {
+      "total": 0.0,
+      "count": 2
+    },
+    "A": {
+      "total": 2.6666666666666665,
+      "count": 2
+    },
+    "N": {
+      "total": 0.0,
+      "count": 2
+    }
+  },
+  "traits_latent": {
+    "O": {
+      "mean": 0.16666666666666666,
+      "variance": 0.027777777777777776,
+      "n": 2,
+      "m2": 0.05555555555555555
+    },
+    "C": {
+      "mean": 0.5,
+      "variance": 0.02777777777777778,
+      "n": 2,
+      "m2": 0.05555555555555556
+    },
+    "E": {
+      "mean": 0.5,
+      "variance": 0.25,
+      "n": 2,
+      "m2": 0.5
+    },
+    "A": {
+      "mean": 0.6666666666666667,
+      "variance": 0.1111111111111111,
+      "n": 2,
+      "m2": 0.2222222222222222
+    },
+    "N": {
+      "mean": 0.5,
+      "variance": 0.25,
+      "n": 2,
+      "m2": 0.5
+    }
+  }
+}

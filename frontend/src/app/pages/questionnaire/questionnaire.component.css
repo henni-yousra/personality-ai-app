@@ -96,13 +96,13 @@
 
 .answer-options-verbal {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 0.65rem;
-  max-width: 440px;
+  max-width: 520px;
   margin: 0 auto;
 }
 
-@media (max-width: 520px) {
+@media (max-width: 480px) {
   .answer-options-verbal {
     grid-template-columns: 1fr;
   }

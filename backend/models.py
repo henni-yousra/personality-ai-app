@@ -10,7 +10,7 @@ class StartSessionRequest(BaseModel):
 
 class AnswerRequest(BaseModel):
     question_id: str
-    answer: int  # indice de l’option choisie (voir ANSWER_OPTIONS côté API)
+    answer: int  # valeur de l’option choisie (voir `options` de la question)
 
 
 class CdcSubmitResponseBody(BaseModel):

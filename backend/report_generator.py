@@ -11,7 +11,7 @@ from groq import Groq
 from typing import Dict, List
 from pydantic import BaseModel, Field, field_validator, ValidationError
 
-from question_bank import TRAIT_LABELS, TRAIT_EMOJIS, ANSWER_MAX
+from question_bank import TRAIT_LABELS, TRAIT_EMOJIS
 from adaptive_engine import (
     compute_final_scores,
     get_trait_interpretation,
@@ -149,9 +149,8 @@ def _build_prompt(session: dict, final_scores: Dict[str, float]) -> str:
 
     responses_summary = []
     for r in session.get("responses", []):
-        responses_summary.append(
-            f"Q: {r['question_text']} → Réponse: {r['answer']}/{ANSWER_MAX}"
-        )
+        label = r.get("answer_label") or str(r.get("answer", ""))
+        responses_summary.append(f"Q: {r['question_text']} → Réponse choisie : « {label} »")
 
     latent_block = _latent_lines(session)
 

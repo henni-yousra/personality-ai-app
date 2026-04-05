@@ -1,218 +1,147 @@
 """
-Banque de questions Big Five (OCEAN)
-Chaque question est taguée par trait et polarité :
-  polarité  1 = réponse haute → score haut
-  polarité -1 = réponse haute → score bas (question inversée)
+Banque de questions Big Five (OCEAN).
+Chaque question a ses propres libellés de réponse (3 ou 4 choix) ; les valeurs sont
+des entiers consécutifs à partir de 1 pour l’API.
+
+polarité  1 = option « forte » → score haut sur le trait
+polarité -1 = question inversée (option « forte » sur l’énoncé → score bas sur le trait)
 """
 
+from typing import Set, Tuple
+
 QUESTIONS = [
-    # ─── Ouverture (Openness) ─────────────────────────────────────────────────
     {
         "id": "O1",
-        "text": "J'aime explorer de nouvelles idées et de nouveaux sujets.",
+        "text": "Quand on vous parle d’un sujet que vous ne connaissez pas, que faites-vous en général ?",
         "trait": "O",
         "polarity": 1,
+        "difficulty": 1,
+        "options": [
+            {"value": 1, "label": "Je change vite de sujet"},
+            {"value": 2, "label": "J’écoute sans creuser"},
+            {"value": 3, "label": "Je pose des questions pour comprendre"},
+            {"value": 4, "label": "Je creuse tout de suite (articles, vidéos…)"},
+        ],
     },
     {
         "id": "O2",
-        "text": "Je suis attiré(e) par l'art, la musique ou la littérature.",
-        "trait": "O",
-        "polarity": 1,
-    },
-    {
-        "id": "O3",
-        "text": "Je préfère les routines connues plutôt que les nouvelles expériences.",
+        "text": "Les week-ends, vous préférez plutôt…",
         "trait": "O",
         "polarity": -1,
+        "difficulty": 2,
+        "options": [
+            {"value": 1, "label": "Reproduire la même routine rassurante"},
+            {"value": 2, "label": "Un mix habitudes et petites nouveautés"},
+            {"value": 3, "label": "Souvent sortir de la routine"},
+            {"value": 4, "label": "Improviser et tester du nouveau"},
+        ],
     },
-    {
-        "id": "O4",
-        "text": "J'aime imaginer des scénarios alternatifs et des mondes fictifs.",
-        "trait": "O",
-        "polarity": 1,
-    },
-    {
-        "id": "O5",
-        "text": "J'ai tendance à aborder les problèmes de façon créative et originale.",
-        "trait": "O",
-        "polarity": 1,
-    },
-    {
-        "id": "O6",
-        "text": "Les sujets abstraits ou philosophiques m'ennuient rapidement.",
-        "trait": "O",
-        "polarity": -1,
-    },
-
-    # ─── Conscienciosité (Conscientiousness) ──────────────────────────────────
     {
         "id": "C1",
-        "text": "J'aime planifier mes tâches et suivre un planning précis.",
+        "text": "Vous avez une échéance dans deux semaines. Comment vous y prenez-vous ?",
         "trait": "C",
         "polarity": 1,
+        "difficulty": 1,
+        "options": [
+            {"value": 1, "label": "Je m’y mets la veille si je peux"},
+            {"value": 2, "label": "J’avance par à-coups"},
+            {"value": 3, "label": "Je découpe en étapes avec des jalons"},
+            {"value": 4, "label": "Plan + marge dès le début, suivi régulier"},
+        ],
     },
     {
         "id": "C2",
-        "text": "Je termine toujours ce que j'ai commencé.",
+        "text": "Votre bureau ou espace de travail ressemble le plus souvent à…",
         "trait": "C",
         "polarity": 1,
+        "difficulty": 2,
+        "options": [
+            {"value": 1, "label": "Un champ de bataille créatif"},
+            {"value": 2, "label": "Des piles que je connais par cœur"},
+            {"value": 3, "label": "Plutôt rangé avec quelques zones floues"},
+            {"value": 4, "label": "Tout a sa place, facile à retrouver"},
+        ],
     },
-    {
-        "id": "C3",
-        "text": "Je remets souvent les tâches importantes au lendemain.",
-        "trait": "C",
-        "polarity": -1,
-    },
-    {
-        "id": "C4",
-        "text": "Je fais attention aux détails et vérifie mon travail.",
-        "trait": "C",
-        "polarity": 1,
-    },
-    {
-        "id": "C5",
-        "text": "Je maintiens mes espaces (bureau, chambre) propres et organisés.",
-        "trait": "C",
-        "polarity": 1,
-    },
-    {
-        "id": "C6",
-        "text": "Il m'arrive fréquemment d'oublier des engagements ou des rendez-vous.",
-        "trait": "C",
-        "polarity": -1,
-    },
-
-    # ─── Extraversion ─────────────────────────────────────────────────────────
     {
         "id": "E1",
-        "text": "Je me sens à l'aise pour engager la conversation avec des inconnus.",
+        "text": "Dans une soirée où vous ne connaissez presque personne, vous vous sentez…",
         "trait": "E",
         "polarity": 1,
+        "difficulty": 1,
+        "options": [
+            {"value": 1, "label": "À l’étroit, j’attends de pouvoir partir"},
+            {"value": 2, "label": "Un peu tendu(e), je reste en retrait"},
+            {"value": 3, "label": "Ça va après un temps d’adaptation"},
+            {"value": 4, "label": "Énergisé(e), j’aime faire connaissance"},
+        ],
     },
     {
         "id": "E2",
-        "text": "Je préfère passer du temps seul(e) plutôt qu'en groupe.",
+        "text": "Après une longue journée bien remplie, idéal pour vous :",
         "trait": "E",
         "polarity": -1,
+        "difficulty": 2,
+        "options": [
+            {"value": 1, "label": "Dîner entre amis ou appel à plusieurs"},
+            {"value": 2, "label": "Un peu de social puis calme"},
+            {"value": 3, "label": "Surtout calme, éventuellement une personne"},
+            {"value": 4, "label": "Silence total, solo rechargé"},
+        ],
     },
-    {
-        "id": "E3",
-        "text": "Les interactions sociales me donnent de l'énergie.",
-        "trait": "E",
-        "polarity": 1,
-    },
-    {
-        "id": "E4",
-        "text": "J'aime être au centre de l'attention lors de rassemblements.",
-        "trait": "E",
-        "polarity": 1,
-    },
-    {
-        "id": "E5",
-        "text": "Je parle facilement de moi-même et de mes expériences.",
-        "trait": "E",
-        "polarity": 1,
-    },
-    {
-        "id": "E6",
-        "text": "Je trouve les soirées et les événements sociaux épuisants.",
-        "trait": "E",
-        "polarity": -1,
-    },
-
-    # ─── Agréabilité (Agreeableness) ──────────────────────────────────────────
     {
         "id": "A1",
-        "text": "Je ressens de l'empathie pour les personnes en difficulté.",
+        "text": "Un collègue prend du retard sur une tâche commune et vous impacte. Votre premier réflexe :",
         "trait": "A",
         "polarity": 1,
+        "difficulty": 2,
+        "options": [
+            {"value": 1, "label": "Je montre mon mécontentement clairement"},
+            {"value": 2, "label": "Je fais remarquer les faits, sans détour"},
+            {"value": 3, "label": "J’explique l’impact et on cherche une solution"},
+            {"value": 4, "label": "Je privilégie l’écoute avant de réagir"},
+        ],
     },
     {
         "id": "A2",
-        "text": "J'évite les conflits et préfère trouver des compromis.",
+        "text": "On vous coupe la parole en réunion. Vous…",
         "trait": "A",
         "polarity": 1,
+        "difficulty": 3,
+        "options": [
+            {"value": 1, "label": "Je reprends la parole tout de suite"},
+            {"value": 2, "label": "J’attends une pause puis je complète calmement"},
+            {"value": 3, "label": "Je m’efface pour la fluidité du groupe"},
+        ],
     },
-    {
-        "id": "A3",
-        "text": "J'ai tendance à être critique envers les autres.",
-        "trait": "A",
-        "polarity": -1,
-    },
-    {
-        "id": "A4",
-        "text": "Je trouve facilement quelque chose de positif chez chaque personne.",
-        "trait": "A",
-        "polarity": 1,
-    },
-    {
-        "id": "A5",
-        "text": "Je prends soin des autres et j'aime les aider.",
-        "trait": "A",
-        "polarity": 1,
-    },
-    {
-        "id": "A6",
-        "text": "Dans une négociation, je cherche avant tout à gagner.",
-        "trait": "A",
-        "polarity": -1,
-    },
-
-    # ─── Névrosisme (Neuroticism) ──────────────────────────────────────────────
     {
         "id": "N1",
-        "text": "Je m'inquiète facilement pour des choses qui pourraient mal tourner.",
+        "text": "La veille d’un entretien ou d’un examen important, vous…",
         "trait": "N",
         "polarity": 1,
+        "difficulty": 1,
+        "options": [
+            {"value": 1, "label": "Dormez aussi bien que d’habitude"},
+            {"value": 2, "label": "Une petite tension, vite passée"},
+            {"value": 3, "label": "Des pensées qui tournent un moment"},
+            {"value": 4, "label": "Peu dormi, scénarios qui tournent en boucle"},
+        ],
     },
     {
         "id": "N2",
-        "text": "Mes humeurs sont stables et je change rarement d'état émotionnel.",
-        "trait": "N",
-        "polarity": -1,
-    },
-    {
-        "id": "N3",
-        "text": "Je me sens souvent stressé(e) ou sous pression.",
+        "text": "Face à une décision importante, vous…",
         "trait": "N",
         "polarity": 1,
-    },
-    {
-        "id": "N4",
-        "text": "Je récupère rapidement après un événement négatif.",
-        "trait": "N",
-        "polarity": -1,
-    },
-    {
-        "id": "N5",
-        "text": "Je peux facilement être envahi(e) par des émotions intenses.",
-        "trait": "N",
-        "polarity": 1,
-    },
-    {
-        "id": "N6",
-        "text": "Je reste calme dans des situations de pression ou d'urgence.",
-        "trait": "N",
-        "polarity": -1,
+        "difficulty": 2,
+        "options": [
+            {"value": 1, "label": "Tranchez vite et assumez"},
+            {"value": 2, "label": "Doutez un peu puis vous avancez"},
+            {"value": 3, "label": "Comparez les options plusieurs fois"},
+            {"value": 4, "label": "Hésitez longtemps, redoutez le mauvais choix"},
+        ],
     },
 ]
 
-# Difficulté (1 = la plus directe, 3 = la plus nuancée) — sélection adaptative
-for _i, _q in enumerate(QUESTIONS):
-    _q.setdefault("difficulty", (_i % 3) + 1)
-
-TOTAL_QUESTIONS = 15  # Nombre de questions posées par session
-
-# 4 choix de réponse (plus de grille 1–5) — valeurs 1..4 conservées pour l’API et le scoring
-ANSWER_OPTIONS = [
-    {"value": 1, "label": "Pas du tout"},
-    {"value": 2, "label": "Plutôt non"},
-    {"value": 3, "label": "Plutôt oui"},
-    {"value": 4, "label": "Tout à fait"},
-]
-
-ANSWER_MIN = 1
-ANSWER_MAX = 4
+TOTAL_QUESTIONS = 10
 
 TRAIT_LABELS = {
     "O": "Ouverture",
@@ -229,3 +158,14 @@ TRAIT_EMOJIS = {
     "A": "◆",
     "N": "●",
 }
+
+
+def question_option_values(raw: dict) -> Set[int]:
+    """Valeurs d’option valides pour une question."""
+    return {o["value"] for o in raw["options"]}
+
+
+def question_value_bounds(raw: dict) -> Tuple[int, int]:
+    """Min et max des valeurs d’options (pour normaliser le score)."""
+    vals = [o["value"] for o in raw["options"]]
+    return min(vals), max(vals)

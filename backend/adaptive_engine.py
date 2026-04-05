@@ -7,14 +7,7 @@ toujours le trait le moins répondu, puis une question aléatoire pour ce trait.
 import random
 import math
 from typing import Optional, List, Dict, Tuple
-from question_bank import (
-    QUESTIONS,
-    ANSWER_OPTIONS,
-    ANSWER_MIN,
-    ANSWER_MAX,
-    TRAIT_LABELS,
-    TRAIT_EMOJIS,
-)
+from question_bank import QUESTIONS, TRAIT_LABELS, TRAIT_EMOJIS, question_value_bounds
 from models import Question, AnswerOption, Archetype
 
 
@@ -128,31 +121,45 @@ def build_question(raw: dict) -> Question:
         text=raw["text"],
         trait=raw["trait"],
         polarity=raw["polarity"],
-        options=[AnswerOption(**o) for o in ANSWER_OPTIONS],
+        options=[AnswerOption(**o) for o in raw["options"]],
     )
 
 
 def ensure_traits_latent(session: dict) -> None:
     """Initialise traits_latent (moyenne 0–1, variance de la moyenne, n, m2 Welford)."""
-    if "traits_latent" in session:
+    cur = session.get("traits_latent")
+    if isinstance(cur, dict) and all(t in cur for t in TRAITS):
         return
     session["traits_latent"] = {
         t: {"mean": 0.5, "variance": 0.25, "n": 0, "m2": 0.0} for t in TRAITS
     }
 
 
-def _answer_scale_denom() -> float:
-    return float(ANSWER_MAX - ANSWER_MIN)
+# Contribution moyenne sur [-CONTRIB_SPAN, CONTRIB_SPAN] puis normalisée en 0–100 %
+CONTRIB_SPAN = 4.0
 
 
-def _latent_observation(polarity: int, answer: int) -> float:
-    """Valeur 0–1 : haut = fort sur le trait (question positive ou inversée)."""
-    d = _answer_scale_denom()
+def _trait_strength_01(raw: dict, answer: int) -> float:
+    """
+    Force du trait sur [0, 1] à partir de la réponse et des bornes d’options de la question.
+    Si `answer` est hors [vmin, vmax] (données corrompues, appel interne sans validation),
+    la position sur l’échelle est ramenée aux bornes pour respecter le contrat de
+    `_welford_update` (observation strictement dans [0, 1]).
+    """
+    vmin, vmax = question_value_bounds(raw)
+    d = float(vmax - vmin)
     if d <= 0:
-        return 0.5
-    if polarity == 1:
-        return (answer - ANSWER_MIN) / d
-    return (ANSWER_MAX - answer) / d
+        u = 0.5
+    else:
+        u = (float(answer) - float(vmin)) / d
+        u = max(0.0, min(1.0, u))
+    t = u if raw["polarity"] == 1 else 1.0 - u
+    return max(0.0, min(1.0, t))
+
+
+def _contribution_linear(t: float) -> float:
+    """t ∈ [0,1] → contribution ∈ [-CONTRIB_SPAN, CONTRIB_SPAN], comparable entre questions."""
+    return (2.0 * t - 1.0) * CONTRIB_SPAN
 
 
 def _welford_update(state: dict, x: float) -> None:
@@ -252,17 +259,15 @@ def select_next_question(session: dict) -> Tuple[Optional[Question], str]:
 
 def update_scores(session: dict, question_id: str, answer: int) -> dict:
     """
-    Met à jour les scores de la session après une réponse.
-    Le score contribué = answer * polarity (échelle ANSWER_MIN–ANSWER_MAX → contribution par item bornée).
+    Met à jour les scores après une réponse (options et nombre de choix propres à chaque question).
     """
-    # Trouver la question dans la banque
     raw = next((q for q in QUESTIONS if q["id"] == question_id), None)
     if raw is None:
         return session
 
     trait = raw["trait"]
-    polarity = raw["polarity"]
-    contribution = answer * polarity
+    t = _trait_strength_01(raw, answer)
+    contribution = _contribution_linear(t)
 
     scores = session.setdefault("scores", {})
     if trait not in scores:
@@ -272,8 +277,7 @@ def update_scores(session: dict, question_id: str, answer: int) -> dict:
     scores[trait]["count"] += 1
 
     ensure_traits_latent(session)
-    x = _latent_observation(polarity, answer)
-    _welford_update(session["traits_latent"][trait], x)
+    _welford_update(session["traits_latent"][trait], t)
 
     return session
 
@@ -281,9 +285,9 @@ def update_scores(session: dict, question_id: str, answer: int) -> dict:
 def compute_final_scores(session: dict) -> Dict[str, float]:
     """
     Convertit les scores bruts en pourcentages 0–100.
-    Moyenne des contributions answer×polarity ∈ [−ANSWER_MAX, ANSWER_MAX] → [0, 100].
+    Moyenne des contributions ∈ [−CONTRIB_SPAN, CONTRIB_SPAN].
     """
-    span = float(ANSWER_MAX)
+    span = CONTRIB_SPAN
     scores = session.get("scores", {})
     result = {}
     for trait in TRAITS:

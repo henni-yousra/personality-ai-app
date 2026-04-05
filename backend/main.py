@@ -38,7 +38,7 @@ from adaptive_engine import select_next_question, update_scores, build_question
 from report_generator import generate_report
 from email_service import send_report_email
 from llm_questions import maybe_reformulate_question_text
-from question_bank import TOTAL_QUESTIONS, ANSWER_MIN, ANSWER_MAX
+from question_bank import TOTAL_QUESTIONS, QUESTIONS, question_option_values
 
 app = FastAPI(
     title="Personality AI API",
@@ -127,16 +127,20 @@ def _core_start_session(body: StartSessionRequest) -> SessionStartResponse:
 
 def _core_submit_response(session_id: str, body: AnswerRequest) -> AnswerResponse:
     session = _validate_session_for_response(session_id)
-    if body.answer not in range(ANSWER_MIN, ANSWER_MAX + 1):
-        raise HTTPException(
-            status_code=400,
-            detail=f"La réponse doit être un entier entre {ANSWER_MIN} et {ANSWER_MAX}.",
-        )
-
-    from question_bank import QUESTIONS
     raw_q = next((q for q in QUESTIONS if q["id"] == body.question_id), None)
     if raw_q is None:
         raise HTTPException(status_code=400, detail="Question introuvable.")
+    allowed = question_option_values(raw_q)
+    if body.answer not in allowed:
+        raise HTTPException(
+            status_code=400,
+            detail="La valeur de réponse ne correspond pas aux options de cette question.",
+        )
+
+    answer_label = next(
+        (o["label"] for o in raw_q["options"] if o["value"] == body.answer),
+        str(body.answer),
+    )
 
     session["responses"].append({
         "question_id": body.question_id,
@@ -144,6 +148,7 @@ def _core_submit_response(session_id: str, body: AnswerRequest) -> AnswerRespons
         "trait": raw_q["trait"],
         "polarity": raw_q["polarity"],
         "answer": body.answer,
+        "answer_label": answer_label,
         "answered_at": datetime.utcnow().isoformat(),
     })
 
@@ -202,8 +207,6 @@ def get_session_state(session_id: str):
     if session is None:
         raise HTTPException(status_code=404, detail="Session introuvable.")
 
-    from question_bank import QUESTIONS
-
     completed = bool(session.get("completed"))
     responses = session.get("responses", [])
     used_ids = session.get("used_question_ids", [])
@@ -250,11 +253,6 @@ def questions_start(email: str, consent: bool = False):
 @app.post("/responses", response_model=AnswerResponse)
 def responses_cdc(body: CdcSubmitResponseBody):
     """Soumission d'une réponse (contrat CDC)."""
-    if body.answer_value not in range(ANSWER_MIN, ANSWER_MAX + 1):
-        raise HTTPException(
-            status_code=400,
-            detail=f"La réponse doit être un entier entre {ANSWER_MIN} et {ANSWER_MAX}.",
-        )
     return _core_submit_response(
         body.session_id,
         AnswerRequest(question_id=body.question_id, answer=body.answer_value),
