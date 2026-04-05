@@ -99,24 +99,24 @@ export class ResultsComponent implements OnInit {
   /** Couleur du texte du score (lisible sur fond clair). */
   getTraitScoreColor(traitKey: string): string {
     const c = this.traitPalette[traitKey];
-    return c?.solid ?? '#4b4658';
+    return c?.solid ?? '#454545';
   }
 
   /** Dégradé pour la barre de score selon le trait Big Five. */
   getTraitBarGradient(traitKey: string): string {
     const c = this.traitPalette[traitKey];
-    return c?.gradient ?? 'linear-gradient(90deg, #4f46e5, #7c3aed)';
+    return c?.gradient ?? 'linear-gradient(90deg, #4a6741, #6b8c3a)';
   }
 
   private readonly traitPalette: Record<
     string,
     { solid: string; gradient: string }
   > = {
-    O: { solid: '#0284c7', gradient: 'linear-gradient(90deg, #0369a1, #38bdf8)' },
-    C: { solid: '#d97706', gradient: 'linear-gradient(90deg, #b45309, #fbbf24)' },
-    E: { solid: '#db2777', gradient: 'linear-gradient(90deg, #be185d, #f472b6)' },
-    A: { solid: '#0d9488', gradient: 'linear-gradient(90deg, #0f766e, #2dd4bf)' },
-    N: { solid: '#7c3aed', gradient: 'linear-gradient(90deg, #5b21b6, #a78bfa)' },
+    O: { solid: '#87aabf', gradient: 'linear-gradient(90deg, #6e8fa5, #a8c4d4)' },
+    C: { solid: '#8b6a3a', gradient: 'linear-gradient(90deg, #6b4f2a, #a08255)' },
+    E: { solid: '#d4a843', gradient: 'linear-gradient(90deg, #c49a2e, #e8c84a)' },
+    A: { solid: '#6b8c3a', gradient: 'linear-gradient(90deg, #4a6741, #a3c45a)' },
+    N: { solid: '#c47a5a', gradient: 'linear-gradient(90deg, #a85f42, #d4947a)' },
   };
 
   orderedTraits(): Array<[string, TraitScore]> {

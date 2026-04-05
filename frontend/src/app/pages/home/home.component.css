@@ -12,11 +12,11 @@
   height: 128px;
   background: linear-gradient(
     115deg,
-    rgba(79, 70, 229, 0.45) 0%,
-    rgba(124, 58, 237, 0.4) 22%,
-    rgba(219, 39, 119, 0.35) 48%,
-    rgba(14, 165, 233, 0.38) 72%,
-    rgba(244, 63, 94, 0.32) 100%
+    #f5f5f0 0%,
+    rgba(212, 232, 194, 0.95) 28%,
+    rgba(135, 170, 191, 0.35) 58%,
+    rgba(212, 168, 67, 0.2) 85%,
+    #f5f5f0 100%
   );
   clip-path: ellipse(120% 100% at 50% 0%);
   pointer-events: none;
@@ -163,8 +163,8 @@
 }
 
 .chip-on {
-  border-color: var(--color-violet);
-  background: linear-gradient(135deg, var(--color-indigo-soft), var(--color-rose-soft));
+  border-color: var(--color-indigo);
+  background: linear-gradient(135deg, var(--color-indigo-soft), var(--color-amber-soft));
   color: var(--color-indigo);
   font-weight: 500;
 }
@@ -230,7 +230,18 @@
 .home-logo {
   display: flex;
   align-items: center;
+  gap: 0.4rem;
   line-height: 1;
+}
+
+.home-logo-text {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 500;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .home-logo-icon {
@@ -286,7 +297,7 @@
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: linear-gradient(180deg, var(--color-coral), var(--color-violet));
+  background: linear-gradient(180deg, var(--palette-golden), var(--palette-olive));
 }
 
 /* Carte (colonne droite) */
@@ -312,10 +323,10 @@
 .error-msg {
   margin-top: 1rem;
   padding: 0.75rem 1rem;
-  background: #FEF3F2;
-  border: 1px solid #FCA5A5;
+  background: var(--color-coral-soft);
+  border: 1px solid rgba(244, 67, 54, 0.45);
   border-radius: var(--radius-md);
-  color: #B91C1C;
+  color: #c62828;
   font-size: 0.875rem;
 }
 

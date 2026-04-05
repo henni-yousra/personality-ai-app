@@ -1,4 +1,4 @@
-# Persona · Test de personnalité IA
+# personAI · Test de personnalité IA
 
 Application web de test de personnalité adaptatif (modèle Big Five / OCEAN) avec rapport généré par intelligence artificielle.
 

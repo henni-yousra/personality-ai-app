@@ -53,7 +53,7 @@ def _build_html(report: Report, email: str) -> str:
       <h1 style="font-family:Georgia, serif; font-weight:500; color:#2A2725; margin:0; font-size:1.6rem;">
         Votre rapport de personnalité
       </h1>
-      <p style="color:#9A9490; font-size:0.9rem; margin:8px 0 0;">Persona · Test Big Five Adaptatif</p>
+      <p style="color:#9A9490; font-size:0.9rem; margin:8px 0 0;">personAI · Test Big Five Adaptatif</p>
     </div>
 
     <!-- Carte archétype -->
@@ -98,7 +98,7 @@ def _build_html(report: Report, email: str) -> str:
     <!-- Footer -->
     <div style="text-align:center; padding-top:16px; border-top:1px solid #EDE8DC;">
       <p style="color:#9A9490; font-size:0.75rem; line-height:1.7;">{report.disclaimer}</p>
-      <p style="color:#9A9490; font-size:0.75rem; margin-top:8px;">Persona — Test de personnalité adaptatif par IA</p>
+      <p style="color:#9A9490; font-size:0.75rem; margin-top:8px;">personAI — Test de personnalité adaptatif par IA</p>
     </div>
 
   </div>
@@ -119,7 +119,7 @@ def send_report_email(to_email: str, report: Report) -> tuple[bool, str | None]:
       SMTP_PORT         — port          (défaut: 465 ; 587 + STARTTLS si besoin)
       SMTP_USER         — adresse d'envoi
       SMTP_PASSWORD     — mot de passe ou mot de passe d'application
-      SMTP_FROM_NAME    — nom affiché   (défaut: Persona Test)
+      SMTP_FROM_NAME    — nom affiché   (défaut: personAI Test)
       GMAIL_USER        — alias de SMTP_USER
       GMAIL_APP_PASSWORD — alias de SMTP_PASSWORD
     """
@@ -127,7 +127,7 @@ def send_report_email(to_email: str, report: Report) -> tuple[bool, str | None]:
     smtp_port = int(os.getenv("SMTP_PORT", "465"))
     smtp_user = os.getenv("SMTP_USER") or os.getenv("GMAIL_USER")
     smtp_password = os.getenv("SMTP_PASSWORD") or os.getenv("GMAIL_APP_PASSWORD")
-    from_name = os.getenv("SMTP_FROM_NAME", "Persona Test")
+    from_name = os.getenv("SMTP_FROM_NAME", "personAI Test")
 
     if not smtp_user or not smtp_password:
         print(
@@ -137,7 +137,7 @@ def send_report_email(to_email: str, report: Report) -> tuple[bool, str | None]:
         return False, "missing_credentials"
 
     msg = MIMEMultipart("alternative")
-    msg["Subject"] = f"Votre rapport Persona — {report.archetype.name}"
+    msg["Subject"] = f"Votre rapport personAI — {report.archetype.name}"
     msg["From"] = f"{from_name} <{smtp_user}>"
     msg["To"] = to_email
 

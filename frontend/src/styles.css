@@ -1,59 +1,80 @@
 @import 'primeicons/primeicons.css';
 
 /* ═══════════════════════════════════════════════════════════════
-   PERSONA — Design « Aurore »
-   Indigo · violet · corail · teal · ambre — plus de monochrome vert
+   personAI — Palette paysage / verts (UI + nature)
    ═══════════════════════════════════════════════════════════════ */
 
 :root {
+  /* Référence palette */
+  --palette-white: #ffffff;
+  --palette-off-white: #f5f5f0;
+  --palette-text-body: #1a1a1a;
+  --palette-text-heading: #000000;
+  --palette-border-input: #e8e8e8;
+  --palette-footer-sage: #b5c9a8;
+
+  --palette-olive: #4a6741;
+  --palette-sage-muted: #8fa882;
+  --palette-yellow-green: #c4b96a;
+  --palette-golden: #d4a843;
+  --palette-brown-warm: #8b4a2a;
+
+  --palette-strength-dot: #8bc34a;
+  --palette-weakness-dot: #f44336;
+
+  --palette-wheat: #e8c84a;
+  --palette-trees: #6b8c3a;
+  --palette-hills: #a3c45a;
+  --palette-trunk: #8b6a3a;
+  --palette-roof: #c47a5a;
+  --palette-distant-hills: #d4e8c2;
+  --palette-sky: #87aabf;
+
   /* Fonds */
-  --bg-primary:    #f4f2fb;
-  --bg-secondary:  #ebe8f7;
-  --bg-card:       #ffffff;
-  --bg-card-hover: #faf8ff;
+  --bg-primary: var(--palette-off-white);
+  --bg-secondary: #ecece4;
+  --bg-card: var(--palette-white);
+  --bg-card-hover: #fafaf8;
 
-  /* Accents principaux */
-  --color-indigo:     #4f46e5;
-  --color-indigo-soft:#e0e7ff;
-  --color-violet:     #7c3aed;
-  --color-violet-soft:#ede9fe;
-  --color-coral:      #e11d48;
-  --color-coral-soft: #ffe4e9;
-  --color-teal:       #0d9488;
-  --color-teal-soft:  #ccfbf1;
-  --color-amber:      #d97706;
-  --color-amber-soft: #fef3c7;
-  --color-sky:        #0284c7;
-  --color-sky-soft:   #e0f2fe;
-  --color-rose:       #db2777;
-  --color-rose-soft:  #fce7f3;
+  /* Accents (noms historiques conservés pour les composants) */
+  --color-indigo: var(--palette-olive);
+  --color-indigo-soft: var(--palette-distant-hills);
+  --color-violet: var(--palette-trees);
+  --color-violet-soft: #e5ebe0;
+  --color-coral: var(--palette-weakness-dot);
+  --color-coral-soft: #ffebee;
+  --color-teal: var(--palette-sky);
+  --color-teal-soft: #e8eef2;
+  --color-amber: var(--palette-golden);
+  --color-amber-soft: #f5ecd4;
+  --color-sky: var(--palette-sky);
+  --color-sky-soft: var(--color-teal-soft);
+  --color-rose: var(--palette-roof);
+  --color-rose-soft: #f2e0d8;
 
-  /* Alias historiques (évite de tout renommer dans les composants) */
-  --sage:          var(--color-indigo);
-  --sage-light:    #818cf8;
-  --sage-pale:     var(--color-indigo-soft);
-  --lavender:      var(--color-teal);
+  --sage: var(--color-indigo);
+  --sage-light: var(--palette-sage-muted);
+  --sage-pale: var(--color-indigo-soft);
+  --lavender: var(--color-teal);
   --lavender-pale: var(--color-teal-soft);
-  --sand:          var(--color-amber);
-  --sand-pale:     var(--color-amber-soft);
+  --sand: var(--color-amber);
+  --sand-pale: var(--color-amber-soft);
 
-  /* Marque & gradients */
-  --gradient-brand: linear-gradient(135deg, #4f46e5 0%, #7c3aed 42%, #db2777 100%);
-  --gradient-brand-hover: linear-gradient(135deg, #4338ca 0%, #6d28d9 45%, #be185d 100%);
-  --gradient-progress: linear-gradient(90deg, #0ea5e9 0%, #7c3aed 50%, #f43f5e 100%);
-  --gradient-text: linear-gradient(135deg, #4f46e5, #db2777);
+  --gradient-brand: linear-gradient(135deg, #4a6741 0%, #6b8c3a 48%, #8fa882 100%);
+  --gradient-brand-hover: linear-gradient(135deg, #3d5636 0%, #5a7634 48%, #7a966f 100%);
+  --gradient-progress: linear-gradient(90deg, #87aabf 0%, #6b8c3a 50%, #d4a843 100%);
+  --gradient-text: linear-gradient(135deg, #4a6741, #d4a843);
 
-  /* Texte */
-  --text-primary:   #1a1625;
-  --text-secondary: #4b4658;
-  --text-muted:     #7c7589;
+  --text-primary: var(--palette-text-body);
+  --text-heading: var(--palette-text-heading);
+  --text-secondary: #454545;
+  --text-muted: #6b6b6b;
 
-  /* Bordures & ombres */
-  --border:         rgba(79, 70, 229, 0.14);
-  --shadow-sm:      0 2px 12px rgba(30, 27, 45, 0.06);
-  --shadow-md:      0 8px 32px rgba(30, 27, 45, 0.1);
-  --shadow-lg:      0 20px 56px rgba(79, 70, 229, 0.12);
-  --shadow-brand:   0 8px 28px rgba(79, 70, 229, 0.35);
+  --border: var(--palette-border-input);
+  --shadow-sm: 0 2px 12px rgba(26, 26, 26, 0.06);
+  --shadow-md: 0 8px 32px rgba(26, 26, 26, 0.08);
+  --shadow-lg: 0 20px 56px rgba(74, 103, 65, 0.12);
+  --shadow-brand: 0 8px 28px rgba(74, 103, 65, 0.3);
 
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-sans:  'DM Sans', system-ui, sans-serif;
@@ -93,7 +114,7 @@ h1, h2, h3, h4 {
   font-family: var(--font-serif);
   font-weight: 500;
   line-height: 1.25;
-  color: var(--text-primary);
+  color: var(--text-heading);
 }
 
 h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
@@ -169,7 +190,7 @@ a:hover { color: var(--color-violet); }
 }
 .btn-primary:hover:not(:disabled) {
   background: var(--gradient-brand-hover);
-  box-shadow: 0 10px 36px rgba(124, 58, 237, 0.4);
+  box-shadow: 0 10px 36px rgba(74, 103, 65, 0.35);
   transform: translateY(-1px);
 }
 .btn-primary:active:not(:disabled) { transform: translateY(0); }
@@ -218,9 +239,9 @@ a:hover { color: var(--color-violet); }
 }
 
 .form-input:focus {
-  border-color: var(--color-violet);
+  border-color: var(--color-indigo);
   background: var(--bg-card);
-  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.18);
+  box-shadow: 0 0 0 3px rgba(74, 103, 65, 0.2);
 }
 
 .form-input::placeholder { color: var(--text-muted); }
@@ -391,7 +412,7 @@ a:hover { color: var(--color-violet); }
   height: 580px;
   top: -220px;
   right: -140px;
-  background: #fda4af;
+  background: #d4e8c2;
   animation: float 16s ease-in-out infinite;
 }
 
@@ -400,7 +421,7 @@ a:hover { color: var(--color-violet); }
   height: 520px;
   bottom: -180px;
   left: -120px;
-  background: #a5b4fc;
+  background: #e8c84a;
   animation: float 19s ease-in-out infinite reverse;
 }
 
@@ -409,7 +430,7 @@ a:hover { color: var(--color-violet); }
   height: 400px;
   top: 38%;
   left: 42%;
-  background: #5eead4;
+  background: #87aabf;
   animation: breathe 24s ease-in-out infinite;
 }
 
@@ -434,6 +455,63 @@ a:hover { color: var(--color-violet); }
   ):hover:not(:disabled) {
   background: var(--gradient-brand-hover) !important;
   filter: brightness(1.02);
+}
+
+/* PrimeNG — outlined (ex. Recommencer, Renvoyer par e-mail) : olive + blanc */
+.p-button.p-button-outlined {
+  background: var(--palette-white) !important;
+  border-color: var(--palette-olive) !important;
+  color: var(--palette-olive) !important;
+  box-shadow: none !important;
+}
+.p-button.p-button-outlined .p-button-icon,
+.p-button.p-button-outlined .pi {
+  color: inherit !important;
+}
+.p-button.p-button-outlined:hover:not(:disabled) {
+  background: var(--palette-distant-hills) !important;
+  border-color: var(--palette-olive) !important;
+  color: var(--palette-olive) !important;
+}
+.p-button.p-button-outlined:focus-visible {
+  box-shadow: 0 0 0 3px rgba(74, 103, 65, 0.28) !important;
+}
+
+/* PrimeNG — secondary (ex. Refaire le test) */
+.p-button.p-button-secondary {
+  background: var(--palette-white) !important;
+  border-color: var(--palette-border-input) !important;
+  color: var(--palette-text-body) !important;
+  box-shadow: none !important;
+}
+.p-button.p-button-secondary:hover:not(:disabled) {
+  background: var(--palette-distant-hills) !important;
+  border-color: var(--palette-olive) !important;
+  color: var(--palette-olive) !important;
+}
+.p-button.p-button-secondary:focus-visible {
+  box-shadow: 0 0 0 3px rgba(74, 103, 65, 0.22) !important;
+}
+
+/* PrimeNG — checkbox (accueil, etc.) : bordure grise, coches olive */
+p-checkbox .p-checkbox-box {
+  border-color: var(--palette-border-input) !important;
+  background: var(--palette-white) !important;
+}
+p-checkbox.p-checkbox-checked .p-checkbox-box,
+p-checkbox .p-checkbox-checked .p-checkbox-box {
+  background: var(--palette-olive) !important;
+  border-color: var(--palette-olive) !important;
+}
+p-checkbox .p-checkbox-icon {
+  color: var(--palette-white) !important;
+}
+p-checkbox:not(.p-disabled) .p-checkbox-box:hover {
+  border-color: var(--palette-olive) !important;
+}
+p-checkbox .p-checkbox-box.p-focus {
+  box-shadow: 0 0 0 3px rgba(74, 103, 65, 0.22) !important;
+  border-color: var(--palette-olive) !important;
 }
 
 @media (max-width: 600px) {

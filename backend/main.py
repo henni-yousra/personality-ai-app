@@ -41,7 +41,7 @@ from llm_questions import maybe_reformulate_question_text
 from question_bank import TOTAL_QUESTIONS, QUESTIONS, question_option_values
 
 app = FastAPI(
-    title="Personality AI API",
+    title="personAI API",
     description="API pour le test de personnalité adaptatif Big Five",
     version="1.0.0",
 )
@@ -192,7 +192,7 @@ def _core_submit_response(session_id: str, body: AnswerRequest) -> AnswerRespons
 
 @app.get("/")
 def root():
-    return {"message": "Personality AI API — en ligne"}
+    return {"message": "personAI API — en ligne"}
 
 
 @app.get("/api/health")

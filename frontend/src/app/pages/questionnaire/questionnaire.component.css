@@ -154,10 +154,10 @@
 
 .quiz-error {
   padding: 0.75rem 1rem;
-  background: #FEF3F2;
-  border: 1px solid #FCA5A5;
+  background: var(--color-coral-soft);
+  border: 1px solid rgba(244, 67, 54, 0.45);
   border-radius: var(--radius-md);
-  color: #B91C1C;
+  color: #c62828;
   font-size: 0.875rem;
   margin-bottom: 1rem;
 }
@@ -191,15 +191,15 @@
   transition: all var(--transition);
 }
 
-.trait-dot:nth-child(1) { background: var(--color-sky-soft); border-color: rgba(2, 132, 199, 0.35); }
-.trait-dot:nth-child(2) { background: var(--color-amber-soft); border-color: rgba(217, 119, 6, 0.35); }
-.trait-dot:nth-child(3) { background: var(--color-rose-soft); border-color: rgba(219, 39, 119, 0.35); }
-.trait-dot:nth-child(4) { background: var(--color-teal-soft); border-color: rgba(13, 148, 136, 0.35); }
-.trait-dot:nth-child(5) { background: var(--color-violet-soft); border-color: rgba(124, 58, 237, 0.35); }
+.trait-dot:nth-child(1) { background: var(--color-sky-soft); border-color: rgba(135, 170, 191, 0.5); }
+.trait-dot:nth-child(2) { background: var(--color-amber-soft); border-color: rgba(212, 168, 67, 0.45); }
+.trait-dot:nth-child(3) { background: var(--color-rose-soft); border-color: rgba(196, 122, 90, 0.45); }
+.trait-dot:nth-child(4) { background: var(--color-indigo-soft); border-color: rgba(74, 103, 65, 0.35); }
+.trait-dot:nth-child(5) { background: var(--color-violet-soft); border-color: rgba(107, 140, 58, 0.4); }
 
 .trait-dot.active {
   transform: scale(1.35);
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+  box-shadow: 0 0 0 3px rgba(74, 103, 65, 0.18);
 }
 
 .trait-dot:nth-child(1).active { background: var(--color-sky); border-color: var(--color-sky); }
