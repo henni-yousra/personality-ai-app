@@ -1,0 +1,223 @@
+{
+  "session_id": "fc2bfd17-ceab-4f77-9421-07404db8139c",
+  "email": "hennimansour.yousrayasmine@gmail.com",
+  "created_at": "2026-04-05T14:38:37.323777",
+  "updated_at": "2026-04-05T14:39:20.377891",
+  "responses": [
+    {
+      "question_id": "O1",
+      "question_text": "Quand on vous parle d’un sujet que vous ne connaissez pas, que faites-vous en général ?",
+      "trait": "O",
+      "polarity": 1,
+      "answer": 4,
+      "answer_label": "Je creuse tout de suite (articles, vidéos…)",
+      "answered_at": "2026-04-05T14:38:51.618754"
+    },
+    {
+      "question_id": "C1",
+      "question_text": "Vous avez une échéance dans deux semaines. Comment vous y prenez-vous ?",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 1,
+      "answer_label": "Je m’y mets la veille si je peux",
+      "answered_at": "2026-04-05T14:38:56.135219"
+    },
+    {
+      "question_id": "E1",
+      "question_text": "Dans une soirée où vous ne connaissez presque personne, vous vous sentez…",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 4,
+      "answer_label": "Énergisé(e), j’aime faire connaissance",
+      "answered_at": "2026-04-05T14:38:58.433511"
+    },
+    {
+      "question_id": "A1",
+      "question_text": "Un collègue prend du retard sur une tâche commune et vous impacte. Votre premier réflexe :",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 2,
+      "answer_label": "Je fais remarquer les faits, sans détour",
+      "answered_at": "2026-04-05T14:39:00.152213"
+    },
+    {
+      "question_id": "N1",
+      "question_text": "La veille d’un entretien ou d’un examen important, vous…",
+      "trait": "N",
+      "polarity": 1,
+      "answer": 4,
+      "answer_label": "Peu dormi, scénarios qui tournent en boucle",
+      "answered_at": "2026-04-05T14:39:02.312357"
+    },
+    {
+      "question_id": "O2",
+      "question_text": "Les week-ends, vous préférez plutôt…",
+      "trait": "O",
+      "polarity": -1,
+      "answer": 4,
+      "answer_label": "Improviser et tester du nouveau",
+      "answered_at": "2026-04-05T14:39:04.596908"
+    },
+    {
+      "question_id": "C2",
+      "question_text": "Votre bureau ou espace de travail ressemble le plus souvent à…",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 2,
+      "answer_label": "Des piles que je connais par cœur",
+      "answered_at": "2026-04-05T14:39:06.750085"
+    },
+    {
+      "question_id": "E2",
+      "question_text": "Après une longue journée bien remplie, idéal pour vous :",
+      "trait": "E",
+      "polarity": -1,
+      "answer": 4,
+      "answer_label": "Silence total, solo rechargé",
+      "answered_at": "2026-04-05T14:39:08.529332"
+    },
+    {
+      "question_id": "A2",
+      "question_text": "On vous coupe la parole en réunion. Vous…",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 2,
+      "answer_label": "J’attends une pause puis je complète calmement",
+      "answered_at": "2026-04-05T14:39:10.805327"
+    },
+    {
+      "question_id": "N2",
+      "question_text": "Face à une décision importante, vous…",
+      "trait": "N",
+      "polarity": 1,
+      "answer": 4,
+      "answer_label": "Hésitez longtemps, redoutez le mauvais choix",
+      "answered_at": "2026-04-05T14:39:13.026467"
+    }
+  ],
+  "used_question_ids": [
+    "O1",
+    "C1",
+    "E1",
+    "A1",
+    "N1",
+    "O2",
+    "C2",
+    "E2",
+    "A2",
+    "N2"
+  ],
+  "completed": true,
+  "report": {
+    "archetype": {
+      "name": "L'Empathique",
+      "emoji": "◆",
+      "tagline": "Chaleureux, à l'écoute et profondément humain",
+      "description": "Vous ressentez profondément les émotions — les vôtres et celles des autres. Votre capacité d'écoute et votre chaleur humaine créent des liens forts et authentiques. Vous êtes souvent la personne vers qui les autres se tournent dans les moments difficiles."
+    },
+    "overall_summary": "Ce profil révèle une personnalité équilibrée, capable de s'adapter à différents contextes, avec une tendance à être sensible et réactif aux situations de stress. La capacité à équilibrer la curiosité et le pragmatisme, ainsi que la flexibilité dans l'approche, sont des atouts importants. Cependant, il est essentiel de gérer le niveau de stress et d'anxiété pour maintenir un équilibre global.",
+    "traits": {
+      "O": {
+        "score": 50.0,
+        "label": "Ouverture",
+        "emoji": "◉",
+        "interpretation": "Avec un score d'ouverture à 50, vous démontrez une capacité à équilibrer la curiosité et le pragmatisme. Vous êtes susceptible de vous intéresser à de nouveaux sujets et expériences, mais également de considérer les aspects pratiques et les implications potentielles. Cette ouverture d'esprit peut vous aider à aborder les défis avec une perspective innovante et à explorer différentes opportunités. Profil à confirmer sur ce trait — mesure encore incertaine (variance de la moyenne élevée : 0.250)."
+      },
+      "C": {
+        "score": 16.7,
+        "label": "Conscienciosité",
+        "emoji": "■",
+        "interpretation": "Un score de conscienciosité à 16,7 indique que vous avez tendance à être flexible et spontané dans votre approche. Vous préférez souvent agir sur l'instant et adapter vos plans en fonction des circonstances, plutôt que de suivre un planning rigide. Cela peut vous permettre de vous adapter rapidement aux changements, mais il est important de veiller à ne pas négliger les détails importants ou les délais cruciaux."
+      },
+      "E": {
+        "score": 50.0,
+        "label": "Extraversion",
+        "emoji": "▲",
+        "interpretation": "Avec un score d'extraversion à 50, vous semblez vous épanouir autant en solo qu'en groupe. Vous êtes capable de vous sentir à l'aise dans différentes situations sociales, mais vous appréciez également les moments de solitude pour vous ressourcer. Cette flexibilité sociale peut vous aider à maintenir un équilibre entre les interactions avec les autres et le temps nécessaire pour votre propre bien-être. Profil à confirmer sur ce trait — mesure encore incertaine (variance de la moyenne élevée : 0.250)."
+      },
+      "A": {
+        "score": 41.7,
+        "label": "Agréabilité",
+        "emoji": "◆",
+        "interpretation": "Un score d'agréabilité à 41,7 suggère que vous savez coopérer avec les autres tout en affirmant vos propres besoins et limites. Vous êtes susceptible de chercher un équilibre entre l'harmonie dans les relations et la nécessité de défendre vos intérêts personnels. Cela peut vous aider à maintenir des relations solides et à communiquer de manière efficace, mais il est important de rester attentif à vos propres sentiments et besoins pour éviter les conflits."
+      },
+      "N": {
+        "score": 100.0,
+        "label": "Névrosisme",
+        "emoji": "●",
+        "interpretation": "Un score de névrosisme à 100 indique que vous êtes très sensible et réactif aux situations de stress. Vous êtes susceptible de ressentir fortement les émotions négatives et de vous inquiéter pour l'avenir ou le passé. Il est essentiel de développer des stratégies pour gérer ce stress et cette anxiété, telles que la méditation, l'exercice physique ou la discussion avec des proches, pour maintenir un bien-être global et prévenir les effets négatifs sur votre santé mentale et physique."
+      }
+    },
+    "strengths": [
+      "Capacité d'adaptation",
+      "Ouverture d'esprit",
+      "Équilibre dans les relations"
+    ],
+    "areas_of_attention": [
+      "Gestion du stress et de l'anxiété",
+      "Amélioration de la planification et de l'organisation"
+    ],
+    "recommendations": [
+      "Pratiquer des techniques de relaxation",
+      "Développer un planning flexible mais réaliste",
+      "Engager des conversations ouvertes sur vos sentiments et besoins"
+    ],
+    "disclaimer": "Ce rapport est informatif et non médical. Il ne constitue pas un diagnostic psychologique. Pour tout accompagnement approfondi, consultez un professionnel qualifié."
+  },
+  "resend_count": 0,
+  "last_resend": null,
+  "scores": {
+    "O": {
+      "total": 0.0,
+      "count": 2
+    },
+    "C": {
+      "total": -5.333333333333334,
+      "count": 2
+    },
+    "E": {
+      "total": 0.0,
+      "count": 2
+    },
+    "A": {
+      "total": -1.3333333333333335,
+      "count": 2
+    },
+    "N": {
+      "total": 8.0,
+      "count": 2
+    }
+  },
+  "traits_latent": {
+    "O": {
+      "mean": 0.5,
+      "variance": 0.25,
+      "n": 2,
+      "m2": 0.5
+    },
+    "C": {
+      "mean": 0.16666666666666666,
+      "variance": 0.027777777777777776,
+      "n": 2,
+      "m2": 0.05555555555555555
+    },
+    "E": {
+      "mean": 0.5,
+      "variance": 0.25,
+      "n": 2,
+      "m2": 0.5
+    },
+    "A": {
+      "mean": 0.41666666666666663,
+      "variance": 0.006944444444444448,
+      "n": 2,
+      "m2": 0.013888888888888897
+    },
+    "N": {
+      "mean": 1.0,
+      "variance": 0.0,
+      "n": 2,
+      "m2": 0.0
+    }
+  }
+}
