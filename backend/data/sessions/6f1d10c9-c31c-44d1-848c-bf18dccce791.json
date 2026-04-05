@@ -1,0 +1,223 @@
+{
+  "session_id": "6f1d10c9-c31c-44d1-848c-bf18dccce791",
+  "email": "hennimansour.yousrayasmine@gmail.com",
+  "created_at": "2026-04-05T18:32:53.355182",
+  "updated_at": "2026-04-05T18:33:36.660131",
+  "responses": [
+    {
+      "question_id": "O1",
+      "question_text": "Quand on vous parle d’un sujet que vous ne connaissez pas, que faites-vous en général ?",
+      "trait": "O",
+      "polarity": 1,
+      "answer": 1,
+      "answer_label": "Je change vite de sujet",
+      "answered_at": "2026-04-05T18:32:59.757061"
+    },
+    {
+      "question_id": "C1",
+      "question_text": "Vous avez une échéance dans deux semaines. Comment vous y prenez-vous ?",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 4,
+      "answer_label": "Plan + marge dès le début, suivi régulier",
+      "answered_at": "2026-04-05T18:33:03.014903"
+    },
+    {
+      "question_id": "E1",
+      "question_text": "Dans une soirée où vous ne connaissez presque personne, vous vous sentez…",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 2,
+      "answer_label": "Un peu tendu(e), je reste en retrait",
+      "answered_at": "2026-04-05T18:33:05.995581"
+    },
+    {
+      "question_id": "A1",
+      "question_text": "Un collègue prend du retard sur une tâche commune et vous impacte. Votre premier réflexe :",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 4,
+      "answer_label": "Je privilégie l’écoute avant de réagir",
+      "answered_at": "2026-04-05T18:33:08.929846"
+    },
+    {
+      "question_id": "N1",
+      "question_text": "La veille d’un entretien ou d’un examen important, vous…",
+      "trait": "N",
+      "polarity": 1,
+      "answer": 3,
+      "answer_label": "Des pensées qui tournent un moment",
+      "answered_at": "2026-04-05T18:33:11.643142"
+    },
+    {
+      "question_id": "O2",
+      "question_text": "Les week-ends, vous préférez plutôt…",
+      "trait": "O",
+      "polarity": -1,
+      "answer": 2,
+      "answer_label": "Un mix habitudes et petites nouveautés",
+      "answered_at": "2026-04-05T18:33:14.921439"
+    },
+    {
+      "question_id": "C2",
+      "question_text": "Votre bureau ou espace de travail ressemble le plus souvent à…",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 4,
+      "answer_label": "Tout a sa place, facile à retrouver",
+      "answered_at": "2026-04-05T18:33:17.796120"
+    },
+    {
+      "question_id": "E2",
+      "question_text": "Après une longue journée bien remplie, idéal pour vous :",
+      "trait": "E",
+      "polarity": -1,
+      "answer": 1,
+      "answer_label": "Dîner entre amis ou appel à plusieurs",
+      "answered_at": "2026-04-05T18:33:20.937106"
+    },
+    {
+      "question_id": "A2",
+      "question_text": "On vous coupe la parole en réunion. Vous…",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 2,
+      "answer_label": "J’attends une pause puis je complète calmement",
+      "answered_at": "2026-04-05T18:33:24.616597"
+    },
+    {
+      "question_id": "N2",
+      "question_text": "Face à une décision importante, vous…",
+      "trait": "N",
+      "polarity": 1,
+      "answer": 4,
+      "answer_label": "Hésitez longtemps, redoutez le mauvais choix",
+      "answered_at": "2026-04-05T18:33:27.569658"
+    }
+  ],
+  "used_question_ids": [
+    "O1",
+    "C1",
+    "E1",
+    "A1",
+    "N1",
+    "O2",
+    "C2",
+    "E2",
+    "A2",
+    "N2"
+  ],
+  "completed": true,
+  "report": {
+    "archetype": {
+      "name": "L'Empathique",
+      "emoji": "◆",
+      "tagline": "Chaleureux, à l'écoute et profondément humain",
+      "description": "Vous ressentez profondément les émotions — les vôtres et celles des autres. Votre capacité d'écoute et votre chaleur humaine créent des liens forts et authentiques. Vous êtes souvent la personne vers qui les autres se tournent dans les moments difficiles."
+    },
+    "overall_summary": "Vous présentez un profil équilibré, avec des forces marquées dans la conscienciosité et l'extraversion, ainsi qu'une agréabilité prononcée. Cependant, votre score élevé en névrosisme suggère une sensibilité aux situations de stress, qui pourrait nécessiter une attention particulière. Votre ouverture aux expériences nouvelles est plus limitée, mais cela ne signifie pas que vous êtes fermé aux idées nouvelles, simplement que vous appréciez la stabilité et les approches éprouvées.",
+    "traits": {
+      "O": {
+        "score": 33.3,
+        "label": "Ouverture",
+        "emoji": "◉",
+        "interpretation": "Avec un score d'ouverture de 33,3, vous semblez apprécier la stabilité et les approches éprouvées, ce qui peut vous aider à maintenir un sens de sécurité et de familiarité dans vos activités quotidiennes. Cela ne signifie pas que vous êtes complètement fermé aux nouvelles expériences, mais plutôt que vous préférez vous concentrer sur ce que vous connaissez et maîtrisez bien. Cela peut être bénéfique dans certaines situations, mais il est également important de rester ouvert aux nouvelles idées et expériences pour favoriser la croissance personnelle et professionnelle."
+      },
+      "C": {
+        "score": 100.0,
+        "label": "Conscienciosité",
+        "emoji": "■",
+        "interpretation": "Votre score de conscienciosité est exceptionnellement élevé, à 100, ce qui indique que vous êtes extrêmement organisé, fiable et orienté vers les objectifs. Vous avez probablement une grande capacité à planifier, à gérer votre temps et à atteindre vos buts de manière efficace. Cette forte conscienciosité peut vous aider à réussir dans de nombreux domaines de votre vie, tant personnels que professionnels, en vous permettant de maintenir une approche structurée et méthodique face aux défis."
+      },
+      "E": {
+        "score": 66.7,
+        "label": "Extraversion",
+        "emoji": "▲",
+        "interpretation": "Avec un score d'extraversion de 66,7, vous semblez être une personne énergisée par les interactions sociales et l'entourage, mais vous n'êtes pas nécessairement quelqu'un qui recherche constamment le centre de l'attention. Vous appréciez probablement passer du temps avec les autres, partager des expériences et avoir des contacts sociaux réguliers, ce qui peut contribuer à votre bien-être émotionnel et à votre sentiment d'appartenance. Cependant, vous pourriez également apprécier les moments de solitude pour vous ressourcer et maintenir votre équilibre intérieur."
+      },
+      "A": {
+        "score": 75.0,
+        "label": "Agréabilité",
+        "emoji": "◆",
+        "interpretation": "Votre score d'agrément est de 75, ce qui suggère que vous êtes une personne chaleureuse, empathique et attentive aux autres. Vous avez probablement une forte capacité à comprendre et à partager les sentiments des autres, ce qui peut faciliter la construction de relations solides et positives. Cette agréabilité peut également vous aider à résoudre les conflits de manière constructive et à maintenir un environnement social harmonieux autour de vous. Cependant, il est important de trouver un équilibre entre être attentionné envers les autres et prendre soin de vos propres besoins et limites."
+      },
+      "N": {
+        "score": 83.3,
+        "label": "Névrosisme",
+        "emoji": "●",
+        "interpretation": "Avec un score de névrosisme de 83,3, vous semblez être sensible et réactif aux situations de stress, ce qui peut parfois rendre difficile la gestion de vos émotions et de vos réactions. Il est important de reconnaître que ces sentiments sont valides et de chercher des moyens sains pour les gérer, tels que la pratique de la résilience, l'exercice, la méditation ou le recours à un soutien émotionnel. En développant des stratégies pour faire face au stress et en apprenant à reconnaître les signaux de votre corps et de votre esprit, vous pouvez améliorer votre bien-être général et réduire l'impact négatif du névrosisme sur votre vie quotidienne."
+      }
+    },
+    "strengths": [
+      "Organisation et planification efficaces",
+      "Capacité à gérer les relations sociales de manière positive",
+      "Empathie et compréhension envers les autres"
+    ],
+    "areas_of_attention": [
+      "Gestion du stress et de l'anxiété",
+      "Développement de l'ouverture aux nouvelles expériences"
+    ],
+    "recommendations": [
+      "Pratiquer des activités de relaxation et de gestion du stress",
+      "S'engager dans de nouvelles expériences pour élargir ses horizons",
+      "Chercher un soutien émotionnel lorsque nécessaire"
+    ],
+    "disclaimer": "Ce rapport est informatif et non médical. Il ne constitue pas un diagnostic psychologique. Pour tout accompagnement approfondi, consultez un professionnel qualifié."
+  },
+  "resend_count": 0,
+  "last_resend": null,
+  "scores": {
+    "O": {
+      "total": -2.666666666666666,
+      "count": 2
+    },
+    "C": {
+      "total": 8.0,
+      "count": 2
+    },
+    "E": {
+      "total": 2.6666666666666665,
+      "count": 2
+    },
+    "A": {
+      "total": 4.0,
+      "count": 2
+    },
+    "N": {
+      "total": 5.333333333333333,
+      "count": 2
+    }
+  },
+  "traits_latent": {
+    "O": {
+      "mean": 0.33333333333333337,
+      "variance": 0.11111111111111113,
+      "n": 2,
+      "m2": 0.22222222222222227
+    },
+    "C": {
+      "mean": 1.0,
+      "variance": 0.0,
+      "n": 2,
+      "m2": 0.0
+    },
+    "E": {
+      "mean": 0.6666666666666667,
+      "variance": 0.1111111111111111,
+      "n": 2,
+      "m2": 0.2222222222222222
+    },
+    "A": {
+      "mean": 0.75,
+      "variance": 0.0625,
+      "n": 2,
+      "m2": 0.125
+    },
+    "N": {
+      "mean": 0.8333333333333333,
+      "variance": 0.027777777777777794,
+      "n": 2,
+      "m2": 0.05555555555555559
+    }
+  }
+}
