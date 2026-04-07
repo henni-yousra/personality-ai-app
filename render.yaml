@@ -10,5 +10,5 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: "3.12.8"
-      # Secrets Render : GROQ_API_KEY, GMAIL_* ou SMTP_*
-      # Front sur Netlify : CORS_ALLOW_NETLIFY=true  OU  CORS_ORIGINS=https://votre-site.netlify.app
+      # Secrets : GROQ_API_KEY, GMAIL_* ou SMTP_*
+      # CORS : *.netlify.app autorisé automatiquement sur Render ; autre domaine → CORS_ORIGINS

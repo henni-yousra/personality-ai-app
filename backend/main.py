@@ -61,9 +61,20 @@ _cors_extra = [
 ]
 _cors_allow = list(dict.fromkeys(_cors_local + _cors_extra))
 
-# Localhost (tous ports) ; option Netlify (sous-domaines *.netlify.app, y compris previews)
+# Localhost (tous ports) ; *.netlify.app si CORS_ALLOW_NETLIFY, ou automatiquement sur Render (sauf CORS_STRICT=true)
 _cors_regex_local = r"https?://(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$"
-if _env_truthy("CORS_ALLOW_NETLIFY"):
+
+
+def _cors_netlify_host_pattern_enabled() -> bool:
+    if _env_truthy("CORS_STRICT"):
+        return _env_truthy("CORS_ALLOW_NETLIFY")
+    if _env_truthy("CORS_ALLOW_NETLIFY"):
+        return True
+    # Render définit RENDER=true : évite l’oubli de CORS pour un front Netlify (démo / TP).
+    return os.getenv("RENDER", "").strip().lower() == "true"
+
+
+if _cors_netlify_host_pattern_enabled():
     _cors_origin_regex = (
         f"({_cors_regex_local})|((?i)^https://[\\w-]+\\.netlify\\.app$)"
     )
