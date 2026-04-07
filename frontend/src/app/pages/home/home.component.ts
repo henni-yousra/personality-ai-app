@@ -114,9 +114,9 @@ export class HomeComponent implements OnInit {
       if (err.status === 0) {
         if (environment.apiBaseUrl) {
           return (
-            'Connexion à l’API impossible. Vérifiez l’URL dans environment.prod.ts (HTTPS, sans slash final), ' +
-            'que le déploiement Render utilise la dernière version du backend, et réessayez après ~1 min si l’instance ' +
-            'était en veille. Front hors Netlify : définissez CORS_ORIGINS sur Render avec l’URL exacte de ce site.'
+            'Connexion à l’API impossible. Dans environment.prod.ts, apiBaseUrl doit être l’URL du backend Render ' +
+            '(https://….onrender.com), pas celle du site Angular. Pas de slash final. Laissez Render finir le déploiement ' +
+            'et réessayez après ~1 min si l’instance était en veille. Domaine perso : ajoutez-le dans CORS_ORIGINS sur Render.'
           );
         }
         return (
