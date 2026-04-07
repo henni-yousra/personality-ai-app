@@ -10,5 +10,5 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: "3.12.8"
-      # À renseigner dans le tableau de bord Render (Secrets) :
-      # GROQ_API_KEY, CORS_ORIGINS, GMAIL_USER / GMAIL_APP_PASSWORD ou SMTP_*
+      # Secrets : GROQ_API_KEY, GMAIL_* ou SMTP_*
+      # CORS : *.netlify.app autorisé automatiquement sur Render ; autre domaine → CORS_ORIGINS

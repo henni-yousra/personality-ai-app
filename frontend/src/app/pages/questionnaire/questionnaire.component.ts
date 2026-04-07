@@ -70,7 +70,9 @@ export class QuestionnaireComponent implements OnInit {
           return;
         }
         this.question.set(s.current_question);
-        this.questionReformulated.set(false);
+        this.questionReformulated.set(
+          s.reformulated === true || s.generated === true
+        );
         const t = s.progress.total;
         const idx = s.current_question_index;
         const percent = t > 0 ? Math.round((idx / t) * 1000) / 10 : 0;
@@ -116,7 +118,9 @@ export class QuestionnaireComponent implements OnInit {
           this.animating.set(true);
           setTimeout(() => {
             this.question.set(res.question);
-            this.questionReformulated.set(res.reformulated === true);
+            this.questionReformulated.set(
+              res.reformulated === true || res.generated === true
+            );
             this.selectedAnswer.set(null);
             this.loading.set(false);
             this.animating.set(false);

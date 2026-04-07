@@ -90,7 +90,8 @@ export class HomeComponent implements OnInit {
               state: {
                 question: res.question,
                 progress: res.progress,
-                reformulated: res.reformulated === true,
+                reformulated:
+                  res.reformulated === true || res.generated === true,
               },
             })
             .then((ok) => {
@@ -113,10 +114,9 @@ export class HomeComponent implements OnInit {
       if (err.status === 0) {
         if (environment.apiBaseUrl) {
           return (
-            'Connexion à l’API impossible. Causes fréquentes : (1) CORS — sur Render, définissez ' +
-            'CORS_ORIGINS avec l’URL exacte de ce site (ex. https://votre-app.netlify.app), sans slash final ; ' +
-            '(2) instance Render gratuite en veille — réessayez après ~1 min ; (3) URL incorrecte dans ' +
-            'environment.prod.ts.'
+            'Connexion à l’API impossible. Vérifiez l’URL dans environment.prod.ts (HTTPS, sans slash final), ' +
+            'que le déploiement Render utilise la dernière version du backend, et réessayez après ~1 min si l’instance ' +
+            'était en veille. Front hors Netlify : définissez CORS_ORIGINS sur Render avec l’URL exacte de ce site.'
           );
         }
         return (
