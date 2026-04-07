@@ -7,6 +7,7 @@ import { Checkbox } from 'primeng/checkbox';
 import { Button } from 'primeng/button';
 import { Message } from 'primeng/message';
 import { QuizService } from '../../services/quiz.service';
+import { environment } from '../../../environments/environment';
 
 const STORAGE_FIRST = 'quiz_profile_first_name';
 const STORAGE_INTERESTS = 'quiz_profile_interests';
@@ -110,9 +111,18 @@ export class HomeComponent implements OnInit {
   private formatStartError(err: unknown): string {
     if (err instanceof HttpErrorResponse) {
       if (err.status === 0) {
+        if (environment.apiBaseUrl) {
+          return (
+            'Connexion à l’API impossible. Causes fréquentes : (1) CORS — sur Render, définissez ' +
+            'CORS_ORIGINS avec l’URL exacte de ce site (ex. https://votre-app.netlify.app), sans slash final ; ' +
+            '(2) instance Render gratuite en veille — réessayez après ~1 min ; (3) URL incorrecte dans ' +
+            'environment.prod.ts.'
+          );
+        }
         return (
-          'Impossible de joindre l’API. Démarrez le backend (port 8000) et utilisez `ng serve` ' +
-          '(proxy vers le backend). Si vous ouvrez un build statique sans proxy, configurez environment.apiBaseUrl.'
+          'Impossible de joindre l’API en local. Démarrez le backend (port 8000) dans le dossier ' +
+          '`backend`, puis `npm start` ici (proxy). Pour pointer vers l’API Render sans backend local : ' +
+          '`npm run start:remote`.'
         );
       }
       const d = err.error?.detail;
