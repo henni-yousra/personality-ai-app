@@ -4,5 +4,5 @@
  */
 export const environment = {
   production: true,
-  apiBaseUrl: 'https://REMPLACER_PAR_URL_DU_BACKEND',
+  apiBaseUrl: 'https://personality-ai-app.onrender.com',
 };
