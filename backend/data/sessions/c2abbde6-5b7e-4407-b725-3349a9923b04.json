@@ -1,0 +1,78 @@
+{
+  "session_id": "c2abbde6-5b7e-4407-b725-3349a9923b04",
+  "email": "x@y.z",
+  "created_at": "2026-04-03T22:16:38.657096",
+  "updated_at": "2026-04-03T22:16:38.684181",
+  "responses": [
+    {
+      "question_id": "O4",
+      "question_text": "J'aime imaginer des scénarios alternatifs et des mondes fictifs.",
+      "trait": "O",
+      "polarity": 1,
+      "answer": 3,
+      "answered_at": "2026-04-03T22:16:38.683434"
+    }
+  ],
+  "used_question_ids": [
+    "O4",
+    "C4"
+  ],
+  "completed": false,
+  "report": null,
+  "resend_count": 0,
+  "last_resend": null,
+  "scores": {
+    "O": {
+      "total": 3,
+      "count": 1
+    },
+    "C": {
+      "total": 0,
+      "count": 0
+    },
+    "E": {
+      "total": 0,
+      "count": 0
+    },
+    "A": {
+      "total": 0,
+      "count": 0
+    },
+    "N": {
+      "total": 0,
+      "count": 0
+    }
+  },
+  "traits_latent": {
+    "O": {
+      "mean": 0.5,
+      "variance": 0.25,
+      "n": 1,
+      "m2": 0.0
+    },
+    "C": {
+      "mean": 0.5,
+      "variance": 0.25,
+      "n": 0,
+      "m2": 0.0
+    },
+    "E": {
+      "mean": 0.5,
+      "variance": 0.25,
+      "n": 0,
+      "m2": 0.0
+    },
+    "A": {
+      "mean": 0.5,
+      "variance": 0.25,
+      "n": 0,
+      "m2": 0.0
+    },
+    "N": {
+      "mean": 0.5,
+      "variance": 0.25,
+      "n": 0,
+      "m2": 0.0
+    }
+  }
+}

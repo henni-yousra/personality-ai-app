@@ -6,8 +6,8 @@ toujours le trait le moins répondu, puis une question aléatoire pour ce trait.
 
 import random
 import math
-from typing import Optional, List, Dict
-from question_bank import QUESTIONS, ANSWER_OPTIONS, TRAIT_LABELS, TRAIT_EMOJIS
+from typing import Optional, List, Dict, Tuple
+from question_bank import QUESTIONS, TRAIT_LABELS, TRAIT_EMOJIS, question_value_bounds
 from models import Question, AnswerOption, Archetype
 
 
@@ -19,7 +19,7 @@ TRAITS = ["O", "C", "E", "A", "N"]
 ARCHETYPES = [
     {
         "name": "Le Visionnaire",
-        "emoji": "🔮",
+        "emoji": "◉",
         "tagline": "Créatif, inspirant et tourné vers l'avenir",
         "description": (
             "Vous voyez le monde comme un terrain d'exploration infini. "
@@ -31,7 +31,7 @@ ARCHETYPES = [
     },
     {
         "name": "Le Logicien",
-        "emoji": "🧠",
+        "emoji": "■",
         "tagline": "Analytique, précis et indépendant",
         "description": (
             "Vous adorez résoudre des problèmes complexes et aller au fond des choses. "
@@ -43,7 +43,7 @@ ARCHETYPES = [
     },
     {
         "name": "Le Gardien",
-        "emoji": "🌿",
+        "emoji": "●",
         "tagline": "Fiable, bienveillant et ancré",
         "description": (
             "Vous êtes le pilier sur lequel les autres s'appuient. "
@@ -55,7 +55,7 @@ ARCHETYPES = [
     },
     {
         "name": "L'Architecte",
-        "emoji": "⚡",
+        "emoji": "▲",
         "tagline": "Ambitieux, stratégique et déterminé",
         "description": (
             "Vous avez une vision claire et la volonté de la réaliser. "
@@ -67,7 +67,7 @@ ARCHETYPES = [
     },
     {
         "name": "L'Empathique",
-        "emoji": "💛",
+        "emoji": "◆",
         "tagline": "Chaleureux, à l'écoute et profondément humain",
         "description": (
             "Vous ressentez profondément les émotions — les vôtres et celles des autres. "
@@ -79,7 +79,7 @@ ARCHETYPES = [
     },
     {
         "name": "L'Explorateur",
-        "emoji": "🧭",
+        "emoji": "◻",
         "tagline": "Libre, spontané et toujours en mouvement",
         "description": (
             "Vous vivez dans l'instant présent et vous adaptez à toutes les situations "
@@ -121,60 +121,157 @@ def build_question(raw: dict) -> Question:
         text=raw["text"],
         trait=raw["trait"],
         polarity=raw["polarity"],
-        options=[AnswerOption(**o) for o in ANSWER_OPTIONS],
+        options=[AnswerOption(**o) for o in raw["options"]],
     )
 
 
-def select_next_question(session: dict) -> Optional[Question]:
-    """
-    Sélectionne la prochaine question la plus informative.
-    1. Identifie le trait avec le moins de réponses (parmi les traits non saturés).
-    2. Choisit aléatoirement une question non encore posée pour ce trait.
-    Si toutes les questions disponibles sont épuisées, retourne None.
-    """
-    used_ids = set(session.get("used_question_ids", []))
-    scores = session.get("scores", {})
+def ensure_traits_latent(session: dict) -> None:
+    """Initialise traits_latent (moyenne 0–1, variance de la moyenne, n, m2 Welford)."""
+    cur = session.get("traits_latent")
+    if isinstance(cur, dict) and all(t in cur for t in TRAITS):
+        return
+    session["traits_latent"] = {
+        t: {"mean": 0.5, "variance": 0.25, "n": 0, "m2": 0.0} for t in TRAITS
+    }
 
-    # Questions encore disponibles
+
+# Contribution moyenne sur [-CONTRIB_SPAN, CONTRIB_SPAN] puis normalisée en 0–100 %
+CONTRIB_SPAN = 4.0
+
+
+def _trait_strength_01(raw: dict, answer: int) -> float:
+    """
+    Force du trait sur [0, 1] à partir de la réponse et des bornes d’options de la question.
+    Si `answer` est hors [vmin, vmax] (données corrompues, appel interne sans validation),
+    la position sur l’échelle est ramenée aux bornes pour respecter le contrat de
+    `_welford_update` (observation strictement dans [0, 1]).
+    """
+    vmin, vmax = question_value_bounds(raw)
+    d = float(vmax - vmin)
+    if d <= 0:
+        u = 0.5
+    else:
+        u = (float(answer) - float(vmin)) / d
+        u = max(0.0, min(1.0, u))
+    t = u if raw["polarity"] == 1 else 1.0 - u
+    return max(0.0, min(1.0, t))
+
+
+def _contribution_linear(t: float) -> float:
+    """t ∈ [0,1] → contribution ∈ [-CONTRIB_SPAN, CONTRIB_SPAN], comparable entre questions."""
+    return (2.0 * t - 1.0) * CONTRIB_SPAN
+
+
+def _welford_update(state: dict, x: float) -> None:
+    """
+    Updates running mean and variance using Welford's online algorithm.
+    Ensures numerical stability for variance calculation.
+
+    Args:
+        state: Dict with keys 'n', 'mean', 'm2'
+        x: New observation (0-1 range)
+    """
+    if not (0 <= x <= 1):
+        raise ValueError(f"Observation must be in [0, 1], got {x}")
+
+    n = state["n"] + 1
+    delta = x - state["mean"]
+    mean = state["mean"] + delta / n
+    delta2 = x - mean
+    m2 = state.get("m2", 0.0) + delta * delta2
+    state["n"] = n
+    state["mean"] = mean
+    state["m2"] = m2
+
+    if n < 2:
+        state["variance"] = 0.25
+    else:
+        sample_var = m2 / (n - 1)
+        state["variance"] = max(0.0, sample_var / n)
+
+
+def select_next_question(session: dict) -> Tuple[Optional[Question], str]:
+    """
+    Selects the next question using adaptive strategy.
+
+    Strategy:
+    1. Identifies trait with highest variance of mean (most uncertain)
+    2. Selects difficulty based on variance threshold:
+       - variance > 0.08: difficulty 1 (direct questions)
+       - variance > 0.03: difficulty 2 (moderate)
+       - variance ≤ 0.03: difficulty 3 (nuanced)
+    3. Randomly selects from candidates matching target difficulty
+
+    Args:
+        session: Current session with traits_latent and used_question_ids
+
+    Returns:
+        Tuple of (Question or None, selection_reason string)
+
+    Raises:
+        None - returns (None, reason_string) on failure
+    """
+    ensure_traits_latent(session)
+    used_ids = set(session.get("used_question_ids", []))
+
     available = [q for q in QUESTIONS if q["id"] not in used_ids]
     if not available:
-        return None
+        return None, "no_available_questions"
 
-    # Trait avec le moins de réponses parmi les disponibles
-    trait_counts = {t: scores.get(t, {}).get("count", 0) for t in TRAITS}
-
-    # Grouper les questions disponibles par trait
     available_by_trait: Dict[str, List[dict]] = {t: [] for t in TRAITS}
     for q in available:
         available_by_trait[q["trait"]].append(q)
 
-    # Filtrer les traits qui ont encore des questions disponibles
     traits_with_questions = [t for t in TRAITS if available_by_trait[t]]
-
     if not traits_with_questions:
-        return None
+        return None, "no_trait_slot"
 
-    # Choisir le trait le moins répondu parmi ceux disponibles
-    target_trait = min(traits_with_questions, key=lambda t: trait_counts.get(t, 0))
+    latent = session["traits_latent"]
 
-    # Sélectionner une question aléatoire pour ce trait
-    chosen_raw = random.choice(available_by_trait[target_trait])
-    return build_question(chosen_raw)
+    def trait_sort_key(t: str):
+        st = latent[t]
+        return (st["variance"], -st["n"])
+
+    # En cas d'égalité (ex. début de session : même variance pour tous les traits),
+    # éviter de toujours choisir le premier trait de TRAITS (souvent O → même 1re question).
+    best_key = max(trait_sort_key(t) for t in traits_with_questions)
+    tied_traits = [t for t in traits_with_questions if trait_sort_key(t) == best_key]
+    target_trait = random.choice(tied_traits)
+    st = latent[target_trait]
+    n_trait = int(st["n"])
+    var_trait = float(st["variance"])
+
+    if n_trait < 2 or var_trait > 0.08:
+        target_diff = 1
+    elif var_trait > 0.03:
+        target_diff = 2
+    else:
+        target_diff = 3
+
+    candidates = available_by_trait[target_trait]
+    dists = [abs(int(q.get("difficulty", 2)) - target_diff) for q in candidates]
+    best_d = min(dists)
+    pool = [q for q, d in zip(candidates, dists) if d == best_d]
+    chosen_raw = random.choice(pool)
+    diff = int(chosen_raw.get("difficulty", 2))
+    reason = (
+        f"trait={target_trait} var_mean={var_trait:.4f} n={n_trait} "
+        f"difficulty_pick={diff} (target={target_diff}) qid={chosen_raw['id']}"
+    )
+    return build_question(chosen_raw), reason
 
 
 def update_scores(session: dict, question_id: str, answer: int) -> dict:
     """
-    Met à jour les scores de la session après une réponse.
-    Le score contribué = answer * polarity (sur une échelle 1–5 → −5 à 5).
+    Met à jour les scores après une réponse (options et nombre de choix propres à chaque question).
     """
-    # Trouver la question dans la banque
     raw = next((q for q in QUESTIONS if q["id"] == question_id), None)
     if raw is None:
         return session
 
     trait = raw["trait"]
-    polarity = raw["polarity"]
-    contribution = answer * polarity  # −5 à 5
+    t = _trait_strength_01(raw, answer)
+    contribution = _contribution_linear(t)
 
     scores = session.setdefault("scores", {})
     if trait not in scores:
@@ -183,14 +280,18 @@ def update_scores(session: dict, question_id: str, answer: int) -> dict:
     scores[trait]["total"] += contribution
     scores[trait]["count"] += 1
 
+    ensure_traits_latent(session)
+    _welford_update(session["traits_latent"][trait], t)
+
     return session
 
 
 def compute_final_scores(session: dict) -> Dict[str, float]:
     """
     Convertit les scores bruts en pourcentages 0–100.
-    Score brut moyen ∈ [−5, 5] → normalisé en [0, 100].
+    Moyenne des contributions ∈ [−CONTRIB_SPAN, CONTRIB_SPAN].
     """
+    span = CONTRIB_SPAN
     scores = session.get("scores", {})
     result = {}
     for trait in TRAITS:
@@ -199,8 +300,8 @@ def compute_final_scores(session: dict) -> Dict[str, float]:
         if count == 0:
             result[trait] = 50.0  # valeur neutre par défaut
         else:
-            raw_avg = data["total"] / count  # ∈ [−5, 5]
-            normalized = (raw_avg + 5) / 10 * 100  # ∈ [0, 100]
+            raw_avg = data["total"] / count
+            normalized = (raw_avg + span) / (2.0 * span) * 100.0
             result[trait] = round(max(0.0, min(100.0, normalized)), 1)
     return result
 

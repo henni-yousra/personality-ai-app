@@ -1,16 +1,23 @@
 """
 API FastAPI — Test de personnalité adaptatif par IA
-Endpoints:
-  POST /api/sessions              — Démarrer une session
-  POST /api/sessions/{id}/responses — Soumettre une réponse
-  GET  /api/sessions/{id}/report  — Obtenir le rapport final
-  POST /api/sessions/{id}/resend  — Renvoyer le rapport par e-mail
+Endpoints (CDC §4) :
+  GET  /questions/start?email=&consent=   — Démarrer (équivalent POST /api/sessions)
+  POST /responses                        — Réponse (équivalent POST /api/sessions/{id}/responses)
+Endpoints hérités :
+  POST /api/sessions, POST /api/sessions/{id}/responses, GET /api/sessions/{id}, …
 """
 
+import os
 import uuid
-import asyncio
+from pathlib import Path
+
 from dotenv import load_dotenv
-load_dotenv()
+
+# Charge backend/.env même si uvicorn est lancé depuis la racine du dépôt
+_backend_dir = Path(__file__).resolve().parent
+load_dotenv(_backend_dir / ".env")
+load_dotenv(_backend_dir.parent / ".env")
+
 from datetime import datetime
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -18,27 +25,41 @@ from fastapi.middleware.cors import CORSMiddleware
 from models import (
     StartSessionRequest,
     AnswerRequest,
+    CdcSubmitResponseBody,
     SessionStartResponse,
     AnswerResponse,
     ReportResponse,
     ResendEmailResponse,
     Progress,
+    SessionStateResponse,
+    SessionResumeProgress,
 )
 from storage import create_session, load_session, save_session
-from adaptive_engine import select_next_question, update_scores
+from adaptive_engine import select_next_question, update_scores, build_question
 from report_generator import generate_report
 from email_service import send_report_email
-from question_bank import TOTAL_QUESTIONS
+from llm_questions import maybe_prepare_question_text
+from question_bank import TOTAL_QUESTIONS, QUESTIONS, question_option_values
 
 app = FastAPI(
-    title="Personality AI API",
+    title="personAI API",
     description="API pour le test de personnalité adaptatif Big Five",
     version="1.0.0",
 )
 
+# Local + origines prod (variable CORS_ORIGINS : URLs séparées par des virgules, sans espace autour si possible)
+_cors_local = ["http://localhost:4200", "http://127.0.0.1:4200"]
+_cors_extra = [
+    o.strip()
+    for o in os.getenv("CORS_ORIGINS", "").split(",")
+    if o.strip()
+]
+_cors_allow = list(dict.fromkeys(_cors_local + _cors_extra))
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:4200", "http://127.0.0.1:4200"],
+    allow_origins=_cors_allow,
+    allow_origin_regex=r"https?://(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -46,28 +67,48 @@ app.add_middleware(
 
 
 def _build_progress(session: dict) -> Progress:
-    current = len(session.get("responses", []))
+    """current = index 1-based de la question affichée (ou N si terminé)."""
     total = TOTAL_QUESTIONS
+    n = len(session.get("responses", []))
+    completed = bool(session.get("completed"))
+    if completed or n >= total:
+        current = total
+    else:
+        current = n + 1
     return Progress(
         current=current,
         total=total,
-        percent=round(current / total * 100, 1),
+        percent=round(min(current, total) / total * 100, 1),
     )
 
 
-@app.get("/")
-def root():
-    return {"message": "Personality AI API — en ligne"}
+def _reconstruct_report_from_cache(report_dict) -> "Report":
+    """Reconstructs Report object from cached session data."""
+    from models import Report, TraitScore, Archetype
+
+    traits = {k: TraitScore(**v) for k, v in report_dict["traits"].items()}
+    return Report(
+        archetype=Archetype(**report_dict["archetype"]),
+        overall_summary=report_dict["overall_summary"],
+        traits=traits,
+        strengths=report_dict["strengths"],
+        areas_of_attention=report_dict["areas_of_attention"],
+        recommendations=report_dict["recommendations"],
+        disclaimer=report_dict["disclaimer"],
+    )
 
 
-@app.get("/api/health")
-def health():
-    return {"status": "ok"}
+def _validate_session_for_response(session_id: str) -> dict:
+    """Validates session exists and that the test is still in progress."""
+    session = load_session(session_id)
+    if session is None:
+        raise HTTPException(status_code=404, detail="Session introuvable.")
+    if session.get("completed"):
+        raise HTTPException(status_code=400, detail="Ce test est déjà terminé.")
+    return session
 
 
-@app.post("/api/sessions", response_model=SessionStartResponse)
-def start_session(body: StartSessionRequest):
-    """Crée une nouvelle session et retourne la première question."""
+def _core_start_session(body: StartSessionRequest) -> SessionStartResponse:
     if not body.consent:
         raise HTTPException(status_code=400, detail="Le consentement est requis.")
     if not body.email or "@" not in body.email:
@@ -76,11 +117,16 @@ def start_session(body: StartSessionRequest):
     session_id = str(uuid.uuid4())
     session = create_session(session_id, body.email)
 
-    question = select_next_question(session)
+    question, selection_reason = select_next_question(session)
     if question is None:
         raise HTTPException(status_code=500, detail="Impossible de charger les questions.")
 
-    # Enregistrer la première question utilisée
+    q_text, was_reformulated, was_generated = maybe_prepare_question_text(
+        question.text,
+        question.id,
+        [o.label for o in question.options],
+    )
+    question = question.model_copy(update={"text": q_text})
     session["used_question_ids"].append(question.id)
     save_session(session_id, session)
 
@@ -88,40 +134,41 @@ def start_session(body: StartSessionRequest):
         session_id=session_id,
         question=question,
         progress=_build_progress(session),
+        selection_reason=selection_reason,
+        reformulated=was_reformulated,
+        generated=was_generated,
     )
 
 
-@app.post("/api/sessions/{session_id}/responses", response_model=AnswerResponse)
-def submit_response(session_id: str, body: AnswerRequest):
-    """Enregistre une réponse et retourne la prochaine question (ou signale la fin)."""
-    session = load_session(session_id)
-    if session is None:
-        raise HTTPException(status_code=404, detail="Session introuvable.")
-    if session.get("completed"):
-        raise HTTPException(status_code=400, detail="Ce test est déjà terminé.")
-    if body.answer not in range(1, 6):
-        raise HTTPException(status_code=400, detail="La réponse doit être comprise entre 1 et 5.")
-
-    # Trouver la question correspondante dans la banque
-    from question_bank import QUESTIONS
+def _core_submit_response(session_id: str, body: AnswerRequest) -> AnswerResponse:
+    session = _validate_session_for_response(session_id)
     raw_q = next((q for q in QUESTIONS if q["id"] == body.question_id), None)
     if raw_q is None:
         raise HTTPException(status_code=400, detail="Question introuvable.")
+    allowed = question_option_values(raw_q)
+    if body.answer not in allowed:
+        raise HTTPException(
+            status_code=400,
+            detail="La valeur de réponse ne correspond pas aux options de cette question.",
+        )
 
-    # Enregistrer la réponse
+    answer_label = next(
+        (o["label"] for o in raw_q["options"] if o["value"] == body.answer),
+        str(body.answer),
+    )
+
     session["responses"].append({
         "question_id": body.question_id,
         "question_text": raw_q["text"],
         "trait": raw_q["trait"],
         "polarity": raw_q["polarity"],
         "answer": body.answer,
+        "answer_label": answer_label,
         "answered_at": datetime.utcnow().isoformat(),
     })
 
-    # Mettre à jour les scores
     session = update_scores(session, body.question_id, body.answer)
 
-    # Vérifier si le test est terminé
     answered_count = len(session["responses"])
     if answered_count >= TOTAL_QUESTIONS:
         session["completed"] = True
@@ -130,10 +177,12 @@ def submit_response(session_id: str, body: AnswerRequest):
             question=None,
             completed=True,
             progress=_build_progress(session),
+            selection_reason=None,
+            reformulated=False,
+            generated=False,
         )
 
-    # Sélectionner la prochaine question
-    next_q = select_next_question(session)
+    next_q, selection_reason = select_next_question(session)
     if next_q is None:
         session["completed"] = True
         save_session(session_id, session)
@@ -141,8 +190,17 @@ def submit_response(session_id: str, body: AnswerRequest):
             question=None,
             completed=True,
             progress=_build_progress(session),
+            selection_reason=None,
+            reformulated=False,
+            generated=False,
         )
 
+    n_text, n_ref, n_gen = maybe_prepare_question_text(
+        next_q.text,
+        next_q.id,
+        [o.label for o in next_q.options],
+    )
+    next_q = next_q.model_copy(update={"text": n_text})
     session["used_question_ids"].append(next_q.id)
     save_session(session_id, session)
 
@@ -150,7 +208,91 @@ def submit_response(session_id: str, body: AnswerRequest):
         question=next_q,
         completed=False,
         progress=_build_progress(session),
+        selection_reason=selection_reason,
+        reformulated=n_ref,
+        generated=n_gen,
     )
+
+
+@app.get("/")
+def root():
+    return {"message": "personAI API — en ligne"}
+
+
+@app.get("/api/health")
+def health():
+    return {"status": "ok"}
+
+
+@app.get("/api/sessions/{session_id}", response_model=SessionStateResponse)
+def get_session_state(session_id: str):
+    """Retourne l'état de la session pour reprise après rechargement."""
+    session = load_session(session_id)
+    if session is None:
+        raise HTTPException(status_code=404, detail="Session introuvable.")
+
+    completed = bool(session.get("completed"))
+    responses = session.get("responses", [])
+    used_ids = session.get("used_question_ids", [])
+    answered = len(responses)
+
+    progress = SessionResumeProgress(answered=answered, total=TOTAL_QUESTIONS)
+
+    if completed or answered >= TOTAL_QUESTIONS:
+        return SessionStateResponse(
+            completed=True,
+            current_question_index=TOTAL_QUESTIONS,
+            current_question=None,
+            progress=progress,
+        )
+
+    if answered >= len(used_ids):
+        raise HTTPException(
+            status_code=500,
+            detail="État de session incohérent (question courante introuvable).",
+        )
+
+    qid = used_ids[answered]
+    raw_q = next((q for q in QUESTIONS if q["id"] == qid), None)
+    if raw_q is None:
+        raise HTTPException(status_code=500, detail="Question en cours introuvable dans la banque.")
+
+    current_question = build_question(raw_q)
+    current_question_index = answered + 1
+
+    return SessionStateResponse(
+        completed=False,
+        current_question_index=current_question_index,
+        current_question=current_question,
+        progress=progress,
+    )
+
+
+@app.get("/questions/start", response_model=SessionStartResponse)
+def questions_start(email: str, consent: bool = False):
+    """Démarrage du test (contrat CDC) — query : email, consent."""
+    return _core_start_session(StartSessionRequest(email=email, consent=consent))
+
+
+@app.post("/responses", response_model=AnswerResponse)
+def responses_cdc(body: CdcSubmitResponseBody):
+    """Soumission d'une réponse (contrat CDC)."""
+    return _core_submit_response(
+        body.session_id,
+        AnswerRequest(question_id=body.question_id, answer=body.answer_value),
+    )
+
+
+@app.post("/api/sessions", response_model=SessionStartResponse)
+def start_session(body: StartSessionRequest):
+    """Crée une nouvelle session et retourne la première question (rétrocompat)."""
+    return _core_start_session(body)
+
+
+@app.post("/api/sessions/{session_id}/responses", response_model=AnswerResponse)
+def submit_response(session_id: str, body: AnswerRequest):
+    """Enregistre une réponse (rétrocompat)."""
+    return _core_submit_response(session_id, body)
 
 
 @app.get("/api/sessions/{session_id}/report", response_model=ReportResponse)
@@ -164,20 +306,7 @@ async def get_report(session_id: str):
 
     # Retourner le rapport en cache si déjà généré
     if session.get("report"):
-        from models import Report, TraitScore, Archetype
-        report_data = session["report"]
-        traits = {
-            k: TraitScore(**v) for k, v in report_data["traits"].items()
-        }
-        report = Report(
-            archetype=Archetype(**report_data["archetype"]),
-            overall_summary=report_data["overall_summary"],
-            traits=traits,
-            strengths=report_data["strengths"],
-            areas_of_attention=report_data["areas_of_attention"],
-            recommendations=report_data["recommendations"],
-            disclaimer=report_data["disclaimer"],
-        )
+        report = _reconstruct_report_from_cache(session["report"])
         return ReportResponse(report=report, email=session["email"])
 
     # Générer le rapport via Claude
@@ -190,8 +319,16 @@ async def get_report(session_id: str):
     session["report"] = report.model_dump()
     save_session(session_id, session)
 
-    # Envoyer le rapport par e-mail
-    send_report_email(session["email"], report)
+    # Envoyer le rapport par e-mail (le rapport reste disponible même si l'envoi échoue)
+    ok, mail_reason = send_report_email(session["email"], report)
+    if not ok:
+        if mail_reason == "missing_credentials":
+            print(
+                "[WARN] Rapport généré mais e-mail non envoyé : "
+                "SMTP_USER/SMTP_PASSWORD (ou GMAIL_USER/GMAIL_APP_PASSWORD) non définis."
+            )
+        else:
+            print("[WARN] Rapport généré mais e-mail non envoyé (échec SMTP — voir logs).")
 
     return ReportResponse(report=report, email=session["email"])
 
@@ -212,31 +349,29 @@ def resend_report(session_id: str):
             detail="Limite de renvoi atteinte (3 maximum).",
         )
 
-    # Reconstruire l'objet Report depuis le cache
-    from models import Report, TraitScore, Archetype
-    report_data = session["report"]
-    traits = {k: TraitScore(**v) for k, v in report_data["traits"].items()}
-    report = Report(
-        archetype=Archetype(**report_data["archetype"]),
-        overall_summary=report_data["overall_summary"],
-        traits=traits,
-        strengths=report_data["strengths"],
-        areas_of_attention=report_data["areas_of_attention"],
-        recommendations=report_data["recommendations"],
-        disclaimer=report_data["disclaimer"],
-    )
+    report = _reconstruct_report_from_cache(session["report"])
+    success, mail_reason = send_report_email(session["email"], report)
 
-    success = send_report_email(session["email"], report)
+    if not success:
+        if mail_reason == "missing_credentials":
+            detail = (
+                "Envoi d'e-mail non configuré. Dans le fichier backend/.env (ou les "
+                "variables d'environnement du processus uvicorn), définissez SMTP_USER et "
+                "SMTP_PASSWORD, ou GMAIL_USER et GMAIL_APP_PASSWORD. Redémarrez le serveur "
+                "après modification. Pour Gmail : compte Google → Sécurité → validation en "
+                "deux étapes → mots de passe des applications."
+            )
+        else:
+            detail = (
+                "L'envoi SMTP a échoué (réseau, port, identifiants ou blocage du fournisseur). "
+                "Vérifiez SMTP_HOST, SMTP_PORT (465 SSL ou 587 STARTTLS), le compte et le mot de passe ; "
+                "consultez les logs du serveur pour le détail."
+            )
+        raise HTTPException(status_code=503, detail=detail)
 
     session["resend_count"] = resend_count + 1
     session["last_resend"] = datetime.utcnow().isoformat()
     save_session(session_id, session)
-
-    if not success:
-        raise HTTPException(
-            status_code=503,
-            detail="Impossible d'envoyer l'e-mail. Vérifiez la configuration GMAIL_USER et GMAIL_APP_PASSWORD.",
-        )
 
     return ResendEmailResponse(
         success=True,

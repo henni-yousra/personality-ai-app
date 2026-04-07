@@ -17,16 +17,35 @@ export interface Progress {
   percent: number;
 }
 
+/** Progression renvoyée par GET /api/sessions/{id} (reprise de session). */
+export interface SessionResumeProgress {
+  answered: number;
+  total: number;
+}
+
+export interface SessionStateResponse {
+  completed: boolean;
+  current_question_index: number;
+  current_question: Question | null;
+  progress: SessionResumeProgress;
+}
+
 export interface SessionStartResponse {
   session_id: string;
   question: Question;
   progress: Progress;
+  selection_reason?: string | null;
+  reformulated?: boolean;
+  generated?: boolean;
 }
 
 export interface AnswerResponse {
   question: Question | null;
   completed: boolean;
   progress: Progress;
+  selection_reason?: string | null;
+  reformulated?: boolean;
+  generated?: boolean;
 }
 
 export interface TraitScore {

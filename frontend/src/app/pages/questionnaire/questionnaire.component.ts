@@ -1,11 +1,14 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ProgressBar } from 'primeng/progressbar';
+import { Button } from 'primeng/button';
+import { Message } from 'primeng/message';
 import { QuizService } from '../../services/quiz.service';
 import { Question, Progress } from '../../models/quiz.models';
 
 @Component({
   selector: 'app-questionnaire',
-  imports: [],
+  imports: [RouterLink, ProgressBar, Button, Message],
   templateUrl: './questionnaire.component.html',
   styleUrl: './questionnaire.component.css',
 })
@@ -15,8 +18,11 @@ export class QuestionnaireComponent implements OnInit {
   progress = signal<Progress>({ current: 0, total: 10, percent: 0 });
   selectedAnswer = signal<number | null>(null);
   loading = signal(false);
+  resuming = signal(false);
   animating = signal(false);
   error = signal('');
+  /** True si l’énoncé affiché a été reformulé par le LLM (réponse API). */
+  questionReformulated = signal(false);
 
   constructor(
     private route: ActivatedRoute,
@@ -25,16 +31,60 @@ export class QuestionnaireComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.sessionId.set(this.route.snapshot.paramMap.get('sessionId') ?? '');
+    let id = this.route.snapshot.paramMap.get('sessionId') ?? '';
+    if (!id && typeof localStorage !== 'undefined') {
+      const stored = localStorage.getItem('quiz_session_id');
+      if (stored) {
+        this.router.navigate(['/questionnaire', stored], { replaceUrl: true });
+        return;
+      }
+    }
+    this.sessionId.set(id);
+    if (!id) {
+      this.router.navigate(['/']);
+      return;
+    }
 
-    const state = history.state as { question?: Question; progress?: Progress };
+    const state = history.state as {
+      question?: Question;
+      progress?: Progress;
+      reformulated?: boolean;
+    };
     if (state?.question && state?.progress) {
       this.question.set(state.question);
       this.progress.set(state.progress);
-    } else {
-      // Session perdue — retourner à l'accueil
-      this.router.navigate(['/']);
+      this.questionReformulated.set(state.reformulated === true);
+      return;
     }
+
+    this.resuming.set(true);
+    this.quizService.getSessionState(id).subscribe({
+      next: (s) => {
+        this.resuming.set(false);
+        if (s.completed) {
+          this.router.navigate(['/results', id]);
+          return;
+        }
+        if (!s.current_question) {
+          this.router.navigate(['/']);
+          return;
+        }
+        this.question.set(s.current_question);
+        this.questionReformulated.set(false);
+        const t = s.progress.total;
+        const idx = s.current_question_index;
+        const percent = t > 0 ? Math.round((idx / t) * 1000) / 10 : 0;
+        this.progress.set({
+          current: idx,
+          total: t,
+          percent,
+        });
+      },
+      error: () => {
+        this.resuming.set(false);
+        this.router.navigate(['/']);
+      },
+    });
   }
 
   selectAnswer(value: number): void {
@@ -66,6 +116,7 @@ export class QuestionnaireComponent implements OnInit {
           this.animating.set(true);
           setTimeout(() => {
             this.question.set(res.question);
+            this.questionReformulated.set(res.reformulated === true);
             this.selectedAnswer.set(null);
             this.loading.set(false);
             this.animating.set(false);
@@ -84,14 +135,15 @@ export class QuestionnaireComponent implements OnInit {
     return this.progress().percent;
   }
 
-  getOptionLabel(value: number): string {
-    const labels: Record<number, string> = {
-      1: 'Pas du tout',
-      2: 'Peu',
-      3: 'Neutre',
-      4: 'Plutôt',
-      5: 'Tout à fait',
-    };
-    return labels[value] ?? '';
+  primaryActionLabel(): string {
+    if (this.loading()) return 'Traitement…';
+    if (this.progress().current >= this.progress().total) return 'Terminer le test';
+    return 'Suivant';
+  }
+
+  primaryActionIcon(): string | undefined {
+    if (this.loading()) return undefined;
+    if (this.progress().current >= this.progress().total) return 'pi pi-check';
+    return 'pi pi-arrow-right';
   }
 }

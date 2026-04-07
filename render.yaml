@@ -1,0 +1,14 @@
+# Blueprint Render : le code Python est dans backend/ (monorepo).
+# Déploiement : Render → New → Blueprint → connecter ce dépôt, ou ajuster un service existant (voir README).
+services:
+  - type: web
+    name: personality-api
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.8"
+      # À renseigner dans le tableau de bord Render (Secrets) :
+      # GROQ_API_KEY, CORS_ORIGINS, GMAIL_USER / GMAIL_APP_PASSWORD ou SMTP_*

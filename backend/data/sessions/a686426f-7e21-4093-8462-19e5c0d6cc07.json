@@ -1,0 +1,224 @@
+{
+  "session_id": "a686426f-7e21-4093-8462-19e5c0d6cc07",
+  "email": "hennimansour.yousrayasmine@gmail.com",
+  "created_at": "2026-04-07T01:35:21.888872",
+  "updated_at": "2026-04-07T01:40:51.646647",
+  "responses": [
+    {
+      "question_id": "O1",
+      "question_text": "Quand on vous parle d’un sujet que vous ne connaissez pas, que faites-vous en général ?",
+      "trait": "O",
+      "polarity": 1,
+      "answer": 3,
+      "answer_label": "Je pose des questions pour comprendre",
+      "answered_at": "2026-04-07T01:35:35.667697"
+    },
+    {
+      "question_id": "C1",
+      "question_text": "Vous avez une échéance dans deux semaines. Comment vous y prenez-vous ?",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 2,
+      "answer_label": "J’avance par à-coups",
+      "answered_at": "2026-04-07T01:39:49.170158"
+    },
+    {
+      "question_id": "N1",
+      "question_text": "La veille d’un entretien ou d’un examen important, vous…",
+      "trait": "N",
+      "polarity": 1,
+      "answer": 3,
+      "answer_label": "Des pensées qui tournent un moment",
+      "answered_at": "2026-04-07T01:40:16.198433"
+    },
+    {
+      "question_id": "A1",
+      "question_text": "Un collègue prend du retard sur une tâche commune et vous impacte. Votre premier réflexe :",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 1,
+      "answer_label": "Je montre mon mécontentement clairement",
+      "answered_at": "2026-04-07T01:40:22.011471"
+    },
+    {
+      "question_id": "E1",
+      "question_text": "Dans une soirée où vous ne connaissez presque personne, vous vous sentez…",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 1,
+      "answer_label": "À l’étroit, j’attends de pouvoir partir",
+      "answered_at": "2026-04-07T01:40:26.662020"
+    },
+    {
+      "question_id": "N2",
+      "question_text": "Face à une décision importante, vous…",
+      "trait": "N",
+      "polarity": 1,
+      "answer": 1,
+      "answer_label": "Tranchez vite et assumez",
+      "answered_at": "2026-04-07T01:40:30.357161"
+    },
+    {
+      "question_id": "E2",
+      "question_text": "Après une longue journée bien remplie, idéal pour vous :",
+      "trait": "E",
+      "polarity": -1,
+      "answer": 4,
+      "answer_label": "Silence total, solo rechargé",
+      "answered_at": "2026-04-07T01:40:34.093236"
+    },
+    {
+      "question_id": "C2",
+      "question_text": "Votre bureau ou espace de travail ressemble le plus souvent à…",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 2,
+      "answer_label": "Des piles que je connais par cœur",
+      "answered_at": "2026-04-07T01:40:37.315370"
+    },
+    {
+      "question_id": "O2",
+      "question_text": "Les week-ends, vous préférez plutôt…",
+      "trait": "O",
+      "polarity": -1,
+      "answer": 1,
+      "answer_label": "Reproduire la même routine rassurante",
+      "answered_at": "2026-04-07T01:40:39.952823"
+    },
+    {
+      "question_id": "A2",
+      "question_text": "On vous coupe la parole en réunion. Vous…",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 3,
+      "answer_label": "Je m’efface pour la fluidité du groupe",
+      "answered_at": "2026-04-07T01:40:43.840466"
+    }
+  ],
+  "used_question_ids": [
+    "O1",
+    "C1",
+    "N1",
+    "A1",
+    "E1",
+    "N2",
+    "E2",
+    "C2",
+    "O2",
+    "A2"
+  ],
+  "completed": true,
+  "report": {
+    "archetype": {
+      "name": "Le Logicien",
+      "emoji": "■",
+      "tagline": "Analytique, précis et indépendant",
+      "description": "Vous adorez résoudre des problèmes complexes et aller au fond des choses. Votre esprit rigoureux et votre curiosité intellectuelle font de vous un penseur exceptionnel. Vous préférez la réflexion solitaire aux grandes assemblées."
+    },
+    "overall_summary": "Vous présentez un profil de personnalité unique, avec une ouverture d'esprit remarquable et une tendance à la stabilité émotionnelle. Votre approche flexible et spontanée de la vie peut être à la fois une force et un défi, selon les situations. Vous avez une préférence pour la solitude et la routine, ce qui vous permet de vous ressourcer et de maintenir votre équilibre intérieur.",
+    "traits": {
+      "O": {
+        "score": 83.3,
+        "label": "Ouverture",
+        "emoji": "◉",
+        "interpretation": "Votre score élevé en ouverture indique que vous êtes naturellement curieux et ouvert aux nouvelles idées. Vous avez probablement une grande soif d'apprendre et d'explorer de nouveaux horizons, ce qui peut vous amener à découvrir de nouvelles passions et intérêts. Cela peut également vous rendre plus créatif et innovant dans vos approches, car vous n'avez pas peur de sortir des sentiers battus et d'essayer de nouvelles choses."
+      },
+      "C": {
+        "score": 33.3,
+        "label": "Conscienciosité",
+        "emoji": "■",
+        "interpretation": "Votre score relativement bas en conscienciosité suggère que vous êtes flexible et spontané dans votre approche de la vie. Vous n'êtes pas excessivement attaché aux règles et aux routines, ce qui peut vous permettre de vous adapter plus facilement aux situations imprévues. Cependant, cela peut également signifier que vous avez parfois du mal à vous organiser et à respecter les délais, ce qui peut entraîner des problèmes de productivité et de responsabilité."
+      },
+      "E": {
+        "score": 0.0,
+        "label": "Extraversion",
+        "emoji": "▲",
+        "interpretation": "Votre score très bas en extraversion indique que vous êtes profondément introverti et que vous retirez de l'énergie de la solitude. Vous préférez probablement passer du temps seul ou avec un petit groupe de personnes proches, plutôt que de fréquenter des foules ou de participer à des activités sociales. Cela peut vous rendre plus introspectif et plus à l'aise avec vos propres pensées et sentiments, mais cela peut également limiter vos interactions sociales et votre capacité à vous connecter avec les autres."
+      },
+      "A": {
+        "score": 50.0,
+        "label": "Agréabilité",
+        "emoji": "◆",
+        "interpretation": "Votre score moyen en agréabilité suggère que vous savez coopérer et travailler avec les autres, tout en affirmant vos besoins et vos limites. Vous êtes probablement capable de trouver un équilibre entre votre désir de plaire et votre besoin de maintenir votre autonomie, ce qui peut vous rendre plus efficace dans vos relations et vos collaborations. Cependant, cela peut également signifier que vous avez parfois du mal à prendre des décisions ou à exprimer vos opinions, ce qui peut entraîner des conflits ou des malentendus avec les autres. Profil à confirmer sur ce trait — mesure encore incertaine (variance de la moyenne élevée : 0.250)."
+      },
+      "N": {
+        "score": 33.3,
+        "label": "Névrosisme",
+        "emoji": "●",
+        "interpretation": "Votre score relativement bas en névrosisme indique que vous êtes émotionnellement stable et résistant au stress. Vous avez probablement une bonne capacité à gérer vos émotions et à maintenir votre calme en période de crise, ce qui peut vous rendre plus résilient et plus capable de faire face aux défis. Cependant, cela peut également signifier que vous avez parfois du mal à exprimer vos émotions ou à reconnaître vos besoins, ce qui peut entraîner des problèmes de santé mentale ou de relations si cela n'est pas géré de manière appropriée."
+      }
+    },
+    "strengths": [
+      "Ouverture d'esprit",
+      "Stabilité émotionnelle",
+      "Capacité à s'adapter"
+    ],
+    "areas_of_attention": [
+      "Organisation et planification",
+      "Interactions sociales et relations",
+      "Expression des émotions et des besoins"
+    ],
+    "recommendations": [
+      "Prendre du temps pour planifier et organiser vos tâches",
+      "S'efforcer de sortir de votre zone de confort et de rencontrer de nouvelles personnes",
+      "Pratiquer l'expression de vos émotions et de vos besoins de manière saine et constructive"
+    ],
+    "disclaimer": "Ce rapport est informatif et non médical. Il ne constitue pas un diagnostic psychologique. Pour tout accompagnement approfondi, consultez un professionnel qualifié."
+  },
+  "resend_count": 0,
+  "last_resend": null,
+  "scores": {
+    "O": {
+      "total": 5.333333333333333,
+      "count": 2
+    },
+    "C": {
+      "total": -2.666666666666667,
+      "count": 2
+    },
+    "E": {
+      "total": -8.0,
+      "count": 2
+    },
+    "A": {
+      "total": 0.0,
+      "count": 2
+    },
+    "N": {
+      "total": -2.666666666666667,
+      "count": 2
+    }
+  },
+  "traits_latent": {
+    "O": {
+      "mean": 0.8333333333333333,
+      "variance": 0.027777777777777794,
+      "n": 2,
+      "m2": 0.05555555555555559
+    },
+    "C": {
+      "mean": 0.3333333333333333,
+      "variance": 0.0,
+      "n": 2,
+      "m2": 0.0
+    },
+    "E": {
+      "mean": 0.0,
+      "variance": 0.0,
+      "n": 2,
+      "m2": 0.0
+    },
+    "A": {
+      "mean": 0.5,
+      "variance": 0.25,
+      "n": 2,
+      "m2": 0.5
+    },
+    "N": {
+      "mean": 0.3333333333333333,
+      "variance": 0.1111111111111111,
+      "n": 2,
+      "m2": 0.2222222222222222
+    }
+  }
+}

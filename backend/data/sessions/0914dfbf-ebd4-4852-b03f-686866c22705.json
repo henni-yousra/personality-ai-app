@@ -1,0 +1,223 @@
+{
+  "session_id": "0914dfbf-ebd4-4852-b03f-686866c22705",
+  "email": "hennimansour.yousrayasmine@gmail.com",
+  "created_at": "2026-04-03T20:21:28.624051",
+  "updated_at": "2026-04-05T19:12:12.324676",
+  "responses": [
+    {
+      "question_id": "O1",
+      "question_text": "Quand on vous parle d’un sujet que vous ne connaissez pas, que faites-vous en général ?",
+      "trait": "O",
+      "polarity": 1,
+      "answer": 2,
+      "answer_label": "J’écoute sans creuser",
+      "answered_at": "2026-04-05T19:11:53.287739"
+    },
+    {
+      "question_id": "C1",
+      "question_text": "Vous avez une échéance dans deux semaines. Comment vous y prenez-vous ?",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 4,
+      "answer_label": "Plan + marge dès le début, suivi régulier",
+      "answered_at": "2026-04-05T19:11:54.901659"
+    },
+    {
+      "question_id": "E1",
+      "question_text": "Dans une soirée où vous ne connaissez presque personne, vous vous sentez…",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 4,
+      "answer_label": "Énergisé(e), j’aime faire connaissance",
+      "answered_at": "2026-04-05T19:11:56.131746"
+    },
+    {
+      "question_id": "A1",
+      "question_text": "Un collègue prend du retard sur une tâche commune et vous impacte. Votre premier réflexe :",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 2,
+      "answer_label": "Je fais remarquer les faits, sans détour",
+      "answered_at": "2026-04-05T19:11:57.498906"
+    },
+    {
+      "question_id": "N1",
+      "question_text": "La veille d’un entretien ou d’un examen important, vous…",
+      "trait": "N",
+      "polarity": 1,
+      "answer": 4,
+      "answer_label": "Peu dormi, scénarios qui tournent en boucle",
+      "answered_at": "2026-04-05T19:11:58.782498"
+    },
+    {
+      "question_id": "O2",
+      "question_text": "Les week-ends, vous préférez plutôt…",
+      "trait": "O",
+      "polarity": -1,
+      "answer": 4,
+      "answer_label": "Improviser et tester du nouveau",
+      "answered_at": "2026-04-05T19:12:00.466035"
+    },
+    {
+      "question_id": "C2",
+      "question_text": "Votre bureau ou espace de travail ressemble le plus souvent à…",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 2,
+      "answer_label": "Des piles que je connais par cœur",
+      "answered_at": "2026-04-05T19:12:01.995737"
+    },
+    {
+      "question_id": "E2",
+      "question_text": "Après une longue journée bien remplie, idéal pour vous :",
+      "trait": "E",
+      "polarity": -1,
+      "answer": 1,
+      "answer_label": "Dîner entre amis ou appel à plusieurs",
+      "answered_at": "2026-04-05T19:12:03.383884"
+    },
+    {
+      "question_id": "A2",
+      "question_text": "On vous coupe la parole en réunion. Vous…",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 3,
+      "answer_label": "Je m’efface pour la fluidité du groupe",
+      "answered_at": "2026-04-05T19:12:04.995482"
+    },
+    {
+      "question_id": "N2",
+      "question_text": "Face à une décision importante, vous…",
+      "trait": "N",
+      "polarity": 1,
+      "answer": 2,
+      "answer_label": "Doutez un peu puis vous avancez",
+      "answered_at": "2026-04-05T19:12:06.662412"
+    }
+  ],
+  "used_question_ids": [
+    "O1",
+    "C1",
+    "E1",
+    "A1",
+    "N1",
+    "O2",
+    "C2",
+    "E2",
+    "A2",
+    "N2"
+  ],
+  "completed": true,
+  "report": {
+    "archetype": {
+      "name": "L'Empathique",
+      "emoji": "◆",
+      "tagline": "Chaleureux, à l'écoute et profondément humain",
+      "description": "Vous ressentez profondément les émotions — les vôtres et celles des autres. Votre capacité d'écoute et votre chaleur humaine créent des liens forts et authentiques. Vous êtes souvent la personne vers qui les autres se tournent dans les moments difficiles."
+    },
+    "overall_summary": "Vous êtes une personne très sociable et énergique, toujours prête à interagir avec les autres et à vous investir dans les activités sociales. Vous avez également une forte conscience de vos objectifs et une capacité à vous organiser pour les atteindre. Cependant, vous pouvez parfois vous sentir un peu sensible et réactif face aux situations de stress, ce qui peut vous amener à douter de vos capacités. Vous avez une grande ouverture d'esprit et une capacité à vous adapter aux situations nouvelles, même si vous préférez parfois suivre des approches éprouvées.",
+    "traits": {
+      "O": {
+        "score": 16.7,
+        "label": "Ouverture",
+        "emoji": "◉",
+        "interpretation": "Vous avez tendance à préférer les approches éprouvées et les méthodes traditionnelles, ce qui peut vous aider à vous sentir plus en sécurité et plus en contrôle. Cependant, cela peut également limiter votre capacité à explorer de nouvelles idées et à vous adapter à des situations inattendues. Il est important de trouver un équilibre entre la stabilité et la flexibilité pour permettre à votre créativité et à votre imagination de s'exprimer."
+      },
+      "C": {
+        "score": 66.7,
+        "label": "Conscienciosité",
+        "emoji": "■",
+        "interpretation": "Vous êtes une personne très organisée et fiable, capable de planifier et de suivre des objectifs avec efficacité. Vous avez une forte conscience de vos responsabilités et vous êtes prête à vous investir pour atteindre vos buts. Cependant, il est important de ne pas trop vous mettre de pression et de prendre le temps de vous reposer et de vous détendre pour éviter l'épuisement."
+      },
+      "E": {
+        "score": 100.0,
+        "label": "Extraversion",
+        "emoji": "▲",
+        "interpretation": "Vous êtes une personne extrêmement sociable et énergique, qui tire une grande partie de son énergie des interactions avec les autres. Vous aimez être au centre de l'attention et vous avez une capacité naturelle à vous connecter avec les gens et à les faire se sentir à l'aise. Cependant, il est important de prendre le temps de vous ressourcer et de vous recentrer sur vos propres besoins et désirs pour éviter de vous épuiser."
+      },
+      "A": {
+        "score": 66.7,
+        "label": "Agréabilité",
+        "emoji": "◆",
+        "interpretation": "Vous êtes une personne très chaleureuse et empathique, qui se préoccupe du bien-être des autres et qui est prête à les aider. Vous avez une capacité naturelle à vous connecter avec les gens et à les faire se sentir à l'aise. Cependant, il est important de ne pas trop vous investir dans les problèmes des autres et de prendre le temps de vous recentrer sur vos propres besoins et désirs pour éviter de vous épuiser."
+      },
+      "N": {
+        "score": 66.7,
+        "label": "Névrosisme",
+        "emoji": "●",
+        "interpretation": "Vous pouvez parfois vous sentir un peu sensible et réactif face aux situations de stress, ce qui peut vous amener à douter de vos capacités. Il est important de prendre le temps de vous ressourcer et de vous recentrer sur vos propres forces et capacités pour éviter de vous laisser submerger par les émotions négatives. Vous avez également une capacité à vous adapter et à vous remettre des expériences difficiles, ce qui est un atout important pour votre bien-être émotionnel."
+      }
+    },
+    "strengths": [
+      "Capacité à vous connecter avec les autres",
+      "Organisation et planification efficaces",
+      "Énergie et enthousiasme pour les activités sociales"
+    ],
+    "areas_of_attention": [
+      "Gestion du stress et de l'anxiété",
+      "Développement de la confiance en soi"
+    ],
+    "recommendations": [
+      "Prenez le temps de vous ressourcer et de vous recentrer sur vos propres besoins et désirs",
+      "Apprenez à gérer votre stress et votre anxiété de manière saine",
+      "Développez votre confiance en soi en vous concentrant sur vos forces et vos capacités"
+    ],
+    "disclaimer": "Ce rapport est informatif et non médical. Il ne constitue pas un diagnostic psychologique. Pour tout accompagnement approfondi, consultez un professionnel qualifié."
+  },
+  "resend_count": 0,
+  "last_resend": null,
+  "scores": {
+    "O": {
+      "total": -5.333333333333334,
+      "count": 2
+    },
+    "C": {
+      "total": 2.6666666666666665,
+      "count": 2
+    },
+    "E": {
+      "total": 8.0,
+      "count": 2
+    },
+    "A": {
+      "total": 2.6666666666666665,
+      "count": 2
+    },
+    "N": {
+      "total": 2.6666666666666665,
+      "count": 2
+    }
+  },
+  "traits_latent": {
+    "O": {
+      "mean": 0.16666666666666666,
+      "variance": 0.027777777777777776,
+      "n": 2,
+      "m2": 0.05555555555555555
+    },
+    "C": {
+      "mean": 0.6666666666666666,
+      "variance": 0.11111111111111112,
+      "n": 2,
+      "m2": 0.22222222222222224
+    },
+    "E": {
+      "mean": 1.0,
+      "variance": 0.0,
+      "n": 2,
+      "m2": 0.0
+    },
+    "A": {
+      "mean": 0.6666666666666667,
+      "variance": 0.1111111111111111,
+      "n": 2,
+      "m2": 0.2222222222222222
+    },
+    "N": {
+      "mean": 0.6666666666666666,
+      "variance": 0.11111111111111112,
+      "n": 2,
+      "m2": 0.22222222222222224
+    }
+  }
+}

@@ -1,0 +1,223 @@
+{
+  "session_id": "9292aba5-94ec-4091-9e06-739fd0595156",
+  "email": "hennimansour.yousrayasmine@gmail.com",
+  "created_at": "2026-04-05T14:51:46.197451",
+  "updated_at": "2026-04-05T14:52:12.306466",
+  "responses": [
+    {
+      "question_id": "O1",
+      "question_text": "Quand on vous parle d’un sujet que vous ne connaissez pas, que faites-vous en général ?",
+      "trait": "O",
+      "polarity": 1,
+      "answer": 3,
+      "answer_label": "Je pose des questions pour comprendre",
+      "answered_at": "2026-04-05T14:51:49.810394"
+    },
+    {
+      "question_id": "C1",
+      "question_text": "Vous avez une échéance dans deux semaines. Comment vous y prenez-vous ?",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 3,
+      "answer_label": "Je découpe en étapes avec des jalons",
+      "answered_at": "2026-04-05T14:51:51.471168"
+    },
+    {
+      "question_id": "E1",
+      "question_text": "Dans une soirée où vous ne connaissez presque personne, vous vous sentez…",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 2,
+      "answer_label": "Un peu tendu(e), je reste en retrait",
+      "answered_at": "2026-04-05T14:51:52.887754"
+    },
+    {
+      "question_id": "A1",
+      "question_text": "Un collègue prend du retard sur une tâche commune et vous impacte. Votre premier réflexe :",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 1,
+      "answer_label": "Je montre mon mécontentement clairement",
+      "answered_at": "2026-04-05T14:51:54.371925"
+    },
+    {
+      "question_id": "N1",
+      "question_text": "La veille d’un entretien ou d’un examen important, vous…",
+      "trait": "N",
+      "polarity": 1,
+      "answer": 3,
+      "answer_label": "Des pensées qui tournent un moment",
+      "answered_at": "2026-04-05T14:51:55.875458"
+    },
+    {
+      "question_id": "O2",
+      "question_text": "Les week-ends, vous préférez plutôt…",
+      "trait": "O",
+      "polarity": -1,
+      "answer": 2,
+      "answer_label": "Un mix habitudes et petites nouveautés",
+      "answered_at": "2026-04-05T14:51:57.591091"
+    },
+    {
+      "question_id": "C2",
+      "question_text": "Votre bureau ou espace de travail ressemble le plus souvent à…",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 3,
+      "answer_label": "Plutôt rangé avec quelques zones floues",
+      "answered_at": "2026-04-05T14:51:59.144123"
+    },
+    {
+      "question_id": "E2",
+      "question_text": "Après une longue journée bien remplie, idéal pour vous :",
+      "trait": "E",
+      "polarity": -1,
+      "answer": 1,
+      "answer_label": "Dîner entre amis ou appel à plusieurs",
+      "answered_at": "2026-04-05T14:52:00.723495"
+    },
+    {
+      "question_id": "A2",
+      "question_text": "On vous coupe la parole en réunion. Vous…",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 1,
+      "answer_label": "Je reprends la parole tout de suite",
+      "answered_at": "2026-04-05T14:52:02.742974"
+    },
+    {
+      "question_id": "N2",
+      "question_text": "Face à une décision importante, vous…",
+      "trait": "N",
+      "polarity": 1,
+      "answer": 1,
+      "answer_label": "Tranchez vite et assumez",
+      "answered_at": "2026-04-05T14:52:04.552932"
+    }
+  ],
+  "used_question_ids": [
+    "O1",
+    "C1",
+    "E1",
+    "A1",
+    "N1",
+    "O2",
+    "C2",
+    "E2",
+    "A2",
+    "N2"
+  ],
+  "completed": true,
+  "report": {
+    "archetype": {
+      "name": "L'Architecte",
+      "emoji": "▲",
+      "tagline": "Ambitieux, stratégique et déterminé",
+      "description": "Vous avez une vision claire et la volonté de la réaliser. Votre sens de l'organisation et votre détermination font de vous un leader naturel. Vous excellez à structurer des projets complexes et à mobiliser votre énergie vers des objectifs concrets."
+    },
+    "overall_summary": "Ce profil présente une balance équilibrée entre les aspects de la personnalité, avec des scores moyens pour l'ouverture, la conscienciosité et l'extraversion. Les résultats suggèrent une personnalité curieuse, organisée et sociable, mais également directe dans ses interactions et capable de gérer son stress de manière efficace. Cependant, il est important de noter que chaque individu est unique et que ces résultats doivent être considérés dans le contexte de la vie et des expériences personnelles.",
+    "traits": {
+      "O": {
+        "score": 66.7,
+        "label": "Ouverture",
+        "emoji": "◉",
+        "interpretation": "Avec un score d'ouverture à 66,7, vous semblez être naturellement curieux et ouvert aux nouvelles idées, ce qui vous permet de vous adapter facilement à de nouvelles situations et de vous intéresser à différents sujets. Cela peut être un atout dans votre vie personnelle et professionnelle, vous permettant de rester curieux et de continuer à apprendre et à grandir. Votre curiosité peut également vous aider à aborder les défis avec une perspective fraîche et à trouver des solutions innovantes."
+      },
+      "C": {
+        "score": 66.7,
+        "label": "Conscienciosité",
+        "emoji": "■",
+        "interpretation": "Un score de conscienciosité de 66,7 indique que vous êtes une personne organisée et fiable, capable de vous fixer des objectifs et de les atteindre de manière efficace. Vous semblez avoir une bonne capacité à gérer votre temps et vos ressources, ce qui peut vous aider à réussir dans vos projets et à maintenir une bonne qualité de vie. Votre sens de la responsabilité et votre capacité à planifier peuvent également vous aider à faire face aux défis et à surmonter les obstacles."
+      },
+      "E": {
+        "score": 66.7,
+        "label": "Extraversion",
+        "emoji": "▲",
+        "interpretation": "Avec un score d'extraversion à 66,7, vous semblez être une personne sociable et énergique, qui tire plaisir des interactions avec les autres et qui est capable de créer des liens solides avec votre entourage. Votre extraversion peut vous aider à vous sentir connecté aux autres et à vous intégrer facilement dans les groupes sociaux, ce qui peut être bénéfique pour votre vie personnelle et professionnelle. Cependant, il est important de trouver un équilibre entre votre besoin de socialisation et votre besoin de temps pour vous-même."
+      },
+      "A": {
+        "score": 0.0,
+        "label": "Agréabilité",
+        "emoji": "◆",
+        "interpretation": "Un score d'agréabilité de 0,0 suggère que vous êtes une personne directe et assertive, qui n'hésite pas à exprimer ses opinions et à défendre ses intérêts. Bien que cela puisse parfois être perçu comme de la franchise, il est important de considérer l'impact de vos paroles et de vos actions sur les autres et de trouver un équilibre entre votre besoin d'expression et votre besoin de considération pour les autres. Il peut être utile de développer des compétences de communication pour exprimer vos idées de manière claire et respectueuse."
+      },
+      "N": {
+        "score": 33.3,
+        "label": "Névrosisme",
+        "emoji": "●",
+        "interpretation": "Avec un score de névrosisme de 33,3, vous semblez être une personne émotionnellement stable et résistante au stress, capable de gérer vos émotions de manière efficace et de faire face aux défis avec une perspective positive. Cela peut vous aider à maintenir une bonne qualité de vie et à vous sentir plus en contrôle de vos émotions et de vos réactions. Cependant, il est important de continuer à développer des stratégies de gestion du stress et de prendre soin de votre bien-être émotionnel pour maintenir cette stabilité."
+      }
+    },
+    "strengths": [
+      "Curiosité et ouverture d'esprit",
+      "Organisation et fiabilité",
+      "Sociabilité et énergie"
+    ],
+    "areas_of_attention": [
+      "Développer des compétences de communication pour exprimer vos idées de manière claire et respectueuse",
+      "Trouver un équilibre entre votre besoin de socialisation et votre besoin de temps pour vous-même"
+    ],
+    "recommendations": [
+      "Prendre le temps de réfléchir à vos émotions et à vos réactions pour mieux les comprendre et les gérer",
+      "Développer des stratégies de gestion du stress pour maintenir votre bien-être émotionnel",
+      "Pratiquer l'écoute active et la empathie pour améliorer vos relations avec les autres"
+    ],
+    "disclaimer": "Ce rapport est informatif et non médical. Il ne constitue pas un diagnostic psychologique. Pour tout accompagnement approfondi, consultez un professionnel qualifié."
+  },
+  "resend_count": 0,
+  "last_resend": null,
+  "scores": {
+    "O": {
+      "total": 2.666666666666667,
+      "count": 2
+    },
+    "C": {
+      "total": 2.666666666666666,
+      "count": 2
+    },
+    "E": {
+      "total": 2.6666666666666665,
+      "count": 2
+    },
+    "A": {
+      "total": -8.0,
+      "count": 2
+    },
+    "N": {
+      "total": -2.666666666666667,
+      "count": 2
+    }
+  },
+  "traits_latent": {
+    "O": {
+      "mean": 0.6666666666666667,
+      "variance": 0.0,
+      "n": 2,
+      "m2": 0.0
+    },
+    "C": {
+      "mean": 0.6666666666666666,
+      "variance": 0.0,
+      "n": 2,
+      "m2": 0.0
+    },
+    "E": {
+      "mean": 0.6666666666666667,
+      "variance": 0.1111111111111111,
+      "n": 2,
+      "m2": 0.2222222222222222
+    },
+    "A": {
+      "mean": 0.0,
+      "variance": 0.0,
+      "n": 2,
+      "m2": 0.0
+    },
+    "N": {
+      "mean": 0.3333333333333333,
+      "variance": 0.1111111111111111,
+      "n": 2,
+      "m2": 0.2222222222222222
+    }
+  }
+}

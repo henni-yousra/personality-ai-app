@@ -1,103 +1,155 @@
-<div class="page-container">
-  <div class="container animate-fade-in">
+<div class="home-page">
+  <div class="home-wave" aria-hidden="true"></div>
 
-    <!-- Logo / en-tête -->
-    <header class="home-header animate-fade-in delay-1">
-      <div class="home-logo">🌿</div>
-      <span class="badge badge-sage">Test de personnalité · Big Five</span>
-    </header>
+  <div class="page-container home-page-outer">
+    <div class="container-wide home-shell animate-fade-in">
+      <div class="home-layout">
+        <div class="home-layout-left">
+          <header class="home-header animate-fade-in delay-1">
+            <div class="home-logo">
+              <i class="pi pi-sparkles home-logo-icon" aria-hidden="true"></i>
+              <span class="home-logo-text">personAI</span>
+            </div>
+            <span class="badge badge-sage">Test de personnalité · Big Five</span>
+          </header>
 
-    <!-- Titre principal -->
-    <div class="home-hero animate-fade-in delay-2">
-      <h1>Découvrez qui<br><em>vous êtes vraiment</em></h1>
-      <p class="home-subtitle">
-        Un test adaptatif guidé par l'intelligence artificielle pour révéler
-        votre profil de personnalité unique selon le modèle Big Five.
-      </p>
-    </div>
+          <div class="home-hero animate-fade-in delay-2">
+            <h1>Découvrez qui<br><em>vous êtes vraiment</em></h1>
+            <p class="home-duration">
+              <i class="pi pi-clock" aria-hidden="true"></i>
+              Durée estimée : ~10 minutes
+            </p>
+            <p class="home-subtitle">
+              Un test adaptatif guidé par l'intelligence artificielle pour révéler
+              votre profil de personnalité unique selon le modèle Big Five.
+            </p>
+            <div class="home-privacy card-sm">
+              <h3 class="home-privacy-title">Confidentialité &amp; conditions d’utilisation</h3>
+              <p class="home-privacy-text">
+                Vos réponses et votre adresse e-mail sont utilisées uniquement pour générer et vous
+                envoyer votre rapport personnalisé. Elles ne sont pas revendues ni utilisées à des
+                fins publicitaires. Vous pouvez demander la suppression de vos données en nous
+                contactant à l’adresse indiquée dans le rapport.
+              </p>
+            </div>
+          </div>
 
-    <!-- Caractéristiques -->
-    <div class="home-features animate-fade-in delay-3">
-      <div class="feature-item">
-        <span class="feature-icon">✨</span>
-        <span>Adaptatif & personnalisé</span>
-      </div>
-      <div class="feature-dot"></div>
-      <div class="feature-item">
-        <span class="feature-icon">⏱</span>
-        <span>~7 minutes</span>
-      </div>
-      <div class="feature-dot"></div>
-      <div class="feature-item">
-        <span class="feature-icon">📩</span>
-        <span>Rapport par e-mail</span>
-      </div>
-    </div>
-
-    <!-- Carte formulaire -->
-    <div class="card home-card animate-fade-in delay-4">
-      <h3>Commencer le test</h3>
-      <p class="card-desc">Renseignez votre e-mail pour recevoir votre rapport personnalisé.</p>
-
-      <!-- Email -->
-      <div class="form-group" style="margin-top: 1.5rem;">
-        <label class="form-label" for="email">Adresse e-mail</label>
-        <input
-          id="email"
-          type="email"
-          class="form-input"
-          placeholder="votre@email.com"
-          [value]="email()"
-          (input)="email.set($any($event.target).value)"
-          autocomplete="email"
-        />
-      </div>
-
-      <!-- Consentement -->
-      <div style="margin-top: 1.25rem;">
-        <label class="checkbox-wrapper">
-          <input
-            type="checkbox"
-            [checked]="consent()"
-            (change)="consent.set(!consent())"
-          />
-          <span class="checkbox-label">
-            J'accepte que mes réponses soient traitées anonymement pour générer
-            mon rapport de personnalité. Ces données ne seront pas partagées avec
-            des tiers.
-          </span>
-        </label>
-      </div>
-
-      <!-- Erreur -->
-      @if (error()) {
-        <div class="error-msg animate-fade-in">
-          ⚠️ {{ error() }}
+          <div class="home-features animate-fade-in delay-3">
+            <div class="feature-item">
+              <i class="pi pi-sparkles feature-icon" aria-hidden="true"></i>
+              <span>Adaptatif & personnalisé</span>
+            </div>
+            <div class="feature-dot"></div>
+            <div class="feature-item">
+              <i class="pi pi-clock feature-icon" aria-hidden="true"></i>
+              <span>~10 minutes</span>
+            </div>
+            <div class="feature-dot"></div>
+            <div class="feature-item">
+              <i class="pi pi-envelope feature-icon" aria-hidden="true"></i>
+              <span>Rapport par e-mail</span>
+            </div>
+          </div>
         </div>
-      }
 
-      <!-- Bouton -->
-      <button
-        class="btn btn-primary btn-lg"
-        style="margin-top: 1.75rem; width: 100%;"
-        [disabled]="!canStart"
-        (click)="startTest()"
-      >
-        @if (loading()) {
-          <span class="spinner"></span> Initialisation…
-        } @else {
-          Commencer mon test →
-        }
-      </button>
+        <div class="home-layout-right">
+          <div class="card home-card animate-fade-in delay-4">
+            <h3>Commencer le test</h3>
+            <p class="card-desc">
+              Renseignez votre e-mail pour recevoir votre rapport personnalisé.
+            </p>
+
+            <div class="form-group home-email-block">
+              <label class="form-label" for="email">Adresse e-mail</label>
+              <input
+                id="email"
+                pInputText
+                fluid
+                type="email"
+                placeholder="votre@email.com"
+                [value]="email()"
+                (input)="email.set($any($event.target).value)"
+                autocomplete="email"
+                class="w-full"
+              />
+            </div>
+
+            <div class="home-profile">
+              <h4 class="home-profile-title">Personnalisation (facultatif)</h4>
+              <p class="home-profile-lead">
+                Prénom ou centres d’intérêt : ce n’est pas utilisé pour les scores, mais cela peut
+                personnaliser l’expérience.
+              </p>
+              <div class="form-group">
+                <label class="form-label" for="prenom">Prénom ou pseudo</label>
+                <input
+                  id="prenom"
+                  type="text"
+                  class="home-profile-input"
+                  placeholder="Alex"
+                  [value]="firstName()"
+                  (input)="firstName.set($any($event.target).value)"
+                  autocomplete="given-name"
+                />
+              </div>
+              <p class="form-label" style="margin-top: 1rem">Centres d’intérêt</p>
+              <div class="home-chips">
+                @for (c of chips; track c) {
+                  <button
+                    type="button"
+                    class="chip"
+                    [class.chip-on]="isSelected(c)"
+                    (click)="toggleChip(c)"
+                  >
+                    {{ c }}
+                  </button>
+                }
+              </div>
+            </div>
+
+            <div class="home-card-bottom">
+              <div class="consent-row">
+                <p-checkbox
+                  inputId="consent"
+                  name="consent"
+                  [binary]="true"
+                  [ngModel]="consent()"
+                  (ngModelChange)="consent.set($event)"
+                />
+                <label for="consent" class="checkbox-label consent-label">
+                  J'accepte que mes réponses soient traitées anonymement pour générer
+                  mon rapport de personnalité. Ces données ne seront pas partagées avec
+                  des tiers.
+                </label>
+              </div>
+
+              @if (error()) {
+                <p-message severity="error" [text]="error()" styleClass="w-full home-card-error" />
+              }
+
+              <div class="home-card-cta-row">
+                <p-button
+                  type="button"
+                  icon="pi pi-arrow-right"
+                  iconPos="right"
+                  label="Commencer mon test"
+                  styleClass="home-start-btn"
+                  [disabled]="!canStart()"
+                  [loading]="loading()"
+                  (onClick)="startTest()"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="home-footer animate-fade-in delay-5">
+        <p>
+          Ce test est à visée informative uniquement.<br>
+          Il ne constitue pas un diagnostic médical ou psychologique.
+        </p>
+      </footer>
     </div>
-
-    <!-- Footer discret -->
-    <footer class="home-footer animate-fade-in delay-5">
-      <p>
-        Ce test est à visée informative uniquement.<br>
-        Il ne constitue pas un diagnostic médical ou psychologique.
-      </p>
-    </footer>
-
   </div>
 </div>

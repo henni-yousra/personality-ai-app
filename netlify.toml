@@ -1,0 +1,12 @@
+# Déploiement du frontend Angular sur Netlify (compte gratuit).
+# Connecter ce dépôt GitHub à Netlify : le build utilisera ce fichier automatiquement.
+[build]
+  base = "frontend"
+  command = "npm ci && npm run build -- --configuration production"
+  publish = "dist/frontend/browser"
+
+# Nécessaire pour le routeur Angular (évite les 404 au rafraîchissement d’une page).
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
