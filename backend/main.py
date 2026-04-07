@@ -47,19 +47,33 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# Local + origines prod (variable CORS_ORIGINS : URLs séparées par des virgules, sans espace autour si possible)
+def _env_truthy(name: str) -> bool:
+    v = os.getenv(name, "")
+    return v.strip().lower() in ("1", "true", "yes", "on")
+
+
+# Local + origines prod (CORS_ORIGINS : URLs séparées par des virgules, sans slash final)
 _cors_local = ["http://localhost:4200", "http://127.0.0.1:4200"]
 _cors_extra = [
-    o.strip()
+    o.strip().rstrip("/")
     for o in os.getenv("CORS_ORIGINS", "").split(",")
     if o.strip()
 ]
 _cors_allow = list(dict.fromkeys(_cors_local + _cors_extra))
 
+# Localhost (tous ports) ; option Netlify (sous-domaines *.netlify.app, y compris previews)
+_cors_regex_local = r"https?://(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$"
+if _env_truthy("CORS_ALLOW_NETLIFY"):
+    _cors_origin_regex = (
+        f"({_cors_regex_local})|((?i)^https://[\\w-]+\\.netlify\\.app$)"
+    )
+else:
+    _cors_origin_regex = _cors_regex_local
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=_cors_allow,
-    allow_origin_regex=r"https?://(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$",
+    allow_origin_regex=_cors_origin_regex,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -98,6 +112,28 @@ def _reconstruct_report_from_cache(report_dict) -> "Report":
     )
 
 
+def _question_displays(session: dict) -> dict:
+    d = session.setdefault("question_displays", {})
+    if not isinstance(d, dict):
+        session["question_displays"] = {}
+        return session["question_displays"]
+    return d
+
+
+def _remember_question_display(
+    session: dict,
+    question_id: str,
+    text: str,
+    reformulated: bool,
+    generated: bool,
+) -> None:
+    _question_displays(session)[question_id] = {
+        "text": text,
+        "reformulated": bool(reformulated),
+        "generated": bool(generated),
+    }
+
+
 def _validate_session_for_response(session_id: str) -> dict:
     """Validates session exists and that the test is still in progress."""
     session = load_session(session_id)
@@ -127,6 +163,9 @@ def _core_start_session(body: StartSessionRequest) -> SessionStartResponse:
         [o.label for o in question.options],
     )
     question = question.model_copy(update={"text": q_text})
+    _remember_question_display(
+        session, question.id, q_text, was_reformulated, was_generated
+    )
     session["used_question_ids"].append(question.id)
     save_session(session_id, session)
 
@@ -201,6 +240,7 @@ def _core_submit_response(session_id: str, body: AnswerRequest) -> AnswerRespons
         [o.label for o in next_q.options],
     )
     next_q = next_q.model_copy(update={"text": n_text})
+    _remember_question_display(session, next_q.id, n_text, n_ref, n_gen)
     session["used_question_ids"].append(next_q.id)
     save_session(session_id, session)
 
@@ -244,6 +284,8 @@ def get_session_state(session_id: str):
             current_question_index=TOTAL_QUESTIONS,
             current_question=None,
             progress=progress,
+            reformulated=False,
+            generated=False,
         )
 
     if answered >= len(used_ids):
@@ -260,11 +302,31 @@ def get_session_state(session_id: str):
     current_question = build_question(raw_q)
     current_question_index = answered + 1
 
+    disp = _question_displays(session).get(qid)
+    was_ref = False
+    was_gen = False
+    if isinstance(disp, dict) and isinstance(disp.get("text"), str):
+        current_question = current_question.model_copy(update={"text": disp["text"]})
+        was_ref = bool(disp.get("reformulated"))
+        was_gen = bool(disp.get("generated"))
+    else:
+        # Anciennes sessions sans cache : même pipeline que le démarrage, puis enregistrement.
+        t, was_ref, was_gen = maybe_prepare_question_text(
+            current_question.text,
+            current_question.id,
+            [o.label for o in current_question.options],
+        )
+        current_question = current_question.model_copy(update={"text": t})
+        _remember_question_display(session, qid, t, was_ref, was_gen)
+        save_session(session_id, session)
+
     return SessionStateResponse(
         completed=False,
         current_question_index=current_question_index,
         current_question=current_question,
         progress=progress,
+        reformulated=was_ref,
+        generated=was_gen,
     )
 
 

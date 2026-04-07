@@ -90,7 +90,8 @@ export class HomeComponent implements OnInit {
               state: {
                 question: res.question,
                 progress: res.progress,
-                reformulated: res.reformulated === true,
+                reformulated:
+                  res.reformulated === true || res.generated === true,
               },
             })
             .then((ok) => {

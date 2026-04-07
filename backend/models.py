@@ -106,3 +106,5 @@ class SessionStateResponse(BaseModel):
     current_question_index: int
     current_question: Optional[Question] = None
     progress: SessionResumeProgress
+    reformulated: bool = False
+    generated: bool = False

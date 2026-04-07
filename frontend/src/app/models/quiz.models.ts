@@ -28,6 +28,8 @@ export interface SessionStateResponse {
   current_question_index: number;
   current_question: Question | null;
   progress: SessionResumeProgress;
+  reformulated?: boolean;
+  generated?: boolean;
 }
 
 export interface SessionStartResponse {

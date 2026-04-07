@@ -139,6 +139,29 @@ async def test_submit_answer_updates_progress(api_client: AsyncClient):
 
 
 @pytest.mark.asyncio
+async def test_get_session_state_matches_start_question(api_client: AsyncClient):
+    """Reprise GET /api/sessions/{id} : même énoncé et drapeaux LLM que POST /api/sessions."""
+    start = await api_client.post(
+        "/api/sessions",
+        json={"email": "resume@example.com", "consent": True},
+    )
+    assert start.status_code == 200
+    body = start.json()
+    sid = body["session_id"]
+    q_text = body["question"]["text"]
+    ref = body["reformulated"]
+    gen = body["generated"]
+
+    r = await api_client.get(f"/api/sessions/{sid}")
+    assert r.status_code == 200
+    data = r.json()
+    assert data["completed"] is False
+    assert data["current_question"]["text"] == q_text
+    assert data["reformulated"] is ref
+    assert data["generated"] is gen
+
+
+@pytest.mark.asyncio
 async def test_submit_answer_unknown_session_404(api_client: AsyncClient):
     """Soumission pour une session inexistante → 404."""
     fake = str(uuid.uuid4())
