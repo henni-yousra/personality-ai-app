@@ -123,11 +123,20 @@ def send_report_email(to_email: str, report: Report) -> tuple[bool, str | None]:
       GMAIL_USER        — alias de SMTP_USER
       GMAIL_APP_PASSWORD — alias de SMTP_PASSWORD
     """
-    smtp_host = os.getenv("SMTP_HOST", "smtp.gmail.com")
-    smtp_port = int(os.getenv("SMTP_PORT", "465"))
-    smtp_user = os.getenv("SMTP_USER") or os.getenv("GMAIL_USER")
-    smtp_password = os.getenv("SMTP_PASSWORD") or os.getenv("GMAIL_APP_PASSWORD")
-    from_name = os.getenv("SMTP_FROM_NAME", "personAI Test")
+    def _env_cred(*keys: str) -> str | None:
+        for k in keys:
+            v = os.getenv(k)
+            if v is not None:
+                s = v.strip()
+                if s:
+                    return s
+        return None
+
+    smtp_host = (os.getenv("SMTP_HOST") or "smtp.gmail.com").strip()
+    smtp_port = int((os.getenv("SMTP_PORT") or "465").strip())
+    smtp_user = _env_cred("SMTP_USER", "GMAIL_USER")
+    smtp_password = _env_cred("SMTP_PASSWORD", "GMAIL_APP_PASSWORD")
+    from_name = (os.getenv("SMTP_FROM_NAME") or "personAI Test").strip()
 
     if not smtp_user or not smtp_password:
         print(

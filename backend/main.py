@@ -7,6 +7,7 @@ Endpoints hérités :
   POST /api/sessions, POST /api/sessions/{id}/responses, GET /api/sessions/{id}, …
 """
 
+import os
 import uuid
 from pathlib import Path
 
@@ -37,7 +38,7 @@ from storage import create_session, load_session, save_session
 from adaptive_engine import select_next_question, update_scores, build_question
 from report_generator import generate_report
 from email_service import send_report_email
-from llm_questions import maybe_reformulate_question_text
+from llm_questions import maybe_prepare_question_text
 from question_bank import TOTAL_QUESTIONS, QUESTIONS, question_option_values
 
 app = FastAPI(
@@ -46,9 +47,18 @@ app = FastAPI(
     version="1.0.0",
 )
 
+# Local + origines prod (variable CORS_ORIGINS : URLs séparées par des virgules, sans espace autour si possible)
+_cors_local = ["http://localhost:4200", "http://127.0.0.1:4200"]
+_cors_extra = [
+    o.strip()
+    for o in os.getenv("CORS_ORIGINS", "").split(",")
+    if o.strip()
+]
+_cors_allow = list(dict.fromkeys(_cors_local + _cors_extra))
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:4200", "http://127.0.0.1:4200"],
+    allow_origins=_cors_allow,
     allow_origin_regex=r"https?://(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$",
     allow_credentials=True,
     allow_methods=["*"],
@@ -111,8 +121,10 @@ def _core_start_session(body: StartSessionRequest) -> SessionStartResponse:
     if question is None:
         raise HTTPException(status_code=500, detail="Impossible de charger les questions.")
 
-    q_text, was_reformulated = maybe_reformulate_question_text(
-        question.text, question.id
+    q_text, was_reformulated, was_generated = maybe_prepare_question_text(
+        question.text,
+        question.id,
+        [o.label for o in question.options],
     )
     question = question.model_copy(update={"text": q_text})
     session["used_question_ids"].append(question.id)
@@ -124,6 +136,7 @@ def _core_start_session(body: StartSessionRequest) -> SessionStartResponse:
         progress=_build_progress(session),
         selection_reason=selection_reason,
         reformulated=was_reformulated,
+        generated=was_generated,
     )
 
 
@@ -166,6 +179,7 @@ def _core_submit_response(session_id: str, body: AnswerRequest) -> AnswerRespons
             progress=_build_progress(session),
             selection_reason=None,
             reformulated=False,
+            generated=False,
         )
 
     next_q, selection_reason = select_next_question(session)
@@ -178,9 +192,14 @@ def _core_submit_response(session_id: str, body: AnswerRequest) -> AnswerRespons
             progress=_build_progress(session),
             selection_reason=None,
             reformulated=False,
+            generated=False,
         )
 
-    n_text, n_ref = maybe_reformulate_question_text(next_q.text, next_q.id)
+    n_text, n_ref, n_gen = maybe_prepare_question_text(
+        next_q.text,
+        next_q.id,
+        [o.label for o in next_q.options],
+    )
     next_q = next_q.model_copy(update={"text": n_text})
     session["used_question_ids"].append(next_q.id)
     save_session(session_id, session)
@@ -191,6 +210,7 @@ def _core_submit_response(session_id: str, body: AnswerRequest) -> AnswerRespons
         progress=_build_progress(session),
         selection_reason=selection_reason,
         reformulated=n_ref,
+        generated=n_gen,
     )
 
 
@@ -335,10 +355,11 @@ def resend_report(session_id: str):
     if not success:
         if mail_reason == "missing_credentials":
             detail = (
-                "Envoi d'e-mail non configuré. Définissez SMTP_USER et SMTP_PASSWORD "
-                "dans l'environnement du backend (ou GMAIL_USER et GMAIL_APP_PASSWORD). "
-                "Pour Gmail : compte Google → Sécurité → validation en deux étapes → "
-                "mots de passe des applications."
+                "Envoi d'e-mail non configuré. Dans le fichier backend/.env (ou les "
+                "variables d'environnement du processus uvicorn), définissez SMTP_USER et "
+                "SMTP_PASSWORD, ou GMAIL_USER et GMAIL_APP_PASSWORD. Redémarrez le serveur "
+                "après modification. Pour Gmail : compte Google → Sécurité → validation en "
+                "deux étapes → mots de passe des applications."
             )
         else:
             detail = (

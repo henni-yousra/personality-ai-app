@@ -232,7 +232,11 @@ def select_next_question(session: dict) -> Tuple[Optional[Question], str]:
         st = latent[t]
         return (st["variance"], -st["n"])
 
-    target_trait = max(traits_with_questions, key=trait_sort_key)
+    # En cas d'égalité (ex. début de session : même variance pour tous les traits),
+    # éviter de toujours choisir le premier trait de TRAITS (souvent O → même 1re question).
+    best_key = max(trait_sort_key(t) for t in traits_with_questions)
+    tied_traits = [t for t in traits_with_questions if trait_sort_key(t) == best_key]
+    target_trait = random.choice(tied_traits)
     st = latent[target_trait]
     n_trait = int(st["n"])
     var_trait = float(st["variance"])

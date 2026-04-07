@@ -46,6 +46,7 @@ class SessionStartResponse(BaseModel):
     progress: Progress
     selection_reason: Optional[str] = None
     reformulated: bool = False
+    generated: bool = False
 
 
 class AnswerResponse(BaseModel):
@@ -54,6 +55,7 @@ class AnswerResponse(BaseModel):
     progress: Progress
     selection_reason: Optional[str] = None
     reformulated: bool = False
+    generated: bool = False
 
 
 class TraitScore(BaseModel):

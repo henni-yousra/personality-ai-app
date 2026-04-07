@@ -183,3 +183,39 @@ async def test_get_report_after_full_session_mock_groq(
         assert "report" in payload
         assert payload["report"]["overall_summary"]
         assert set(payload["report"]["traits"].keys()) == {"O", "C", "E", "A", "N"}
+
+
+@pytest.mark.asyncio
+async def test_questions_start_generation_flag_true(api_client: AsyncClient, monkeypatch):
+    """Quand la génération est activée, /questions/start peut renvoyer generated=true."""
+    monkeypatch.setenv("GROQ_API_KEY", "test-key-for-mock")
+    monkeypatch.setenv("LLM_QUESTION_GENERATION", "true")
+    monkeypatch.delenv("LLM_QUESTION_REFORMULATION", raising=False)
+
+    with patch("llm_questions._groq_text", return_value="Préférez-vous planifier vos journées à l'avance ?"):
+        r = await api_client.get(
+            "/questions/start",
+            params={"email": "gen@example.com", "consent": "true"},
+        )
+
+    assert r.status_code == 200
+    data = r.json()
+    assert data["generated"] is True
+    assert data["reformulated"] is False
+    assert len(data["question"]["text"]) >= 8
+
+
+@pytest.mark.asyncio
+async def test_questions_start_generation_flag_false(api_client: AsyncClient, monkeypatch):
+    """Quand la génération est inactive, /questions/start renvoie generated=false."""
+    monkeypatch.setenv("GROQ_API_KEY", "test-key-for-mock")
+    monkeypatch.delenv("LLM_QUESTION_GENERATION", raising=False)
+    monkeypatch.delenv("LLM_QUESTION_REFORMULATION", raising=False)
+
+    r = await api_client.get(
+        "/questions/start",
+        params={"email": "no-gen@example.com", "consent": "true"},
+    )
+    assert r.status_code == 200
+    data = r.json()
+    assert data["generated"] is False
