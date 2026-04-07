@@ -1,0 +1,109 @@
+{
+  "session_id": "b5d3eef0-67d2-4076-a14a-f2d50a74d1fb",
+  "email": "hennimansour.yousrayasmine@gmail.com",
+  "created_at": "2026-04-07T01:38:32.329628",
+  "updated_at": "2026-04-07T01:39:40.719335",
+  "responses": [
+    {
+      "question_id": "O1",
+      "question_text": "Quand on vous parle d’un sujet que vous ne connaissez pas, que faites-vous en général ?",
+      "trait": "O",
+      "polarity": 1,
+      "answer": 1,
+      "answer_label": "Je change vite de sujet",
+      "answered_at": "2026-04-07T01:39:23.630098"
+    },
+    {
+      "question_id": "C1",
+      "question_text": "Vous avez une échéance dans deux semaines. Comment vous y prenez-vous ?",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 2,
+      "answer_label": "J’avance par à-coups",
+      "answered_at": "2026-04-07T01:39:27.732793"
+    },
+    {
+      "question_id": "E1",
+      "question_text": "Dans une soirée où vous ne connaissez presque personne, vous vous sentez…",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 1,
+      "answer_label": "À l’étroit, j’attends de pouvoir partir",
+      "answered_at": "2026-04-07T01:39:33.942427"
+    },
+    {
+      "question_id": "A1",
+      "question_text": "Un collègue prend du retard sur une tâche commune et vous impacte. Votre premier réflexe :",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 4,
+      "answer_label": "Je privilégie l’écoute avant de réagir",
+      "answered_at": "2026-04-07T01:39:40.716160"
+    }
+  ],
+  "used_question_ids": [
+    "O1",
+    "C1",
+    "E1",
+    "A1",
+    "N1"
+  ],
+  "completed": false,
+  "report": null,
+  "resend_count": 0,
+  "last_resend": null,
+  "scores": {
+    "O": {
+      "total": -4.0,
+      "count": 1
+    },
+    "C": {
+      "total": -1.3333333333333335,
+      "count": 1
+    },
+    "E": {
+      "total": -4.0,
+      "count": 1
+    },
+    "A": {
+      "total": 4.0,
+      "count": 1
+    },
+    "N": {
+      "total": 0,
+      "count": 0
+    }
+  },
+  "traits_latent": {
+    "O": {
+      "mean": 0.0,
+      "variance": 0.25,
+      "n": 1,
+      "m2": 0.0
+    },
+    "C": {
+      "mean": 0.3333333333333333,
+      "variance": 0.25,
+      "n": 1,
+      "m2": 0.0
+    },
+    "E": {
+      "mean": 0.0,
+      "variance": 0.25,
+      "n": 1,
+      "m2": 0.0
+    },
+    "A": {
+      "mean": 1.0,
+      "variance": 0.25,
+      "n": 1,
+      "m2": 0.0
+    },
+    "N": {
+      "mean": 0.5,
+      "variance": 0.25,
+      "n": 0,
+      "m2": 0.0
+    }
+  }
+}

@@ -1,0 +1,223 @@
+{
+  "session_id": "ad044cef-48b9-473a-bee0-cc7bfd23e707",
+  "email": "hennimansour.yousrayasmine@gmail.com",
+  "created_at": "2026-04-07T01:34:44.064202",
+  "updated_at": "2026-04-07T01:35:55.376694",
+  "responses": [
+    {
+      "question_id": "O1",
+      "question_text": "Quand on vous parle d’un sujet que vous ne connaissez pas, que faites-vous en général ?",
+      "trait": "O",
+      "polarity": 1,
+      "answer": 2,
+      "answer_label": "J’écoute sans creuser",
+      "answered_at": "2026-04-07T01:34:58.528588"
+    },
+    {
+      "question_id": "C1",
+      "question_text": "Vous avez une échéance dans deux semaines. Comment vous y prenez-vous ?",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 3,
+      "answer_label": "Je découpe en étapes avec des jalons",
+      "answered_at": "2026-04-07T01:35:05.035670"
+    },
+    {
+      "question_id": "E1",
+      "question_text": "Dans une soirée où vous ne connaissez presque personne, vous vous sentez…",
+      "trait": "E",
+      "polarity": 1,
+      "answer": 2,
+      "answer_label": "Un peu tendu(e), je reste en retrait",
+      "answered_at": "2026-04-07T01:35:09.418250"
+    },
+    {
+      "question_id": "A1",
+      "question_text": "Un collègue prend du retard sur une tâche commune et vous impacte. Votre premier réflexe :",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 4,
+      "answer_label": "Je privilégie l’écoute avant de réagir",
+      "answered_at": "2026-04-07T01:35:29.444890"
+    },
+    {
+      "question_id": "N1",
+      "question_text": "La veille d’un entretien ou d’un examen important, vous…",
+      "trait": "N",
+      "polarity": 1,
+      "answer": 4,
+      "answer_label": "Peu dormi, scénarios qui tournent en boucle",
+      "answered_at": "2026-04-07T01:35:32.569153"
+    },
+    {
+      "question_id": "O2",
+      "question_text": "Les week-ends, vous préférez plutôt…",
+      "trait": "O",
+      "polarity": -1,
+      "answer": 4,
+      "answer_label": "Improviser et tester du nouveau",
+      "answered_at": "2026-04-07T01:35:40.585395"
+    },
+    {
+      "question_id": "C2",
+      "question_text": "Votre bureau ou espace de travail ressemble le plus souvent à…",
+      "trait": "C",
+      "polarity": 1,
+      "answer": 1,
+      "answer_label": "Un champ de bataille créatif",
+      "answered_at": "2026-04-07T01:35:42.424569"
+    },
+    {
+      "question_id": "E2",
+      "question_text": "Après une longue journée bien remplie, idéal pour vous :",
+      "trait": "E",
+      "polarity": -1,
+      "answer": 4,
+      "answer_label": "Silence total, solo rechargé",
+      "answered_at": "2026-04-07T01:35:44.089402"
+    },
+    {
+      "question_id": "A2",
+      "question_text": "On vous coupe la parole en réunion. Vous…",
+      "trait": "A",
+      "polarity": 1,
+      "answer": 3,
+      "answer_label": "Je m’efface pour la fluidité du groupe",
+      "answered_at": "2026-04-07T01:35:46.110746"
+    },
+    {
+      "question_id": "N2",
+      "question_text": "Face à une décision importante, vous…",
+      "trait": "N",
+      "polarity": 1,
+      "answer": 4,
+      "answer_label": "Hésitez longtemps, redoutez le mauvais choix",
+      "answered_at": "2026-04-07T01:35:47.895200"
+    }
+  ],
+  "used_question_ids": [
+    "O1",
+    "C1",
+    "E1",
+    "A1",
+    "N1",
+    "O2",
+    "C2",
+    "E2",
+    "A2",
+    "N2"
+  ],
+  "completed": true,
+  "report": {
+    "archetype": {
+      "name": "L'Empathique",
+      "emoji": "◆",
+      "tagline": "Chaleureux, à l'écoute et profondément humain",
+      "description": "Vous ressentez profondément les émotions — les vôtres et celles des autres. Votre capacité d'écoute et votre chaleur humaine créent des liens forts et authentiques. Vous êtes souvent la personne vers qui les autres se tournent dans les moments difficiles."
+    },
+    "overall_summary": "Ce profil révèle une personne chaleureuse, empathique et attentionnée aux autres, avec une forte tendance à l'introspection et une sensibilité élevée aux situations de stress. Les scores indiquent également une préférence pour la solitude et une approche flexible dans la vie quotidienne. Cette combinaison de traits peut influencer la façon dont vous abordez les relations, les défis et les moments de loisir.",
+    "traits": {
+      "O": {
+        "score": 16.7,
+        "label": "Ouverture",
+        "emoji": "◉",
+        "interpretation": "Avec un score d'Ouverture à 16,7, vous semblez apprécier la stabilité et les approches éprouvées, ce qui peut indiquer une certaine réserve face à de nouvelles expériences ou idées. Cela pourrait signifier que vous préférez vous concentrer sur des domaines que vous connaissez bien, où vous pouvez exceller sans trop de risques. Cependant, il est important de noter que l'Ouverture est un trait qui peut évoluer avec le temps et l'expérience, et qu'il pourrait être bénéfique d'explorer de nouvelles perspectives pour enrichir votre vie personnelle et professionnelle."
+      },
+      "C": {
+        "score": 33.3,
+        "label": "Conscienciosité",
+        "emoji": "■",
+        "interpretation": "Un score de Conscienciosité à 33,3 suggère que vous êtes flexible et spontané dans votre approche, ce qui peut être à la fois une force et une faiblesse. D'un côté, cette flexibilité vous permet de vous adapter facilement à de nouvelles situations et de trouver des solutions créatives aux problèmes. De l'autre, elle pourrait parfois vous amener à manquer de planification ou de suivi, ce qui pourrait affecter votre productivité ou votre capacité à atteindre des objectifs à long terme. Il est important de trouver un équilibre entre la flexibilité et la planification pour maximiser vos potentiels."
+      },
+      "E": {
+        "score": 16.7,
+        "label": "Extraversion",
+        "emoji": "▲",
+        "interpretation": "Avec un score d'Extraversion à 16,7, vous semblez être une personne introvertie qui retire de l'énergie de la solitude. Cela signifie que vous avez probablement besoin de temps seul pour vous ressourcer et que les environnements bruyants ou trop sociaux peuvent vous épuiser. Il est essentiel de respecter ce besoin d'intimité et de temps personnel pour maintenir votre bien-être émotionnel et physique. Cependant, il est également important de ne pas vous isoler complètement, car les interactions sociales, même si elles sont limitées, sont cruciales pour le maintien de relations saines et de réseaux de soutien."
+      },
+      "A": {
+        "score": 100.0,
+        "label": "Agréabilité",
+        "emoji": "◆",
+        "interpretation": "Un score d'Agréabilité à 100,0 indique que vous êtes une personne chaleureuse, empathique et très attentionnée aux autres. Cette capacité à vous connecter avec les gens et à comprendre leurs besoins et leurs émotions est une qualité exceptionnelle qui peut vous aider à construire des relations solides et durables. Votre empathie et votre gentillesse peuvent également être des atouts précieux dans les situations de conflit ou de crise, où votre capacité à écouter et à apporter du réconfort peut être particulièrement appréciée. Il est important de continuer à cultiver cette qualité pour renforcer vos liens avec les autres et contribuer positivement à votre communauté."
+      },
+      "N": {
+        "score": 100.0,
+        "label": "Névrosisme",
+        "emoji": "●",
+        "interpretation": "Avec un score de Névrosisme à 100,0, vous semblez être très sensible et réactif aux situations de stress. Cela peut signifier que vous êtes plus susceptible de ressentir de l'anxiété, de la tristesse ou d'autres émotions négatives en réponse à des défis ou à des pressions. Il est crucial de développer des stratégies de gestion du stress et des émotions pour maintenir votre bien-être mental. Cela pourrait inclure des activités de relaxation, des exercices de mindfulness, ou la recherche d'un soutien professionnel si les sentiments de détresse deviennent trop accablants. Il est important de reconnaître que votre sensibilité peut également être une force, car elle vous permet d'être profondément empathique et de vous connecter avec les autres sur un plan émotionnel."
+      }
+    },
+    "strengths": [
+      "Empathie et capacité à comprendre les autres",
+      "Sensibilité et profondeur émotionnelle",
+      "Flexibilité et adaptabilité"
+    ],
+    "areas_of_attention": [
+      "Gestion du stress et des émotions négatives",
+      "Développement d'une planification et d'une organisation pour contrebalancer la flexibilité"
+    ],
+    "recommendations": [
+      "Pratiquer des techniques de relaxation et de gestion du stress",
+      "Explorer de nouvelles expériences et idées pour enrichir votre vie",
+      "Développer des stratégies pour trouver un équilibre entre la solitude et les interactions sociales"
+    ],
+    "disclaimer": "Ce rapport est informatif et non médical. Il ne constitue pas un diagnostic psychologique. Pour tout accompagnement approfondi, consultez un professionnel qualifié."
+  },
+  "resend_count": 0,
+  "last_resend": null,
+  "scores": {
+    "O": {
+      "total": -5.333333333333334,
+      "count": 2
+    },
+    "C": {
+      "total": -2.666666666666667,
+      "count": 2
+    },
+    "E": {
+      "total": -5.333333333333334,
+      "count": 2
+    },
+    "A": {
+      "total": 8.0,
+      "count": 2
+    },
+    "N": {
+      "total": 8.0,
+      "count": 2
+    }
+  },
+  "traits_latent": {
+    "O": {
+      "mean": 0.16666666666666666,
+      "variance": 0.027777777777777776,
+      "n": 2,
+      "m2": 0.05555555555555555
+    },
+    "C": {
+      "mean": 0.3333333333333333,
+      "variance": 0.1111111111111111,
+      "n": 2,
+      "m2": 0.2222222222222222
+    },
+    "E": {
+      "mean": 0.16666666666666666,
+      "variance": 0.027777777777777776,
+      "n": 2,
+      "m2": 0.05555555555555555
+    },
+    "A": {
+      "mean": 1.0,
+      "variance": 0.0,
+      "n": 2,
+      "m2": 0.0
+    },
+    "N": {
+      "mean": 1.0,
+      "variance": 0.0,
+      "n": 2,
+      "m2": 0.0
+    }
+  }
+}
