@@ -4,29 +4,32 @@ Application web de test de personnalité adaptatif (modèle Big Five / OCEAN) av
 
 - **Frontend** : Angular 21 (standalone components)
 - **Backend** : FastAPI + Python
-- **IA** : Groq (Llama 3.3) — rapport personnalisé ; reformulation des questions (optionnelle)
+- **IA** : Groq (Llama 3.3) — génération du rapport personnalisé + reformulation des questions (optionnelle)
 - **Email** : SMTP (ex. Gmail) — envoi automatique du rapport si configuré
 
-Projet réalisé dans le cadre de l'UE TPALT — Sorbonne Sciences.
+Réalisé par **Yousra Yasmine Henni Mansour** et **Samira Fawaz** — UE TPALT, Sorbonne Sciences.
 
 ---
 
-## Lancer l'application
+## Lancer l'application en local
+
+### Prérequis
+
+- Python **3.10+** (3.11+ recommandé)
+- Node.js **18+** et npm
 
 ### 1. Backend (FastAPI)
 
-**Prérequis** : Python 3.10+
-
 ```bash
-# Aller dans le dossier backend
+# Se placer dans le dossier backend
 cd backend
 
-# Installer les dépendances (première fois)
+# Installer les dépendances Python
 pip3 install -r requirements.txt
 
-# Créer le fichier .env à partir de l'exemple
+# Copier le fichier de configuration et le remplir
 cp .env.example .env
-# Puis renseigner GROQ_API_KEY, SMTP_USER, SMTP_PASSWORD dans .env
+# → ouvrir backend/.env et renseigner les clés (voir section "Clés & tokens" ci-dessous)
 
 # Lancer le serveur
 python3 -m uvicorn main:app --reload
@@ -34,19 +37,16 @@ python3 -m uvicorn main:app --reload
 
 Le backend tourne sur **http://localhost:8000**
 
-> Si le port est déjà occupé : `kill $(lsof -ti:8000)` puis relancer.
-
----
+> Si le port 8000 est déjà utilisé : `kill $(lsof -ti:8000)` puis relancer.
 
 ### 2. Frontend (Angular)
 
-**Prérequis** : Node.js 18+ et npm
+Dans un **second terminal** :
 
 ```bash
-# Aller dans le dossier frontend
 cd frontend
 
-# Installer les dépendances (première fois)
+# Installer les dépendances npm (première fois)
 npm install
 
 # Lancer le serveur de développement
@@ -55,104 +55,104 @@ npm start
 
 L'application est accessible sur **http://localhost:4200**
 
+Le proxy Angular redirige automatiquement les appels `/api/...` vers `http://localhost:8000`.
+
 ---
 
-## Variables d'environnement
+## Clés & tokens — où les modifier
 
-Créer un fichier `backend/.env` :
+Toute la configuration sensible se trouve dans **`backend/.env`** (fichier à créer à partir de `.env.example`, jamais versionné).
 
 ```env
-GROQ_API_KEY=gsk_...
+# ── IA (obligatoire pour générer un rapport) ─────────────────────────────────
+GROQ_API_KEY=gsk_...           # Clé API Groq → https://console.groq.com
 
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=465
-SMTP_USER=votre.adresse@gmail.com
-SMTP_PASSWORD=xxxx xxxx xxxx xxxx   # mot de passe d'application Gmail
+# ── Email (optionnel) ─────────────────────────────────────────────────────────
+SMTP_HOST=smtp.gmail.com       # Serveur SMTP de votre fournisseur
+SMTP_PORT=465                  # 465 (SSL) ou 587 (STARTTLS)
+SMTP_USER=votre@gmail.com      # Adresse d'envoi
+SMTP_PASSWORD=xxxx xxxx xxxx xxxx  # Mot de passe d'application Gmail
+
+# ── Options avancées ──────────────────────────────────────────────────────────
+LLM_QUESTION_REFORMULATION=false   # Mettre à true pour activer la reformulation IA des questions
 ```
+
+### Obtenir les clés
+
+| Clé | Où la trouver |
+|-----|---------------|
+| `GROQ_API_KEY` | Créer un compte sur [console.groq.com](https://console.groq.com) → API Keys → Create API Key |
+| `SMTP_PASSWORD` (Gmail) | Compte Google → Sécurité → Validation en 2 étapes → Mots de passe des applications |
+
+> Sans `GROQ_API_KEY`, le rapport IA ne sera pas généré. Sans SMTP, le rapport s'affiche dans l'app mais n'est pas envoyé par e-mail.
 
 ---
 
-## Déploiement & configuration
+## Comment l'IA est utilisée
 
-### Variables d'environnement
+L'IA intervient à **deux niveaux** dans l'application :
 
-| Variable | Description | Exemple | Obligatoire |
-|----------|-------------|---------|-------------|
-| `GROQ_API_KEY` | Clé API Groq pour la génération du rapport JSON (et reformulation si activée) | `gsk_...` | **Oui** pour un rapport IA en prod |
-| `SMTP_HOST` | Serveur SMTP pour l’envoi du rapport | `smtp.gmail.com` | Non (sans SMTP, le rapport reste consultable dans l’app) |
-| `SMTP_PORT` | Port SMTP (`465` SSL ou `587` STARTTLS) | `465` | Non |
-| `SMTP_USER` | Compte d’envoi | `vous@gmail.com` | Non |
-| `SMTP_PASSWORD` | Mot de passe ou mot de passe d’application | `abcd efgh ijkl mnop` | Non |
-| `LLM_QUESTION_REFORMULATION` | Active la reformulation Groq des énoncés (`true` / `1` / `yes` / `on`) | `true` | Non |
-| `SECRET_KEY` | Clé secrète pour signer cookies / sessions (utile derrière un reverse proxy avancé) | `changez-moi-en-prod` | Non (non utilisée par le code actuel ; recommandée pour extensions) |
-| `CORS_ORIGINS` | Liste d’origines autorisées pour le front (si vous externalisez la config CORS) | `https://app.example.com` | Non (le CORS est codé dans `main.py` ; à adapter au déploiement) |
+### 1. Sélection adaptative des questions (moteur à règles)
 
-Autres variables utiles : `SMTP_FROM_NAME`, `GMAIL_USER` / `GMAIL_APP_PASSWORD` (alias documentés dans le backend).
+Après chaque réponse, `backend/adaptive_engine.py` :
+- calcule les scores partiels par trait (O, C, E, A, N)
+- identifie le trait avec la **plus grande incertitude** (variance maximale)
+- sélectionne une question de difficulté adaptée depuis la banque (`question_bank.py`)
 
-### Lancement local (développement)
+Ce moteur ne fait **pas appel à une API externe** — il est entièrement local.
 
-**Prérequis** : Python **3.11+** (3.10+ possible), Node.js **20+** et npm.
+### 2. Génération du rapport (LLM Groq)
 
-**Backend**
+À la fin des 15 questions, `backend/report_generator.py` appelle **Groq** (`llama-3.3-70b-versatile`) avec :
+- les scores Big Five calculés (0–100 par trait)
+- l'archétype de personnalité identifié (distance euclidienne)
+- un prompt structuré imposant un format JSON strict
 
-```bash
-cd backend
-python -m venv .venv
-# Windows : .venv\Scripts\activate
-# Linux/macOS : source .venv/bin/activate
-pip install -r requirements.txt
-cp .env.example .env   # puis éditer GROQ_API_KEY (et SMTP si besoin)
-python -m uvicorn main:app --reload --host 127.0.0.1 --port 8000
-```
+Le modèle génère en retour : résumé du profil, interprétation par trait, points forts, axes de développement, recommandations personnalisées, et disclaimer.
 
-**Frontend**
+Le rapport est **mis en cache** dans le fichier de session JSON (`backend/data/sessions/<id>.json`) pour éviter un double appel.
 
-```bash
-cd frontend
-npm install
-npm start
-```
+### 3. Reformulation des questions (optionnel)
 
-Ouvrir `http://localhost:4200` (proxy Angular vers l’API selon `proxy.conf.json`).
+Si `LLM_QUESTION_REFORMULATION=true` dans `.env`, Groq peut reformuler l'énoncé de chaque question pour le rendre plus naturel. Activable/désactivable sans modifier le code.
 
-### Build production
+---
 
-**Frontend**
+## Déploiement
+
+### Build du frontend
 
 ```bash
 cd frontend
 npm run build -- --configuration production
 ```
 
-Les fichiers statiques sont générés dans `frontend/dist/frontend/` (servir avec nginx, Azure Static Web Apps, etc.).
+Les fichiers statiques sont générés dans `frontend/dist/frontend/browser/`.
+À servir avec nginx, Vercel, Netlify, Azure Static Web Apps, etc.
 
-**Backend**
-
-```bash
-cd backend
-pip install -r requirements.txt
-python -m uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4
-```
-
-Adapter `--workers` au nombre de cœurs ; derrière un reverse proxy HTTPS, laisser le proxy gérer TLS.
-
-### Démo sans SMTP
-
-Si `SMTP_USER` / `SMTP_PASSWORD` (ou équivalent) ne sont pas définis, l’API génère tout de même le rapport et le renvoie au frontend (`GET /api/sessions/{id}/report`). L’utilisateur voit le rapport à l’écran ; seul l’envoi automatique par e-mail est désactivé (message d’avertissement côté serveur).
-
-### Activation de la reformulation LLM
-
-1. Définir `GROQ_API_KEY` et `LLM_QUESTION_REFORMULATION=true` dans `backend/.env`.
-2. Redémarrer uvicorn.
-3. Au démarrage du test et à chaque nouvelle question, l’énoncé peut être reformulé par le modèle ; la réponse JSON inclut `reformulated: true` lorsque le texte a effectivement changé (sinon `false`). Un log serveur `INFO` enregistre l’identifiant de question et la durée Groq.
-
-### Tests automatisés (API)
+### Lancement du backend en production
 
 ```bash
 cd backend
-pip install -r requirements.txt
-python -m pytest tests/test_api.py -v
+pip3 install -r requirements.txt
+python3 -m uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4
 ```
+
+Adapter `--workers` au nombre de cœurs disponibles. En production, placer un reverse proxy HTTPS (nginx, Caddy) devant uvicorn.
+
+### Variables d'environnement en production
+
+Sur votre hébergeur (Render, Railway, Heroku, etc.), définir les mêmes variables que dans `.env` :
+
+| Variable | Obligatoire | Description |
+|----------|-------------|-------------|
+| `GROQ_API_KEY` | **Oui** | Clé API Groq |
+| `SMTP_HOST` | Non | Serveur SMTP |
+| `SMTP_PORT` | Non | Port SMTP |
+| `SMTP_USER` | Non | Adresse d'envoi |
+| `SMTP_PASSWORD` | Non | Mot de passe SMTP |
+| `LLM_QUESTION_REFORMULATION` | Non | `true` pour activer la reformulation |
+| `CORS_ORIGINS` | Non | URL du frontend en prod (ex. `https://monapp.vercel.app`) |
 
 ---
 
@@ -164,28 +164,19 @@ personality-ai-app/
 │   ├── main.py              — API FastAPI (tous les endpoints)
 │   ├── models.py            — Modèles Pydantic
 │   ├── question_bank.py     — 30 questions Big Five (15 posées par session)
-│   ├── adaptive_engine.py   — Scoring et sélection adaptative
-│   ├── report_generator.py  — Génération du rapport via Groq
-│   ├── email_service.py     — Envoi du rapport par email (SMTP)
-│   ├── storage.py           — Stockage des sessions (JSON)
-│   ├── data/sessions/       — Fichiers sessions
+│   ├── adaptive_engine.py   — Moteur adaptatif + scoring Big Five
+│   ├── report_generator.py  — Génération du rapport via Groq (LLM)
+│   ├── email_service.py     — Envoi du rapport par e-mail (SMTP)
+│   ├── storage.py           — Stockage des sessions (fichiers JSON)
+│   ├── data/sessions/       — Sessions utilisateurs
+│   ├── .env.example         — Modèle de configuration
 │   └── requirements.txt
 └── frontend/
     └── src/
         ├── app/
         │   ├── pages/home/          — Page d'accueil
         │   ├── pages/questionnaire/ — Quiz adaptatif
-        │   ├── pages/loading/       — Génération du rapport
-        │   └── pages/results/       — Rapport Big Five
+        │   ├── pages/loading/       — Écran de génération du rapport
+        │   └── pages/results/       — Résultats Big Five
         └── styles.css               — Design system
 ```
-
----
-
-## Fonctionnalités
-
-- Questionnaire adaptatif (15 questions sur 30, sélectionnées dynamiquement)
-- Scoring Big Five (OCEAN) en temps réel
-- Rapport personnalisé généré par IA (streaming)
-- Envoi automatique du rapport par email
-- Design zen responsive

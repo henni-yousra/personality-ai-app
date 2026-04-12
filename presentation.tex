@@ -1,0 +1,348 @@
+\documentclass[aspectratio=169]{beamer}
+
+\usetheme{metropolis}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning}
+\usepackage{amsmath}
+
+% ── Palette de couleurs ───────────────────────────────────────────────────────
+\definecolor{sage}{RGB}{90, 120, 75}
+\definecolor{sagelight}{RGB}{163, 188, 146}
+\definecolor{lavender}{RGB}{110, 95, 140}
+\definecolor{cream}{RGB}{250, 247, 240}
+\definecolor{charcoal}{RGB}{42, 39, 37}
+\definecolor{sand}{RGB}{196, 160, 122}
+\definecolor{sagesofter}{RGB}{118, 150, 100}
+
+\setbeamercolor{normal text}{fg=charcoal, bg=cream}
+\setbeamercolor{alerted text}{fg=lavender}
+\setbeamercolor{example text}{fg=sage}
+% Frametitle sobre : fond crème, texte sauge
+\setbeamercolor{frametitle}{bg=cream, fg=sage}
+\setbeamercolor{progress bar}{fg=sand!80, bg=sand!20}
+\setbeamercolor{block title}{bg=sage!15, fg=sage}
+\setbeamercolor{block body}{bg=sage!6, fg=charcoal}
+\setbeamercolor{block title alerted}{bg=lavender!15, fg=lavender}
+\setbeamercolor{block body alerted}{bg=lavender!6, fg=charcoal}
+\setbeamercolor{block title example}{bg=sagelight!30, fg=sage}
+\setbeamercolor{block body example}{bg=sagelight!10, fg=charcoal}
+% Palette primaire (page titre + barre du bas) : crème chaude
+\setbeamercolor{palette primary}{bg=cream, fg=charcoal}
+\setbeamercolor{title separator}{fg=sand}
+
+\metroset{block=fill, progressbar=foot, titleformat=regular}
+
+% ── Page de titre élégante ────────────────────────────────────────────────────
+\setbeamertemplate{title page}{
+  \begin{tikzpicture}[remember picture, overlay]
+    % Fond crème uniforme (déjà défini dans normal text bg)
+    % Bande décorative gauche en sauge doux
+    \fill[sage!70] (current page.north west) rectangle ++(.22\paperwidth, -\paperheight);
+    % Ligne fine sable en bas
+    \fill[sand!60] (current page.south west) rectangle ++(\paperwidth, .018\paperheight);
+  \end{tikzpicture}
+  \vfill
+  \begin{beamercolorbox}[wd=.74\paperwidth, sep=1.2em, rightskip=2em, leftskip=.24\paperwidth]{normal text}
+    {\usebeamerfont{title}\color{sage}\Large\textbf{\inserttitle}}\\[0.5em]
+    {\usebeamerfont{subtitle}\color{charcoal!70}\insertsubtitle}\\[1.2em]
+    \textcolor{sand}{\rule{4cm}{0.5pt}}\\[0.8em]
+    {\small\color{charcoal!60}\insertauthor}\\[0.2em]
+    {\footnotesize\color{charcoal!50}\insertinstitute}\\[0.2em]
+    {\footnotesize\color{charcoal!50}\insertdate}
+  \end{beamercolorbox}
+  \vfill
+}
+
+% ── Métadonnées ───────────────────────────────────────────────────────────────
+\title{Persona}
+\subtitle{Test de personnalité adaptatif par IA}
+\author{Yousra Yasmine Henni Mansour \and Samira Fawaz}
+\institute{UE TPALT --- Sorbonne Sciences}
+\date{Avril 2026}
+
+
+\begin{document}
+
+% ── Diapo 1 : Titre ──────────────────────────────────────────────────────────
+\maketitle
+
+% ── Diapo 2 : Sommaire ───────────────────────────────────────────────────────
+\begin{frame}{Sommaire}
+  \setbeamertemplate{section in toc}[sections numbered]
+  \tableofcontents[hideallsubsections]
+\end{frame}
+
+
+% =============================================================================
+\section{Contexte et objectif}
+% =============================================================================
+
+\begin{frame}{Qu'est-ce que Persona ?}
+
+  \begin{block}{Objectif}
+    Application web de test de personnalité \textbf{adaptatif}, fondé sur le modèle \textbf{Big Five (OCEAN)}.
+  \end{block}
+
+  \vspace{1em}
+
+  \begin{columns}[T]
+    \column{0.18\textwidth}
+    \begin{block}{\centering O}
+      \centering\small Ouverture
+    \end{block}
+    \column{0.18\textwidth}
+    \begin{block}{\centering C}
+      \centering\small Conscienciosité
+    \end{block}
+    \column{0.18\textwidth}
+    \begin{block}{\centering E}
+      \centering\small Extraversion
+    \end{block}
+    \column{0.18\textwidth}
+    \begin{block}{\centering A}
+      \centering\small Agréabilité
+    \end{block}
+    \column{0.18\textwidth}
+    \begin{block}{\centering N}
+      \centering\small Névrosisme
+    \end{block}
+  \end{columns}
+
+  \vspace{1em}
+
+  Ce qui distingue Persona des questionnaires classiques :
+
+  \medskip
+  \begin{columns}[T]
+    \column{0.3\textwidth}
+    \textbf{1. Adaptativité}\\
+    \small Questions choisies dynamiquement selon les réponses
+    \column{0.3\textwidth}
+    \textbf{2. Scoring}\\
+    \small Scores normalisés 0--100 par dimension
+    \column{0.3\textwidth}
+    \textbf{3. Rapport IA}\\
+    \small Texte personnalisé généré par un LLM
+  \end{columns}
+
+\end{frame}
+
+
+% =============================================================================
+\section{Architecture technique}
+% =============================================================================
+
+\begin{frame}{Architecture}
+
+  \begin{center}
+  \begin{tikzpicture}[
+    node distance=0.8cm and 2cm,
+    box/.style={
+      draw=sage, rounded corners=6pt,
+      minimum width=2.6cm, minimum height=1cm,
+      align=center, font=\small\bfseries,
+      fill=sagelight!25, line width=1.2pt
+    },
+    ext/.style={
+      draw=lavender, rounded corners=6pt,
+      minimum width=2.6cm, minimum height=1cm,
+      align=center, font=\small,
+      fill=lavender!12, line width=1.2pt
+    },
+    arrow/.style={-{Stealth[length=5pt]}, line width=1.2pt, sage},
+    darrow/.style={{Stealth[length=5pt]}-{Stealth[length=5pt]}, line width=1.2pt, charcoal!50},
+  ]
+    \node[box] (ng)      {Angular 21\\Frontend};
+    \node[box, right=2.2cm of ng] (api) {FastAPI\\Backend};
+    \node[ext, above right=0.5cm and 1.8cm of api] (claude) {API Claude\\Anthropic};
+    \node[ext, below right=0.5cm and 1.8cm of api] (smtp)   {SMTP\\E-mail};
+    \node[ext, below=1.1cm of api] (json) {Stockage\\JSON};
+
+    \draw[darrow] (ng)  -- node[above, font=\scriptsize\color{charcoal}]{REST / HTTP} (api);
+    \draw[arrow]  (api) -- node[above, font=\scriptsize, sloped]{rapport} (claude);
+    \draw[arrow]  (api) -- node[below, font=\scriptsize, sloped]{envoi} (smtp);
+    \draw[arrow]  (api) -- node[right, font=\scriptsize]{sessions} (json);
+  \end{tikzpicture}
+  \end{center}
+
+\end{frame}
+
+
+% =============================================================================
+\section{L'IA dans Persona}
+% =============================================================================
+
+\begin{frame}{Deux niveaux d'intelligence artificielle}
+
+  \begin{columns}[T]
+    \column{0.48\textwidth}
+    \begin{block}{IA (1) — Sélection adaptative}
+      \textbf{Moteur à règles (IA symbolique)}
+      \begin{itemize}
+        \item Analyse les scores partiels après chaque réponse
+        \item Sélectionne la dimension \textbf{la moins explorée}
+        \item 30 questions annotées $\rightarrow$ 15 posées
+        \item Sans LLM : instantané, coût nul
+      \end{itemize}
+    \end{block}
+
+    \column{0.48\textwidth}
+    \begin{block}{IA (2) — Génération du rapport}
+      \textbf{LLM : \texttt{claude-opus-4-6}}
+      \begin{itemize}
+        \item Appelé en fin de test
+        \item Reçoit scores + archétype identifié
+        \item Produit un rapport en langage naturel
+        \item Format JSON imposé par gabarit strict
+      \end{itemize}
+    \end{block}
+  \end{columns}
+
+  \vspace{0.8em}
+
+  \begin{center}
+  \begin{tikzpicture}[
+    scale=0.72, transform shape,
+    node distance=0.3cm and 0.4cm,
+    b/.style={draw=charcoal!40, rounded corners=4pt, minimum width=2.2cm,
+              minimum height=0.65cm, align=center, font=\scriptsize, fill=cream},
+    ai/.style={draw=sage, rounded corners=4pt, minimum width=2.2cm,
+               minimum height=0.65cm, align=center, font=\scriptsize\bfseries,
+               fill=sagelight!40, line width=1.2pt},
+    arr/.style={-{Stealth[length=4pt]}, line width=1pt, sage},
+  ]
+    \node[b]  (a) {Accueil};
+    \node[b,  right=of a] (q) {Question $n$};
+    \node[ai, right=of q] (ia1) {IA (1)\\Sélection};
+    \node[b,  right=of ia1] (fin) {15 questions};
+    \node[ai, right=of fin] (ia2) {IA (2)\\Rapport};
+    \node[b,  right=of ia2] (mail) {Résultat\\+ e-mail};
+
+    \draw[arr] (a) -- (q);
+    \draw[arr] (q) -- (ia1);
+    \draw[arr] (ia1) -- node[above, font=\tiny]{$\times 15$} (fin);
+    \draw[arr] (fin) -- (ia2);
+    \draw[arr] (ia2) -- (mail);
+  \end{tikzpicture}
+  \end{center}
+
+\end{frame}
+
+
+% =============================================================================
+\section{Fonctionnalités}
+% =============================================================================
+
+\begin{frame}{Scoring et archétypes}
+
+  \begin{columns}[T]
+    \column{0.48\textwidth}
+    \begin{block}{Normalisation des scores}
+      \[
+        s_t = \frac{\overline{c_t} + 5}{10} \times 100
+        \qquad
+        \overline{c_t} = \frac{1}{n_t}\sum_{i=1}^{n_t} a_i \cdot p_i
+      \]
+      \smallskip
+      \small $a_i \in [1,5]$ : réponse \quad $p_i \in \{-1,+1\}$ : polarité\\
+      Résultat : $s_t \in [0, 100]$ par dimension
+    \end{block}
+
+    \vspace{0.5em}
+    \begin{block}{Sélection de l'archétype}
+      \[
+        d(\text{arch}) = \sqrt{\sum_{t}(s_t - s_t^{\text{arch}})^2}
+      \]
+      \small Archétype le plus proche du profil mesuré
+    \end{block}
+
+    \column{0.48\textwidth}
+    \begin{exampleblock}{Les 6 archétypes}
+      \begin{itemize}
+        \item Le Visionnaire
+        \item Le Logicien
+        \item Le Gardien
+        \item L'Architecte
+        \item L'Empathique
+        \item L'Explorateur
+      \end{itemize}
+    \end{exampleblock}
+  \end{columns}
+
+\end{frame}
+
+% -----------------------------------------------------------------------------
+\begin{frame}{Rapport et envoi par e-mail}
+
+  \begin{columns}[T]
+    \column{0.55\textwidth}
+    \begin{block}{Contenu du rapport généré par l'IA}
+      \begin{itemize}
+        \item Archétype + tagline personnalisée
+        \item Résumé global du profil
+        \item Score par trait (0--100) + interprétation
+        \item Points forts
+        \item Axes de développement
+        \item Recommandations personnalisées
+        \item Disclaimer (non médical)
+      \end{itemize}
+    \end{block}
+
+    \column{0.42\textwidth}
+    \begin{block}{Envoi automatique}
+      \begin{itemize}
+        \item Format HTML
+        \item SMTP configurable
+        \item Renvoi possible (max 3)
+      \end{itemize}
+    \end{block}
+
+    \vspace{0.4em}
+    \begin{alertblock}{Mise en cache}
+      Rapport sauvegardé en JSON — pas de double appel LLM.
+    \end{alertblock}
+  \end{columns}
+
+\end{frame}
+
+
+% =============================================================================
+\section{Conclusion}
+% =============================================================================
+
+\begin{frame}{Conclusion}
+
+  \begin{columns}[T]
+    \column{0.55\textwidth}
+    \begin{block}{Ce que Persona accomplit}
+      \begin{itemize}
+        \item \textbf{15 questions} adaptatives, couverture OCEAN optimale
+        \item Scoring Big Five normalisé
+        \item Archétype par distance euclidienne
+        \item Rapport narratif généré par \textbf{claude-opus-4-6}
+        \item Transmission automatique par \textbf{e-mail}
+      \end{itemize}
+    \end{block}
+
+    \column{0.42\textwidth}
+    \begin{block}{Évolutions possibles}
+      \begin{itemize}
+        \item Modèle probabiliste (TRI)
+        \item Déploiement cloud
+        \item Historique multi-sessions
+      \end{itemize}
+    \end{block}
+  \end{columns}
+
+  \vspace{1.5em}
+  \begin{center}
+    {\Large\textbf{Merci pour votre attention}}\\[0.4em]
+    \textcolor{lavender}{Questions ?}
+  \end{center}
+
+\end{frame}
+
+\end{document}
